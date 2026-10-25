@@ -41,13 +41,28 @@
 
 ## 学习记录怎么跨设备
 
-记录存在**浏览器本地**（`localStorage`），不会自动上云：
+### 方式一：在线同步（推荐，配一次即可）
+
+记录同步到私有仓库 **303234Cjq/study-sync** 的 `state.json`，换设备只要填同一个令牌。
+
+1. 生成令牌：<https://github.com/settings/tokens?type=beta> → Generate new token
+   - Repository access 选 **Only select repositories** → 勾 `study-sync`
+   - Permissions → Repository permissions → **Contents: Read and write**
+   - 有效期按需，建议 90 天，过期重新生成一次
+2. 手机上打开站点 → 设置 → 「在线同步（可选）」→ 粘贴令牌 → **连接并同步**
+3. 该设备以后每次打开自动拉取，作答/笔记/错题自动写回仓库，顶部显示「云端已保存」
+
+注意：
+
+- 令牌只存在**该浏览器**的 localStorage，不写进网页源码；公用电脑上用完请点「断开」
+- 每次作答/标记会产生一次 commit（`study sync …`），这是正常的
+- 令牌泄露或丢失：去 GitHub 撤销并重新生成，再在设备上重填
+
+### 方式二：手动导出导入（不配令牌时可用）
 
 1. 旧设备：设置 → 数据备份 →「下载我的学习记录」
 2. 把 JSON 发到新设备（微信/隔空投送都行）
 3. 新设备：设置 →「导入学习记录」
-
-想要**自动**跨设备同步需要一个后端（GitHub 私有仓库 + 令牌，或 Supabase 之类的免费服务），需要额外配置，尚未接入。
 
 ## 更新页面本身
 

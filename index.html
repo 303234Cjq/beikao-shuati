@@ -356,6 +356,23 @@ D. 选项四
       </div>
       <div class="sub">错题、笔记与练习记录保存在当前浏览器。顶部会显示保存状态。夜间模式和字号会记住你的选择。</div>
     </div>
+    <div class="card" id="gh-sync-card">
+      <h2>在线同步（可选）</h2>
+      <p class="sub">把学习记录同步到你自己的 <b>GitHub 私有仓库</b>，换手机、换浏览器都能接上；不填令牌时记录只留在本机。</p>
+      <div class="row">
+        <input id="gh-sync-repo" value="303234Cjq/study-sync" placeholder="用户名/仓库名" style="flex:1;min-width:150px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)">
+      </div>
+      <div class="row">
+        <input id="gh-sync-token" type="password" placeholder="粘贴令牌：github_pat_… 或 ghp_…" style="flex:1;min-width:150px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)">
+      </div>
+      <div class="row">
+        <button class="btn o" onclick="ghSyncConnect()">连接并同步</button>
+        <button class="btn o" onclick="ghSyncNow()">立即同步</button>
+        <button class="btn o" onclick="ghSyncDisconnect()">断开</button>
+      </div>
+      <div class="sub" id="gh-sync-status">未连接</div>
+      <div class="sub">令牌只保存在本机浏览器，不会写进网页。建议用 fine-grained token，只授权这一个私有仓库的 <b>Contents: Read and write</b>。</div>
+    </div>
     <div class="card">
       <h2>数据备份</h2>
       <div class="row"><button class="btn o" onclick="downloadStudyData()">下载我的学习记录</button>
@@ -497,6 +514,120 @@ window.__META__={"prediction": [["必考·高", "正弦稳态电路分析（第5
 })();
 </script>
 <!-- dsh-online-update:end -->
+<!-- dsh-online-update:begin -->
+<script>
+/* 可选：把学习记录同步到你自己的 GitHub 私有仓库。
+   未配置令牌时完全不生效，页面行为与原来一致（记录只存本机）。
+   app 会调用 GET /__sync/state 与 POST /__sync/mutate，这里把它们转成 api.github.com 的读写。 */
+(function(){
+  var CFG='study_gh_sync';
+  function cfg(){try{return JSON.parse(localStorage.getItem(CFG)||'null');}catch(e){return null;}}
+  var c=cfg();
+  window.__ghSyncInfo={enabled:!!(c&&c.token),repo:c&&c.repo||null,lastError:null};
+  window.ghSyncCfg=cfg;
+  window.ghSyncStatus=function(t){var e=document.getElementById('gh-sync-status');if(e)e.textContent=t;};
+  window.ghSyncConnect=function(){
+    var t=(document.getElementById('gh-sync-token')||{}).value||'';
+    var r=((document.getElementById('gh-sync-repo')||{}).value||'').trim();
+    t=t.trim();
+    if(!/^[\w.-]+\/[\w.-]+$/.test(r)){window.ghSyncStatus('仓库要写成 用户名/仓库名');return;}
+    if(!t){window.ghSyncStatus('请先粘贴令牌');return;}
+    window.ghSyncStatus('正在验证令牌…');
+    fetch('https://api.github.com/user',{headers:{Authorization:'Bearer '+t,Accept:'application/vnd.github+json'},cache:'no-store'})
+      .then(function(res){
+        if(res.status===401||res.status===403){window.ghSyncStatus('令牌无效、过期或没有 repo 权限');return;}
+        if(!res.ok){window.ghSyncStatus('验证失败：HTTP '+res.status);return;}
+        return res.json().then(function(u){
+          try{localStorage.setItem(CFG,JSON.stringify({token:t,repo:r,path:'state.json',branch:'main'}));}catch(e){window.ghSyncStatus('本机存储失败');return;}
+          window.ghSyncStatus('已连接 '+u.login+' · '+r+'，正在重新加载…');
+          if(typeof window.showToast==='function')window.showToast('已连接，开始同步');
+          setTimeout(function(){location.reload();},900);
+        });
+      }).catch(function(e){window.ghSyncStatus('网络错误：'+(e.message||e));});
+  };
+  window.ghSyncDisconnect=function(){
+    try{localStorage.removeItem(CFG);}catch(e){}
+    window.ghSyncStatus('已断开，记录只留本机');
+    if(typeof window.showToast==='function')window.showToast('已断开在线同步');
+    setTimeout(function(){location.reload();},700);
+  };
+  window.ghSyncNow=function(){
+    if(!(c&&c.token)){window.ghSyncStatus('尚未连接');return;}
+    window.ghSyncStatus('正在同步…');
+    if(typeof window.__syncPull==='function'){
+      Promise.resolve(window.__syncPull()).then(function(ok){window.ghSyncStatus(ok?'已同步':'同步未完成，稍后自动重试');});
+    }else{location.reload();}
+  };
+
+  if(!(c&&c.token)) return;               // 未配置：不拦截任何请求
+
+  var API='https://api.github.com';
+  var cache={state:null,sha:null,at:0}, inflight=null;
+  function b64d(x){return decodeURIComponent(escape(atob(String(x||'').replace(/\s/g,''))));}
+  function b64e(x){return btoa(unescape(encodeURIComponent(x)));}
+  function empty(){return {mistakes:[],notes:{},stats:{},custom:[],papers:[],ts:0};}
+  function hdr(){return {Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};}
+  function ok(obj,code){return {ok:(code||200)<400,status:code||200,headers:{get:function(n){return String(n).toLowerCase()==='content-type'?'application/json':null;}},json:function(){return Promise.resolve(obj);}};}
+  function fail(msg){var r=ok({error:String(msg)},500);r.ok=false;window.__ghSyncInfo.lastError=String(msg);return r;}
+
+  function load(force){
+    var now=Date.now();
+    if(!force&&cache.state&&now-cache.at<15000) return Promise.resolve(cache.state);
+    if(inflight) return inflight;
+    inflight=fetch(API+'/repos/'+c.repo+'/contents/'+c.path+'?ref='+(c.branch||'main'),{headers:hdr(),cache:'no-store'})
+      .then(function(r){
+        if(r.status===404){cache.state=empty();cache.sha=null;cache.at=Date.now();return cache.state;}
+        if(!r.ok) throw new Error('HTTP '+r.status);
+        return r.json().then(function(j){
+          cache.sha=j.sha;
+          cache.state=Object.assign(empty(),JSON.parse(b64d(j.content)));
+          cache.at=Date.now();window.__ghSyncInfo.lastError=null;return cache.state;
+        });
+      })
+      .then(function(v){inflight=null;return v;},function(e){inflight=null;throw e;});
+    return inflight;
+  }
+  function save(state){
+    var body={message:'study sync '+new Date().toISOString(),content:b64e(JSON.stringify(state)),branch:c.branch||'main'};
+    if(cache.sha) body.sha=cache.sha;
+    return fetch(API+'/repos/'+c.repo+'/contents/'+c.path,{method:'PUT',headers:Object.assign({'Content-Type':'application/json'},hdr()),body:JSON.stringify(body)})
+      .then(function(r){
+        if(r.ok) return r.json().then(function(j){cache.sha=j.content.sha;cache.at=Date.now();return state;});
+        return r.text().then(function(t){throw new Error('HTTP '+r.status+' '+t.slice(0,120));});
+      });
+  }
+  function applyOp(s,op){
+    if(op.type==='note')s.notes[op.id]=op.text;
+    if(op.type==='mistake'){var i=s.mistakes.indexOf(op.id);if(op.want&&i<0)s.mistakes.push(op.id);if(!op.want&&i>=0)s.mistakes.splice(i,1);}
+    if(op.type==='stats'){var rec=s.stats[op.id]||(s.stats[op.id]={r:0,w:0});rec[op.ok?'r':'w']++;}
+    if(op.type==='paper')s.papers=(s.papers||[]).filter(function(p){return p.id!==op.paper.id;}).concat([op.paper]).slice(-20);
+    if(op.type==='import')s.custom=(s.custom||[]).concat(op.questions||[]);
+    if(op.type==='import-clear')s.custom=[];
+  }
+  var origFetch=window.fetch?window.fetch.bind(window):null;
+  window.fetch=function(input,init){
+    var url=typeof input==='string'?input:(input&&input.url)||'';
+    if(url.indexOf('/__sync/')<0) return origFetch?origFetch(input,init):Promise.reject(new Error('no fetch'));
+    var method=((init&&init.method)||'GET').toUpperCase();
+    if(url.indexOf('/__sync/state')>=0)
+      return load().then(function(s){return ok(s);},function(e){return fail(e.message||e);});
+    if(url.indexOf('/__sync/mutate')>=0){
+      var ops=[];try{ops=(JSON.parse(init.body).operations)||[];}catch(e){}
+      return load(true).then(function(cur){
+        var next=JSON.parse(JSON.stringify(cur));
+        ops.forEach(function(o){applyOp(next,o);});
+        next.ts=Date.now();
+        return save(next).then(function(){return ok(JSON.parse(JSON.stringify(next)));});
+      }).catch(function(e){return fail(e.message||e);});
+    }
+    return origFetch?origFetch(input,init):Promise.reject(new Error('no fetch'));
+  };
+  document.addEventListener('DOMContentLoaded',function(){
+    if(document.getElementById('gh-sync-status')) window.ghSyncStatus('已连接 '+c.repo);
+  });
+})();
+</script>
+
 <script>
 
 /* ================= 云端版: 本地 API 模拟 + 云同步 ================= */
@@ -1132,99 +1263,6 @@ function downloadStudyData(){
   link.download='备考记录-'+new Date().toISOString().slice(0,10)+'.json';link.click();
   setTimeout(function(){URL.revokeObjectURL(url);},1000);
   showToast('备份已生成：错题 '+((st.mistakes||[]).length)+' 条，笔记 '+Object.keys(st.notes||{}).length+' 条');
-}
-function restoreStudyData(file){
-  if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(){
-    var inc;
-    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
-    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
-      showToast('这个文件里没有可识别的学习记录');return;
-    }
-    var cur={};
-    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
-    var merged={
-      mistakes:(inc.mistakes||[]).slice(),
-      notes:Object.assign({},cur.notes||{},inc.notes||{}),
-      stats:Object.assign({},cur.stats||{},inc.stats||{}),
-      custom:(cur.custom||[]).concat(inc.custom||[]),
-      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
-      ts:Date.now()
-    };
-    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
-    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
-    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
-    try{
-      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
-      localStorage.removeItem('study_cloud_operations_v2');
-    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
-    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
-    setTimeout(function(){location.reload();},900);
-  };
-  reader.readAsText(file);
-}
-function restoreStudyData(file){
-  if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(){
-    var inc;
-    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
-    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
-      showToast('这个文件里没有可识别的学习记录');return;
-    }
-    var cur={};
-    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
-    var merged={
-      mistakes:(inc.mistakes||[]).slice(),
-      notes:Object.assign({},cur.notes||{},inc.notes||{}),
-      stats:Object.assign({},cur.stats||{},inc.stats||{}),
-      custom:(cur.custom||[]).concat(inc.custom||[]),
-      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
-      ts:Date.now()
-    };
-    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
-    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
-    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
-    try{
-      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
-      localStorage.removeItem('study_cloud_operations_v2');
-    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
-    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
-    setTimeout(function(){location.reload();},900);
-  };
-  reader.readAsText(file);
-}
-function restoreStudyData(file){
-  if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(){
-    var inc;
-    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
-    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
-      showToast('这个文件里没有可识别的学习记录');return;
-    }
-    var cur={};
-    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
-    var merged={
-      mistakes:(inc.mistakes||[]).slice(),
-      notes:Object.assign({},cur.notes||{},inc.notes||{}),
-      stats:Object.assign({},cur.stats||{},inc.stats||{}),
-      custom:(cur.custom||[]).concat(inc.custom||[]),
-      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
-      ts:Date.now()
-    };
-    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
-    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
-    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
-    try{
-      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
-      localStorage.removeItem('study_cloud_operations_v2');
-    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
-    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
-    setTimeout(function(){location.reload();},900);
-  };
-  reader.readAsText(file);
 }
 function restoreStudyData(file){
   if(!file)return;
