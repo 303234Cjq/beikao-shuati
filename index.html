@@ -342,19 +342,19 @@ D. 选项四
 
   <section id="v-settings" class="hidden">
     <div class="card">
-      <h2>登录与快捷打开</h2>
-      <p>在手机的 Safari、Chrome 或 Edge 中登录一次，以后继续用同一个浏览器打开收藏的网址。浏览器保留登录信息时，无需每次手动登录。</p>
-      <p class="sub">可以把网站添加到收藏夹或手机主屏幕。请避开无痕模式和聊天软件内置浏览器；清除网站数据、换设备或平台登录到期时，仍需重新验证。登录有效期由托管平台管理。</p>
-      <p class="sub">登录过期后，已打开页面中的答题记录会暂存在当前浏览器，重新登录后继续同步。请在顶部显示“云端已保存”后再清理浏览器数据。</p>
-      <a href="https://fjut-study-desk.niftyolive256.chatgpt.site">固定网址：打开备考刷题站</a>
-    </div>
+<h2>本地版说明</h2>
+<p>这是托管在 GitHub Pages 上的<b>静态副本</b>，题目全部打包在网页里，不需要登录，打开就能刷。</p>
+<p class="sub">答题记录只保存在<b>当前这个浏览器</b>里（顶部显示“网络未连接 · 暂存本机”是正常状态，不是报错）。清除网站数据、换浏览器或换设备，记录不会自动跟过去——请用下面「数据备份」里的「下载 / 导入学习记录」搬运。</p>
+<p class="sub">想要自动云同步，请访问原云端站点（支持登录与多设备同步）：</p>
+<a href="https://fjut-study-desk.niftyolive256.chatgpt.site">原云端站点：fjut-study-desk</a>
+</div>
     <div class="card">
       <h2>显示设置</h2>
       <div class="row">
         <button class="btn o" onclick="toggleNight()">夜间模式</button>
         <button class="btn o" onclick="cycleFont()">字号切换</button>
       </div>
-      <div class="sub">使用云端网站时，错题、笔记与练习记录保存在当前账号下。顶部会显示保存状态。夜间模式和字号会记住你的选择。</div>
+      <div class="sub">错题、笔记与练习记录保存在当前浏览器。顶部会显示保存状态。夜间模式和字号会记住你的选择。</div>
     </div>
     <div class="card">
       <h2>数据备份</h2>
@@ -1132,6 +1132,99 @@ function downloadStudyData(){
   link.download='备考记录-'+new Date().toISOString().slice(0,10)+'.json';link.click();
   setTimeout(function(){URL.revokeObjectURL(url);},1000);
   showToast('备份已生成：错题 '+((st.mistakes||[]).length)+' 条，笔记 '+Object.keys(st.notes||{}).length+' 条');
+}
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
+}
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
+}
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
 }
 function restoreStudyData(file){
   if(!file)return;
