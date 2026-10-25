@@ -1,0 +1,28 @@
+{
+  "rev": "2026-10-25",
+  "_说明": "这是「线上更新题库」的入口。往 questions 里加题、把 rev 改成新日期，保存后所有设备下次打开自动合并。题目字段照抄下面示例，id 必须唯一。",
+  "_示例": {
+    "id": "extra-math-001",
+    "subject": "math",
+    "subjectName": "数学二",
+    "module": "01-limits",
+    "moduleName": "模块1 极限与连续",
+    "num": "extra1",
+    "stem": "题干，支持 $x \\to 0$ 这样的 LaTeX",
+    "opts": ["A. ...", "B. ...", "C. ...", "D. ..."],
+    "answer": "B",
+    "solution": ["答案：(B)", "解析…"],
+    "qtype": "选择题",
+    "type": "选择题",
+    "difficulty": "基础",
+    "point": "考点",
+    "weight": 2.0,
+    "originalQtype": "选择题",
+    "source": "builtin",
+    "reviewIssues": [],
+    "reviewStatus": "ready",
+    "contentRevision": "1"
+  },
+  "questions": [],
+  "removed": []
+}
