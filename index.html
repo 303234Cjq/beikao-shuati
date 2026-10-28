@@ -494,6 +494,19 @@ window.__META__={"prediction": [["必考·高", "正弦稳态电路分析（第5
   (payload.removed||[]).forEach(function(id){
     for(var k=bank.length-1;k>=0;k--){ if(bank[k].id===id){ bank.splice(k,1); removedCount++; } }
   });
+  /* 解析补丁：按 id 覆盖已有题目的字段（用于给老题补解析、改考点），不新增题目 */
+  var patchedCount=0;
+  (payload.patches||[]).forEach(function(p){
+    if(!p||!p.id) return;
+    for(var i=0;i<bank.length;i++){
+      if(bank[i].id===p.id){
+        for(var k in p){ if(k!=='id'&&Object.prototype.hasOwnProperty.call(p,k)) bank[i][k]=p[k]; }
+        patchedCount++;
+        break;
+      }
+    }
+  });
+  window.__bankUpdate.patched=patchedCount;
   /* 修复显示公式：题库里把 $$ 拆成了数组的独立元素（['$$','y=...','$$']），
      每行渲染成独立 <p> 后 MathJax 认不出配对，页面上就会露出 $$ 和裸 LaTeX。 */
   function normMath(s){
@@ -1296,6 +1309,37 @@ function downloadStudyData(){
   link.download='备考记录-'+new Date().toISOString().slice(0,10)+'.json';link.click();
   setTimeout(function(){URL.revokeObjectURL(url);},1000);
   showToast('备份已生成：错题 '+((st.mistakes||[]).length)+' 条，笔记 '+Object.keys(st.notes||{}).length+' 条');
+}
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
 }
 function restoreStudyData(file){
   if(!file)return;
