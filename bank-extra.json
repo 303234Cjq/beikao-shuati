@@ -1,28 +1,757 @@
 {
-  "rev": "2026-10-25",
-  "_说明": "这是「线上更新题库」的入口。往 questions 里加题、把 rev 改成新日期，保存后所有设备下次打开自动合并。题目字段照抄下面示例，id 必须唯一。",
-  "_示例": {
-    "id": "extra-math-001",
-    "subject": "math",
-    "subjectName": "数学二",
-    "module": "01-limits",
-    "moduleName": "模块1 极限与连续",
-    "num": "extra1",
-    "stem": "题干，支持 $x \\to 0$ 这样的 LaTeX",
-    "opts": ["A. ...", "B. ...", "C. ...", "D. ..."],
-    "answer": "B",
-    "solution": ["答案：(B)", "解析…"],
-    "qtype": "选择题",
-    "type": "选择题",
-    "difficulty": "基础",
-    "point": "考点",
-    "weight": 2.0,
-    "originalQtype": "选择题",
-    "source": "builtin",
-    "reviewIssues": [],
-    "reviewStatus": "ready",
-    "contentRevision": "1"
-  },
-  "questions": [],
+  "rev": "2026-10-28-batch1",
+  "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
+  "questions": [
+    {
+      "id": "extra-math-001",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "01-limits",
+      "moduleName": "模块1 极限与连续",
+      "num": "X1",
+      "stem": "$\\lim\\limits_{x\\to 0}\\dfrac{1-\\cos x}{x^{2}}=$（　　）",
+      "opts": [
+        "A. $0$",
+        "B. $\\dfrac{1}{2}$",
+        "C. $1$",
+        "D. $2$"
+      ],
+      "answer": "B",
+      "solution": [
+        "用 $1-\\cos x\\sim \\dfrac{x^{2}}{2}$（$x\\to 0$），得 $\\dfrac{1-\\cos x}{x^{2}}\\to \\dfrac{1}{2}$。",
+        "校验：洛必达一次得 $\\dfrac{\\sin x}{2x}\\to \\dfrac{1}{2}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "等价无穷小",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-002",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "01-limits",
+      "moduleName": "模块1 极限与连续",
+      "num": "X2",
+      "stem": "$\\lim\\limits_{x\\to 0}\\dfrac{\\tan x-\\sin x}{x^{3}}=$（　　）",
+      "opts": [
+        "A. $0$",
+        "B. $\\dfrac{1}{3}$",
+        "C. $\\dfrac{1}{2}$",
+        "D. $1$"
+      ],
+      "answer": "C",
+      "solution": [
+        "$\\tan x-\\sin x=\\sin x\\left(\\dfrac{1}{\\cos x}-1\\right)=\\sin x\\cdot\\dfrac{1-\\cos x}{\\cos x}$。",
+        "故原式 $=\\dfrac{\\sin x}{x}\\cdot\\dfrac{1-\\cos x}{x^{2}}\\cdot\\dfrac{1}{\\cos x}\\to 1\\times\\dfrac{1}{2}\\times 1=\\dfrac{1}{2}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "三角恒等变形与等价无穷小",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-003",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "01-limits",
+      "moduleName": "模块1 极限与连续",
+      "num": "X3",
+      "stem": "$\\lim\\limits_{x\\to 0}\\dfrac{\\sin x-x}{x^{3}}=$（　　）",
+      "opts": [
+        "A. $-\\dfrac{1}{6}$",
+        "B. $\\dfrac{1}{6}$",
+        "C. $-\\dfrac{1}{2}$",
+        "D. $0$"
+      ],
+      "answer": "A",
+      "solution": [
+        "$\\sin x=x-\\dfrac{x^{3}}{6}+o(x^{3})$，故 $\\dfrac{\\sin x-x}{x^{3}}\\to -\\dfrac{1}{6}$。",
+        "校验：洛必达三次得 $\\lim\\dfrac{-\\cos x}{6}=-\\dfrac{1}{6}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "泰勒展开",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-004",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "01-limits",
+      "moduleName": "模块1 极限与连续",
+      "num": "X4",
+      "stem": "$\\lim\\limits_{x\\to\\infty}\\left(1+\\dfrac{2}{x}\\right)^{3x}=$（　　）",
+      "opts": [
+        "A. $e^{2}$",
+        "B. $e^{3}$",
+        "C. $e^{6}$",
+        "D. $1$"
+      ],
+      "answer": "C",
+      "solution": [
+        "$\\left(1+\\dfrac{2}{x}\\right)^{3x}=\\left[\\left(1+\\dfrac{2}{x}\\right)^{x}\\right]^{3}\\to (e^{2})^{3}=e^{6}$。",
+        "校验：取对数得 $3x\\ln\\left(1+\\dfrac{2}{x}\\right)\\sim 3x\\cdot\\dfrac{2}{x}=6$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "重要极限",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-005",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "02-derivative",
+      "moduleName": "模块2 导数与微分",
+      "num": "X5",
+      "stem": "设 $y=x^{2}\\ln x$，则 $y'(1)=$（　　）",
+      "opts": [
+        "A. $0$",
+        "B. $1$",
+        "C. $2$",
+        "D. $e$"
+      ],
+      "answer": "B",
+      "solution": [
+        "$y'=2x\\ln x+x^{2}\\cdot\\dfrac{1}{x}=2x\\ln x+x$。",
+        "代入 $x=1$：$y'(1)=0+1=1$。校验：$x$ 从左侧微增时 $y$ 的变化率约为 1 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "乘积求导法则",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-006",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "02-derivative",
+      "moduleName": "模块2 导数与微分",
+      "num": "X6",
+      "stem": "设 $y=\\arctan x$，则 $y''(0)=$（　　）",
+      "opts": [
+        "A. $-1$",
+        "B. $0$",
+        "C. $\\dfrac{1}{2}$",
+        "D. $1$"
+      ],
+      "answer": "B",
+      "solution": [
+        "$y'=\\dfrac{1}{1+x^{2}}$，$y''=-\\dfrac{2x}{(1+x^{2})^{2}}$。",
+        "代入 $x=0$ 得 $y''(0)=0$。校验：$y'$ 是偶函数，在 0 处取极大值，故其导数为 0 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "高阶导数",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-007",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "02-derivative",
+      "moduleName": "模块2 导数与微分",
+      "num": "X7",
+      "stem": "曲线 $x^{2}+y^{2}=25$ 在点 $(3,4)$ 处的切线斜率为（　　）",
+      "opts": [
+        "A. $\\dfrac{3}{4}$",
+        "B. $-\\dfrac{3}{4}$",
+        "C. $\\dfrac{4}{3}$",
+        "D. $-\\dfrac{4}{3}$"
+      ],
+      "answer": "B",
+      "solution": [
+        "两边对 $x$ 求导：$2x+2y\\,y'=0$，得 $y'=-\\dfrac{x}{y}$。",
+        "代入 $(3,4)$：$y'=-\\dfrac{3}{4}$。校验：圆心在原点，半径向量斜率为 $\\dfrac{4}{3}$，切线与之垂直 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "隐函数求导",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-008",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "03-mvt",
+      "moduleName": "模块3 中值定理与导数应用",
+      "num": "X8",
+      "stem": "函数 $f(x)=x^{3}-3x$ 的极大值为（　　）",
+      "opts": [
+        "A. $-2$",
+        "B. $0$",
+        "C. $2$",
+        "D. $3$"
+      ],
+      "answer": "C",
+      "solution": [
+        "$f'(x)=3x^{2}-3=3(x-1)(x+1)$，驻点 $x=\\pm 1$。",
+        "$x=-1$ 处由增变减为极大值，$f(-1)=-1+3=2$。校验：$f''(-1)=-6<0$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "函数极值",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-009",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "03-mvt",
+      "moduleName": "模块3 中值定理与导数应用",
+      "num": "X9",
+      "stem": "曲线 $y=x^{3}-3x^{2}+2$ 的拐点横坐标为（　　）",
+      "opts": [
+        "A. $0$",
+        "B. $1$",
+        "C. $2$",
+        "D. $3$"
+      ],
+      "answer": "B",
+      "solution": [
+        "$y'=3x^{2}-6x$，$y''=6x-6$，令 $y''=0$ 得 $x=1$。",
+        "$x<1$ 时 $y''<0$（凸），$x>1$ 时 $y''>0$（凹），凹凸性改变，故为拐点 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "凹凸性与拐点",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-010",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "03-mvt",
+      "moduleName": "模块3 中值定理与导数应用",
+      "num": "X10",
+      "stem": "函数 $f(x)=x+\\dfrac{1}{x}$ 在区间 $[1,3]$ 上的最小值为（　　）",
+      "opts": [
+        "A. $1$",
+        "B. $2$",
+        "C. $\\dfrac{10}{3}$",
+        "D. $3$"
+      ],
+      "answer": "B",
+      "solution": [
+        "$f'(x)=1-\\dfrac{1}{x^{2}}$，在 $[1,3]$ 上 $f'(x)\\ge 0$，$f$ 单调递增。",
+        "故最小值在左端点：$f(1)=1+1=2$。校验：$x>0$ 时 $x+\\dfrac{1}{x}\\ge 2$（均值不等式取等）✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "闭区间最值",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-011",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "04-integral-indefinite",
+      "moduleName": "模块4 不定积分",
+      "num": "X11",
+      "stem": "$\\displaystyle\\int x\\,e^{2x}\\,\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $\\dfrac{1}{2}x e^{2x}-\\dfrac{1}{4}e^{2x}+C$",
+        "B. $x e^{2x}-\\dfrac{1}{2}e^{2x}+C$",
+        "C. $\\dfrac{1}{2}x e^{2x}+\\dfrac{1}{4}e^{2x}+C$",
+        "D. $\\dfrac{1}{4}x e^{2x}-\\dfrac{1}{2}e^{2x}+C$"
+      ],
+      "answer": "A",
+      "solution": [
+        "分部积分：$\\int x e^{2x}dx=\\dfrac{1}{2}x e^{2x}-\\dfrac{1}{2}\\int e^{2x}dx=\\dfrac{1}{2}x e^{2x}-\\dfrac{1}{4}e^{2x}+C$。",
+        "校验：对结果求导得 $\\dfrac{1}{2}e^{2x}+x e^{2x}-\\dfrac{1}{2}e^{2x}=x e^{2x}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "分部积分",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-012",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "04-integral-indefinite",
+      "moduleName": "模块4 不定积分",
+      "num": "X12",
+      "stem": "$\\displaystyle\\int\\dfrac{\\mathrm{d}x}{x^{2}+4}=$（　　）",
+      "opts": [
+        "A. $\\dfrac{1}{2}\\arctan\\dfrac{x}{2}+C$",
+        "B. $\\arctan\\dfrac{x}{2}+C$",
+        "C. $\\dfrac{1}{4}\\arctan\\dfrac{x}{4}+C$",
+        "D. $\\ln(x^{2}+4)+C$"
+      ],
+      "answer": "A",
+      "solution": [
+        "配方后令 $x=2\\tan t$，$\\int\\dfrac{dx}{x^{2}+4}=\\dfrac{1}{2}\\arctan\\dfrac{x}{2}+C$。",
+        "校验：$\\left(\\dfrac{1}{2}\\arctan\\dfrac{x}{2}\\right)'=\\dfrac{1}{2}\\cdot\\dfrac{1/2}{1+x^{2}/4}=\\dfrac{1}{x^{2}+4}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "基本积分公式",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-013",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "05-integral-definite",
+      "moduleName": "模块5 定积分及其应用",
+      "num": "X13",
+      "stem": "$\\displaystyle\\int_{0}^{1}x e^{x}\\,\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $0$",
+        "B. $1$",
+        "C. $e-1$",
+        "D. $e$"
+      ],
+      "answer": "B",
+      "solution": [
+        "分部积分：$\\int_{0}^{1}x e^{x}dx=\\left[x e^{x}\\right]_{0}^{1}-\\int_{0}^{1}e^{x}dx=e-(e-1)=1$。",
+        "校验：$x e^{x}$ 在 $[0,1]$ 上最大 $e\\approx2.72$，面积约 1，量级合理 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "定积分分部积分",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-014",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "05-integral-definite",
+      "moduleName": "模块5 定积分及其应用",
+      "num": "X14",
+      "stem": "$\\displaystyle\\int_{0}^{\\pi/2}\\sin^{3}x\\,\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $\\dfrac{1}{3}$",
+        "B. $\\dfrac{2}{3}$",
+        "C. $1$",
+        "D. $\\dfrac{\\pi}{4}$"
+      ],
+      "answer": "B",
+      "solution": [
+        "$\\sin^{3}x=(1-\\cos^{2}x)\\sin x$，令 $u=\\cos x$，$\\int_{0}^{1}(1-u^{2})du=1-\\dfrac{1}{3}=\\dfrac{2}{3}$。",
+        "校验：$\\int_{0}^{\\pi/2}\\sin^{n}x\\,dx$ 的递推式给出 $\\dfrac{2}{3}\\cdot 1=\\dfrac{2}{3}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "换元法",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-015",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "05-integral-definite",
+      "moduleName": "模块5 定积分及其应用",
+      "num": "X15",
+      "stem": "$\\displaystyle\\int_{-1}^{1}x^{3}\\cos x\\,\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $0$",
+        "B. $2$",
+        "C. $\\dfrac{2}{3}$",
+        "D. $-2$"
+      ],
+      "answer": "A",
+      "solution": [
+        "被积函数 $x^{3}\\cos x$ 为奇函数（奇×偶=奇），积分区间关于原点对称。",
+        "故积分为 $0$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "对称性与奇偶性",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-016",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "06-ode",
+      "moduleName": "模块6 常微分方程",
+      "num": "X16",
+      "stem": "微分方程 $y'+2y=4$ 满足 $y(0)=1$，则 $y(1)=$（　　）",
+      "opts": [
+        "A. $2-e^{-2}$",
+        "B. $2+e^{-2}$",
+        "C. $1-e^{-2}$",
+        "D. $e^{-2}$"
+      ],
+      "answer": "A",
+      "solution": [
+        "一阶线性方程，通解 $y=Ce^{-2x}+2$；由 $y(0)=1$ 得 $C=-1$，即 $y=2-e^{-2x}$。",
+        "故 $y(1)=2-e^{-2}\\approx 1.865$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "一阶线性微分方程",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-017",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "06-ode",
+      "moduleName": "模块6 常微分方程",
+      "num": "X17",
+      "stem": "微分方程 $y'+y=e^{-x}$ 满足 $y(0)=0$，则 $y(x)=$（　　）",
+      "opts": [
+        "A. $e^{-x}$",
+        "B. $x e^{-x}$",
+        "C. $e^{-x}-1$",
+        "D. $x e^{x}$"
+      ],
+      "answer": "B",
+      "solution": [
+        "积分因子 $e^{x}$，得 $(y e^{x})'=1$，即 $y e^{x}=x+C$，$y=(x+C)e^{-x}$。",
+        "由 $y(0)=0$ 得 $C=0$，故 $y=x e^{-x}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "一阶线性方程与积分因子",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-018",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "06-ode",
+      "moduleName": "模块6 常微分方程",
+      "num": "X18",
+      "stem": "微分方程 $y''=6x$，$y(0)=1$，$y'(0)=0$，则 $y(x)=$（　　）",
+      "opts": [
+        "A. $x^{3}+1$",
+        "B. $x^{3}$",
+        "C. $3x^{2}+1$",
+        "D. $x^{3}+x+1$"
+      ],
+      "answer": "A",
+      "solution": [
+        "积分一次：$y'=3x^{2}+C_{1}$，由 $y'(0)=0$ 得 $C_{1}=0$。",
+        "再积分：$y=x^{3}+C_{2}$，由 $y(0)=1$ 得 $C_{2}=1$，故 $y=x^{3}+1$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "可积高阶方程",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-019",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "07-multivar",
+      "moduleName": "模块7 多元函数微分学",
+      "num": "X19",
+      "stem": "设 $z=x^{2}y+y^{3}$，则 $\\left.\\dfrac{\\partial z}{\\partial x}\\right|_{(1,2)}=$（　　）",
+      "opts": [
+        "A. $2$",
+        "B. $4$",
+        "C. $8$",
+        "D. $13$"
+      ],
+      "answer": "B",
+      "solution": [
+        "对 $x$ 求偏导时把 $y$ 当常数：$\\dfrac{\\partial z}{\\partial x}=2xy$。",
+        "代入 $(1,2)$ 得 $2\\times 1\\times 2=4$。校验：$y^3$ 与 $x$ 无关，对 $x$ 的贡献为 0 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "偏导数",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-020",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "07-multivar",
+      "moduleName": "模块7 多元函数微分学",
+      "num": "X20",
+      "stem": "函数 $z=x^{2}+3xy-y^{2}$ 在点 $(2,1)$ 处的全微分 $\\mathrm{d}z=$（　　）",
+      "opts": [
+        "A. $7\\mathrm{d}x+4\\mathrm{d}y$",
+        "B. $4\\mathrm{d}x+7\\mathrm{d}y$",
+        "C. $7\\mathrm{d}x-4\\mathrm{d}y$",
+        "D. $4\\mathrm{d}x-7\\mathrm{d}y$"
+      ],
+      "answer": "A",
+      "solution": [
+        "$z_{x}=2x+3y$，$z_{y}=3x-2y$，在 $(2,1)$ 处分别为 $7$ 与 $4$。",
+        "故 $\\mathrm{d}z=7\\mathrm{d}x+4\\mathrm{d}y$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "全微分",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-021",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "08-double-integral",
+      "moduleName": "模块8 二重积分",
+      "num": "X21",
+      "stem": "设 $D:\\ x^{2}+y^{2}\\le 1$，则 $\\displaystyle\\iint_{D}(x^{2}+y^{2})\\,\\mathrm{d}\\sigma=$（　　）",
+      "opts": [
+        "A. $\\dfrac{\\pi}{4}$",
+        "B. $\\dfrac{\\pi}{2}$",
+        "C. $\\pi$",
+        "D. $2\\pi$"
+      ],
+      "answer": "B",
+      "solution": [
+        "用极坐标 $x=r\\cos\\theta,\\ y=r\\sin\\theta$，$d\\sigma=r\\,dr\\,d\\theta$，被积函数为 $r^{2}$。",
+        "$\\iint_D(x^2+y^2)d\\sigma=\\int_0^{2\\pi}\\int_0^1 r^{3}dr\\,d\\theta=2\\pi\\cdot\\dfrac{1}{4}=\\dfrac{\\pi}{2}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "极坐标计算二重积分",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-022",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "08-double-integral",
+      "moduleName": "模块8 二重积分",
+      "num": "X22",
+      "stem": "设 $D=\\{(x,y)\\mid 0\\le x\\le 1,\\ 0\\le y\\le x\\}$，则 $\\displaystyle\\iint_{D}xy\\,\\mathrm{d}\\sigma=$（　　）",
+      "opts": [
+        "A. $\\dfrac{1}{4}$",
+        "B. $\\dfrac{1}{8}$",
+        "C. $\\dfrac{1}{6}$",
+        "D. $\\dfrac{1}{12}$"
+      ],
+      "answer": "B",
+      "solution": [
+        "化为累次积分：$\\int_0^1 x\\left(\\int_0^x y\\,dy\\right)dx=\\int_0^1 x\\cdot\\dfrac{x^{2}}{2}dx=\\dfrac{1}{2}\\cdot\\dfrac{1}{4}=\\dfrac{1}{8}$。",
+        "校验：区域为三角形，$xy$ 在此最大为 1，面积 $\\dfrac{1}{2}$，积分值小于 $\\dfrac{1}{2}$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "累次积分",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-023",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "09-linear-algebra",
+      "moduleName": "模块9 线性代数",
+      "num": "X23",
+      "stem": "矩阵 $A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ 的特征值是（　　）",
+      "opts": [
+        "A. $1$ 和 $3$",
+        "B. $2$ 和 $2$",
+        "C. $-1$ 和 $3$",
+        "D. $0$ 和 $4$"
+      ],
+      "answer": "A",
+      "solution": [
+        "$|\\lambda E-A|=(\\lambda-2)^{2}-1=0$，得 $\\lambda=1$ 或 $3$。",
+        "校验：迹 $=4$ 与 $1+3$ 相符，行列式 $=3$ 与 $1\\times 3$ 相符 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "特征值与特征多项式",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-024",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "09-linear-algebra",
+      "moduleName": "模块9 线性代数",
+      "num": "X24",
+      "stem": "$\\begin{vmatrix}1&2&3\\\\0&1&4\\\\5&6&0\\end{vmatrix}=$（　　）",
+      "opts": [
+        "A. $-1$",
+        "B. $0$",
+        "C. $1$",
+        "D. $5$"
+      ],
+      "answer": "C",
+      "solution": [
+        "按第一列展开：$1\\cdot(1\\cdot 0-4\\cdot 6)-0+5\\cdot(2\\cdot 4-3\\cdot 1)=-24+25=1$。",
+        "校验：行列式非零，矩阵可逆，故不为 0 ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "基础",
+      "point": "行列式展开",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    },
+    {
+      "id": "extra-math-025",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "09-linear-algebra",
+      "moduleName": "模块9 线性代数",
+      "num": "X25",
+      "stem": "向量组 $\\alpha_{1}=(1,1,1)^{T},\\ \\alpha_{2}=(1,2,4)^{T},\\ \\alpha_{3}=(1,a,a^{2})^{T}$ 线性相关，则 $a=$（　　）",
+      "opts": [
+        "A. $1$ 或 $2$",
+        "B. $1$ 或 $4$",
+        "C. $2$ 或 $4$",
+        "D. $0$ 或 $1$"
+      ],
+      "answer": "A",
+      "solution": [
+        "三向量线性相关 $\\Leftrightarrow$ 行列式为 0：$\\begin{vmatrix}1&1&1\\\\1&2&4\\\\1&a&a^{2}\\end{vmatrix}=0$。",
+        "该行列式形如范德蒙德型，$=$ $(2-1)(a-1)(a-2)$，故 $a=1$ 或 $a=2$ ✓"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "中等",
+      "point": "线性相关性",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "builtin",
+      "reviewIssues": [],
+      "reviewStatus": "ready",
+      "contentRevision": "a1"
+    }
+  ],
   "removed": []
 }
