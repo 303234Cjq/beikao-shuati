@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-01-ext2020-2022",
+  "rev": "2026-11-01-ext2023-solutions",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -2346,6 +2346,188 @@
       "source": "import",
       "reviewIssues": [
         "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-17",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "17",
+      "stem": "设曲线 $L:y=y(x)\\,(x>\\mathrm{e})$ 经过点 $(\\mathrm{e}^2,0)$，$L$ 上任一点 $P(x,y)$ 到 $y$ 轴的距离等于该点处切线在 $y$ 轴上的截距。(1) 求 $y(x)$；(2) 在 $L$ 上求一点，使该点处的切线与两坐标轴所围三角形面积最小，并求此最小面积。",
+      "opts": [],
+      "answer": "(1) $y=x(2-\\ln x)$；(2) 切点 $x=\\mathrm{e}^{3/2}$，最小面积 $\\mathrm{e}^3$",
+      "solution": [
+        "(1) $P$ 到 $y$ 轴距离为 $x$；切线在 $y$ 轴上截距为 $y-xy'$。由题意 $x=y-xy'$，即 $y'-\\dfrac yx=-1$。",
+        "两边乘积分因子 $\\dfrac1x$：$\\left(\\dfrac yx\\right)'=-\\dfrac1x$，故 $\\dfrac yx=C-\\ln x$，$y=x(C-\\ln x)$。",
+        "代入 $(\\mathrm{e}^2,0)$：$0=\\mathrm{e}^2(C-2)$，得 $C=2$，即 $y=x(2-\\ln x)$。",
+        "(2) 设切点横坐标 $x_0>\\mathrm{e}$，切线斜率 $1-\\ln x_0$。切线在 $y$ 轴截距为 $x_0$，在 $x$ 轴截距为 $\\dfrac{x_0}{\\ln x_0-1}$。",
+        "三角形面积 $S(x_0)=\\dfrac{x_0^2}{2(\\ln x_0-1)}$。求导得 $S'=\\dfrac{x_0(2\\ln x_0-3)}{2(\\ln x_0-1)^2}=0$ ⇒ $\\ln x_0=\\dfrac32$。",
+        "故 $x_0=\\mathrm{e}^{3/2}$，$S_{\\min}=\\dfrac{\\mathrm{e}^3}{2\\cdot\\frac12}=\\mathrm{e}^3$。"
+      ],
+      "qtype": "解答题",
+      "type": "解答题",
+      "difficulty": "",
+      "point": "微分方程与切线面积",
+      "weight": 2.0,
+      "originalQtype": "解答题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，解答自写；关键结论已用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-18",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "18",
+      "stem": "求函数 $f(x,y)=x\\mathrm{e}^{\\cos y}+\\dfrac{x^2}{2}$ 的极值。",
+      "opts": [],
+      "answer": "只在 $(-\\mathrm{e},\\,2k\\pi)$ 处取极小值 $-\\dfrac{\\mathrm{e}^2}{2}$，无极大值",
+      "solution": [
+        "$f_x=\\mathrm{e}^{\\cos y}+x=0$ ⇒ $x=-\\mathrm{e}^{\\cos y}$；$f_y=-x\\mathrm{e}^{\\cos y}\\sin y=0$。",
+        "因 $x\\ne0$，得 $\\sin y=0$，即 $y=k\\pi$。",
+        "$y=2k\\pi$：$x=-\\mathrm{e}$，$A=f_{xx}=1$，$B=f_{xy}=0$，$C=f_{yy}=-\\mathrm{e}\\cdot\\mathrm{e}\\cdot1=\\mathrm{e}^2$，$AC-B^2=\\mathrm{e}^2>0$ 且 $A>0$，取极小值 $f=-\\mathrm{e}^2+\\dfrac{\\mathrm{e}^2}{2}=-\\dfrac{\\mathrm{e}^2}{2}$。",
+        "$y=(2k+1)\\pi$：$x=-\\dfrac1{\\mathrm{e}}$，$C=-\\dfrac{1}{\\mathrm{e}^2}<0$，$AC-B^2<0$，为鞍点，不是极值。",
+        "故极小值为 $-\\dfrac{\\mathrm{e}^2}{2}$，无极大值。"
+      ],
+      "qtype": "解答题",
+      "type": "解答题",
+      "difficulty": "",
+      "point": "二元函数极值",
+      "weight": 2.0,
+      "originalQtype": "解答题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，解答自写；关键结论已用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-19",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "19",
+      "stem": "已知平面区域 $D=\\left\\{(x,y)\\ \\middle|\\ 0\\le y\\le\\dfrac{1}{x\\sqrt{1+x^2}},\\ x\\ge1\\right\\}$。(1) 求 $D$ 的面积；(2) 求 $D$ 绕 $x$ 轴旋转所得旋转体的体积。",
+      "opts": [],
+      "answer": "(1) $\\ln(1+\\sqrt2)$；(2) $\\pi-\\dfrac{\\pi^2}{4}$",
+      "solution": [
+        "(1) 面积 $S=\\displaystyle\\int_1^{+\\infty}\\dfrac{\\mathrm{d}x}{x\\sqrt{1+x^2}}$。令 $x=\\tan t$，得 $\\int_{\\pi/4}^{\\pi/2}\\csc t\\,\\mathrm{d}t=\\left[\\ln\\left|\\tan\\dfrac t2\\right|\\right]_{\\pi/4}^{\\pi/2}$。",
+        "上限为 $\\ln1=0$，下限为 $\\ln(\\sqrt2-1)=-\\ln(1+\\sqrt2)$，故 $S=\\ln(1+\\sqrt2)$（验证：数值约 0.8814）。",
+        "(2) $V=\\pi\\displaystyle\\int_1^{+\\infty}\\dfrac{\\mathrm{d}x}{x^2(1+x^2)}=\\pi\\int_1^{+\\infty}\\left(\\dfrac{1}{x^2}-\\dfrac{1}{1+x^2}\\right)\\mathrm{d}x$。",
+        "$=\\pi\\left[-\\dfrac1x-\\arctan x\\right]_1^{+\\infty}=\\pi\\left[\\left(0-\\dfrac\\pi2\\right)-\\left(-1-\\dfrac\\pi4\\right)\\right]=\\pi\\left(1-\\dfrac\\pi4\\right)$。"
+      ],
+      "qtype": "解答题",
+      "type": "解答题",
+      "difficulty": "",
+      "point": "反常积分与旋转体体积",
+      "weight": 2.0,
+      "originalQtype": "解答题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，解答自写；关键结论已用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-20",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "20",
+      "stem": "设平面有界区域 $D$ 位于第一象限，由曲线 $x^2+y^2-xy=1$、$x^2+y^2-xy=2$ 与直线 $y=\\sqrt3x$、$y=0$ 围成，计算 $\\displaystyle\\iint_D\\dfrac{1}{3x^2+y^2}\\,\\mathrm{d}x\\,\\mathrm{d}y$。",
+      "opts": [],
+      "answer": "$\\dfrac{\\sqrt3\\pi\\ln2}{24}$",
+      "solution": [
+        "取极坐标，$x^2+y^2-xy=r^2\\left(1-\\frac12\\sin2\\theta\\right)=r^2u(\\theta)$，其中 $u=1-\\frac12\\sin2\\theta$。",
+        "两曲线的极径分别为 $r=\\dfrac{1}{\\sqrt u}$ 与 $r=\\dfrac{\\sqrt2}{\\sqrt u}$；角度范围 $0\\le\\theta\\le\\dfrac\\pi3$（由 $y=0$ 到 $y=\\sqrt3x$）。",
+        "$\\dfrac{1}{3x^2+y^2}=\\dfrac{1}{r^2(1+2\\cos^2\\theta)}$，面积元 $\\mathrm{d}x\\mathrm{d}y=r\\,\\mathrm{d}r\\,\\mathrm{d}\\theta$。",
+        "对 $r$ 积分得 $\\displaystyle\\int_{1/\\sqrt u}^{\\sqrt2/\\sqrt u}\\dfrac{\\mathrm{d}r}{r}=\\dfrac12\\ln2$，与 $\\theta$ 无关。",
+        "故原式 $=\\dfrac{\\ln2}{2}\\displaystyle\\int_0^{\\pi/3}\\dfrac{\\mathrm{d}\\theta}{1+2\\cos^2\\theta}$。令 $t=\\tan\\theta$，积分化为 $\\int_0^{\\sqrt3}\\dfrac{\\mathrm{d}t}{t^2+3}=\\dfrac{1}{\\sqrt3}\\cdot\\dfrac\\pi4$。",
+        "结果为 $\\dfrac{\\ln2}{2}\\cdot\\dfrac{\\pi}{4\\sqrt3}=\\dfrac{\\sqrt3\\pi\\ln2}{24}$。"
+      ],
+      "qtype": "解答题",
+      "type": "解答题",
+      "difficulty": "",
+      "point": "极坐标下的二重积分",
+      "weight": 2.0,
+      "originalQtype": "解答题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，解答自写；关键结论已用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-21",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "21",
+      "stem": "设函数 $f(x)$ 在 $[-a,a]$ 上具有 2 阶连续导数。证明：(1) 若 $f(0)=0$，则存在 $\\xi\\in(-a,a)$，使 $f''(\\xi)=\\dfrac{1}{a^2}[f(a)+f(-a)]$；(2) 若 $f(x)$ 在 $(-a,a)$ 内取得极值，则存在 $\\eta\\in(-a,a)$，使 $\\left|f''(\\eta)\\right|\\ge\\dfrac{1}{2a^2}\\left|f(a)-f(-a)\\right|$。",
+      "opts": [],
+      "answer": "两问均为存在性证明，见解析",
+      "solution": [
+        "(1) 在 $x=0$ 处泰勒展开：$f(a)=f(0)+f'(0)a+\\dfrac{f''(\\xi_1)}{2}a^2$，$f(-a)=f(0)-f'(0)a+\\dfrac{f''(\\xi_2)}{2}a^2$。",
+        "两式相加并代入 $f(0)=0$：$f(a)+f(-a)=\\dfrac{a^2}{2}\\left[f''(\\xi_1)+f''(\\xi_2)\\right]$。",
+        "因 $f''$ 连续，它在两点取值之间的每个值都能取到，故存在 $\\xi$ 使 $f''(\\xi)=\\dfrac{f''(\\xi_1)+f''(\\xi_2)}{2}=\\dfrac{f(a)+f(-a)}{a^2}$。",
+        "(2) 设 $f$ 在 $x_0\\in(-a,a)$ 处取得极值，则 $f'(x_0)=0$。在该点展开：",
+        "$f(a)=f(x_0)+\\dfrac{f''(\\xi_1)}{2}(a-x_0)^2$，$f(-a)=f(x_0)+\\dfrac{f''(\\xi_2)}{2}(a+x_0)^2$。",
+        "相减得 $\\left|f(a)-f(-a)\\right|\\le\\dfrac{M}{2}\\left[(a-x_0)^2+(a+x_0)^2\\right]=M(a^2+x_0^2)$，其中 $M=\\max_{[-a,a]}\\left|f''\\right|$。",
+        "因 $a^2+x_0^2\\le2a^2$，得 $M\\ge\\dfrac{\\left|f(a)-f(-a)\\right|}{2a^2}$；取 $\\eta$ 使 $\\left|f''(\\eta)\\right|=M$ 即可。"
+      ],
+      "qtype": "解答题",
+      "type": "解答题",
+      "difficulty": "",
+      "point": "泰勒公式与中值定理证明",
+      "weight": 2.0,
+      "originalQtype": "解答题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，解答自写；关键结论已用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-22",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "22",
+      "stem": "设矩阵 $A$ 满足：对任意 $x_1,x_2,x_3$ 均有 $A\\begin{pmatrix}x_1\\\\x_2\\\\x_3\\end{pmatrix}=\\begin{pmatrix}x_1+x_2+x_3\\\\2x_1-x_2+x_3\\\\x_2-x_3\\end{pmatrix}$。(1) 求 $A$；(2) 求可逆矩阵 $P$ 与对角矩阵 $\\Lambda$，使得 $P^{-1}AP=\\Lambda$。",
+      "opts": [],
+      "answer": "(1) $A=\\begin{pmatrix}1&1&1\\\\2&-1&1\\\\0&1&-1\\end{pmatrix}$；(2) $\\Lambda=\\mathrm{diag}(2,-1,-2)$，$P=\\begin{pmatrix}4&-1&0\\\\3&0&-1\\\\1&2&1\\end{pmatrix}$",
+      "solution": [
+        "(1) 由 $A\\boldsymbol e_1=(1,2,0)^T$、$A\\boldsymbol e_2=(1,-1,1)^T$、$A\\boldsymbol e_3=(1,1,-1)^T$，按列拼得 $A=\\begin{pmatrix}1&1&1\\\\2&-1&1\\\\0&1&-1\\end{pmatrix}$。",
+        "(2) $|\\lambda E-A|=\\begin{vmatrix}\\lambda-1&-1&-1\\\\-2&\\lambda+1&-1\\\\0&-1&\\lambda+1\\end{vmatrix}=(\\lambda-2)(\\lambda+1)(\\lambda+2)$，特征值为 $2,-1,-2$（迹 $-1$、行列式 $4$ 均相符）。",
+        "对应特征向量可取 $(4,3,1)^T$、$(-1,0,2)^T$、$(0,-1,1)^T$，三向量线性无关。",
+        "取 $P=\\begin{pmatrix}4&-1&0\\\\3&0&-1\\\\1&2&1\\end{pmatrix}$，则 $P^{-1}AP=\\mathrm{diag}(2,-1,-2)$。"
+      ],
+      "qtype": "解答题",
+      "type": "解答题",
+      "difficulty": "",
+      "point": "矩阵表示与相似对角化",
+      "weight": 2.0,
+      "originalQtype": "解答题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，解答自写；关键结论已用 sympy 复核"
       ],
       "reviewStatus": "unverified",
       "contentRevision": "ext"
