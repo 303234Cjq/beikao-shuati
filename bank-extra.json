@@ -1,5 +1,5 @@
 {
-  "rev": "2026-10-28-batch2",
+  "rev": "2026-11-01-ext2022",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -751,6 +751,74 @@
       "reviewIssues": [],
       "reviewStatus": "ready",
       "contentRevision": "a1"
+    },
+    {
+      "id": "ext-2022-01",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "1",
+      "stem": "当 $x\\to 0$ 时，$\\alpha(x),\\beta(x)$ 是非零无穷小量，给出下列四个命题：①若 $\\alpha\\sim\\beta$，则 $\\alpha^{2}\\sim\\beta^{2}$；②若 $\\alpha^{2}\\sim\\beta^{2}$，则 $\\alpha\\sim\\beta$；③若 $\\alpha\\sim\\beta$，则 $\\alpha-\\beta=o(\\alpha)$；④若 $\\alpha-\\beta=o(\\alpha)$，则 $\\alpha\\sim\\beta$。其中正确的序号是",
+      "opts": [
+        "A. ①②",
+        "B. ①④",
+        "C. ①③④",
+        "D. ②③④"
+      ],
+      "answer": "C",
+      "solution": [
+        "①正确：$\\alpha/\\beta\\to1$ ⇒ $\\alpha^{2}/\\beta^{2}\\to1$。",
+        "③正确：$\\dfrac{\\alpha-\\beta}{\\alpha}=1-\\dfrac{\\beta}{\\alpha}\\to0$，即 $\\alpha-\\beta=o(\\alpha)$。",
+        "④正确：由 $\\alpha-\\beta=o(\\alpha)$ 得 $\\dfrac{\\beta}{\\alpha}=1-\\dfrac{\\alpha-\\beta}{\\alpha}\\to1$。",
+        "②错误：取 $\\alpha(x)=-x,\\ \\beta(x)=\\sin x$，则 $\\alpha^{2}\\sim\\beta^{2}$，但 $\\alpha/\\beta\\to-1\\neq1$。",
+        "故正确的是①③④，选 C。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "等价无穷小",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题干与选项经人工整理，答案已独立核对"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-03",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "3",
+      "stem": "设函数 $f(x)$ 在 $x=x_{0}$ 处有二阶导数，则下列命题正确的是",
+      "opts": [
+        "A. 当 $f(x)$ 在 $x_{0}$ 的某邻域内单调增加时，$f'(x_{0})>0$",
+        "B. 当 $f'(x_{0})>0$ 时，$f(x)$ 在 $x_{0}$ 的某邻域内单调增加",
+        "C. 当 $f(x)$ 在 $x_{0}$ 的某邻域内是凹函数时，$f''(x_{0})>0$",
+        "D. 当 $f''(x_{0})>0$ 时，$f(x)$ 在 $x_{0}$ 的某邻域内是凹函数"
+      ],
+      "answer": "B",
+      "solution": [
+        "因 $f''(x_{0})$ 存在，$f'$ 在 $x_{0}$ 处连续。故 $f'(x_{0})>0$ 时，$x_{0}$ 的某邻域内仍有 $f'(x)>0$，$f$ 单调增加，B 正确。",
+        "A 错：$f(x)=x^{3}$ 在 0 的邻域单调增，但 $f'(0)=0$。",
+        "C、D 错：单点处二阶导数的符号不能保证邻域内的凹凸性（如 $f(x)=x^{4}$ 在 0 处 $f''(0)=0$）。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "单调性与二阶导数",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题干与选项经人工整理，答案已独立核对"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
     }
   ],
   "removed": [],
