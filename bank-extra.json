@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-01-ext2023",
+  "rev": "2026-11-01-ext2020-2022",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -1220,6 +1220,1132 @@
       "source": "import",
       "reviewIssues": [
         "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-01",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "1",
+      "stem": "当 $x\\to0^{+}$ 时，下列无穷小量中最高阶的是（　　）",
+      "opts": [
+        "A. $\\int_0^x(\\mathrm{e}^{t^2}-1)\\mathrm{d}t$",
+        "B. $\\int_0^x\\ln(1+\\sqrt{t^3})\\mathrm{d}t$",
+        "C. $\\int_0^{\\sin x}\\sin t^2\\,\\mathrm{d}t$",
+        "D. $\\int_0^{1-\\cos x}\\sqrt{\\sin^3t}\\,\\mathrm{d}t$"
+      ],
+      "answer": "D",
+      "solution": [
+        "A $\\sim\\dfrac{x^3}{3}$，C $\\sim\\dfrac{x^3}{3}$，B $\\sim\\dfrac{2}{5}x^{5/2}$。",
+        "D 的上限 $1-\\cos x\\sim\\dfrac{x^2}{2}$，被积函数 $\\sim t^{3/2}$，故 D $\\sim\\dfrac{2}{5}\\left(\\dfrac{x^2}{2}\\right)^{5/2}=O(x^5)$。",
+        "$x^5$ 阶最高，选 D。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "无穷小的阶比较",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-03",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "3",
+      "stem": "$\\displaystyle\\int_0^1\\dfrac{\\arcsin\\sqrt{x}}{\\sqrt{x(1-x)}}\\,\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $\\dfrac{\\pi^2}{4}$",
+        "B. $\\dfrac{\\pi^2}{8}$",
+        "C. $\\dfrac{\\pi}{4}$",
+        "D. $\\dfrac{\\pi}{8}$"
+      ],
+      "answer": "A",
+      "solution": [
+        "令 $x=\\sin^2\\theta$，则 $\\mathrm{d}x=2\\sin\\theta\\cos\\theta\\,\\mathrm{d}\\theta$，$\\sqrt{x(1-x)}=\\sin\\theta\\cos\\theta$，$\\arcsin\\sqrt{x}=\\theta$。",
+        "原式 $=\\int_0^{\\pi/2}2\\theta\\,\\mathrm{d}\\theta=\\left[\\theta^2\\right]_0^{\\pi/2}=\\dfrac{\\pi^2}{4}$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "换元法",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-04",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "4",
+      "stem": "已知函数 $f(x)=x^2\\ln(1-x)$，当 $n\\ge3$ 时 $f^{(n)}(0)=$（　　）",
+      "opts": [
+        "A. $-\\dfrac{n!}{n-2}$",
+        "B. $\\dfrac{n!}{n-2}$",
+        "C. $-\\dfrac{(n-2)!}{n}$",
+        "D. $\\dfrac{(n-2)!}{n}$"
+      ],
+      "answer": "A",
+      "solution": [
+        "$\\ln(1-x)=-\\sum_{k\\ge1}\\dfrac{x^k}{k}$，故 $f(x)=-\\sum_{k\\ge1}\\dfrac{x^{k+2}}{k}$。",
+        "$x^n$ 的系数为 $-\\dfrac{1}{n-2}$，而 $f^{(n)}(0)=n!\\times$（系数），故为 $-\\dfrac{n!}{n-2}$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "泰勒展开与高阶导数",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-05",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "5",
+      "stem": "关于函数 $f(x,y)=\\begin{cases}xy,&xy\\ne0\\\\ x,&y=0\\\\ y,&x=0\\end{cases}$，给出下列结论：①$\\left.\\frac{\\partial f}{\\partial x}\\right|_{(0,0)}=1$；②$\\left.\\frac{\\partial^2f}{\\partial x\\partial y}\\right|_{(0,0)}=1$；③$\\lim_{(x,y)\\to(0,0)}f(x,y)=0$；④$\\lim_{y\\to0}\\lim_{x\\to0}f(x,y)=0$。其中正确的个数为（　　）",
+      "opts": [
+        "A. 4",
+        "B. 3",
+        "C. 2",
+        "D. 1"
+      ],
+      "answer": "A",
+      "solution": [
+        "① 沿 $y=0$ 有 $f=x$，故 $f_x(0,0)=1$ ✓；② $f_y(0,0)=1$（沿 $x=0$ 有 $f=y$），同理 $f_{xy}(0,0)=1$ ✓。",
+        "③ $\\left|f(x,y)\\right|\\le|x|+|y|$，故极限为 0 ✓；④ 内层 $\\lim_{x\\to0}f(x,y)=y$，再令 $y\\to0$ 得 0 ✓。",
+        "四个结论都正确。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "偏导数与累次极限",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-06",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "6",
+      "stem": "设函数 $f(x)$ 在区间 $[-2,2]$ 上可导，且 $f'(x)>f(x)>0$，则（　　）",
+      "opts": [
+        "A. $\\dfrac{f(-2)}{f(-1)}>1$",
+        "B. $\\dfrac{f(0)}{f(-1)}>\\mathrm{e}$",
+        "C. $\\dfrac{f(1)}{f(-1)}<\\mathrm{e}^2$",
+        "D. $\\dfrac{f(2)}{f(-1)}<\\mathrm{e}^3$"
+      ],
+      "answer": "B",
+      "solution": [
+        "令 $g(x)=f(x)\\mathrm{e}^{-x}$，则 $g'(x)=[f'(x)-f(x)]\\mathrm{e}^{-x}>0$，$g$ 单调递增。",
+        "由 $g(0)>g(-1)$ 得 $f(0)>f(-1)\\mathrm{e}$，即 $\\dfrac{f(0)}{f(-1)}>\\mathrm{e}$ ✓。",
+        "其余各项的方向与该不等式相反，可举反例排除。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "构造辅助函数比较大小",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-07",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "7",
+      "stem": "设 4 阶矩阵 $A=(a_{ij})$ 不可逆，$a_{12}$ 的代数余子式 $A_{12}\\ne0$，$\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4$ 为 $A$ 的列向量组，$A^*$ 为 $A$ 的伴随矩阵，则方程组 $A^*x=0$ 的通解为（　　）",
+      "opts": [
+        "A. $x=k_1\\alpha_1+k_2\\alpha_2+k_3\\alpha_3$",
+        "B. $x=k_1\\alpha_1+k_2\\alpha_2+k_3\\alpha_4$",
+        "C. $x=k_1\\alpha_1+k_2\\alpha_3+k_3\\alpha_4$",
+        "D. $x=k_1\\alpha_2+k_2\\alpha_3+k_3\\alpha_4$"
+      ],
+      "answer": "B",
+      "solution": [
+        "$A$ 不可逆且 $A_{12}\\ne0$ ⇒ $r(A)=3$，故 $r(A^*)=1$，$A^*x=0$ 的基础解系含 3 个向量。",
+        "$A_{12}\\ne0$ 说明删去第 1 行第 2 列所得 3 阶子式非零，即 $\\alpha_1,\\alpha_3,\\alpha_4$ 线性无关……",
+        "又 $A^*$ 的列向量是 $A$ 的列向量的组合且 $A^*A=|A|E=O$，故 $A$ 的列向量均为 $A^*x=0$ 的解，",
+        "取其中线性无关的三个，即得通解 $x=k_1\\alpha_1+k_2\\alpha_2+k_3\\alpha_4$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "伴随矩阵与基础解系",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-08",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "8",
+      "stem": "设 $A$ 为 3 阶矩阵，$\\alpha_1,\\alpha_2$ 是 $A$ 的属于特征值 1 的线性无关特征向量，$\\alpha_3$ 是 $A$ 的属于特征值 $-1$ 的特征向量，则满足 $P^{-1}AP=\\begin{pmatrix}1&0&0\\\\0&-1&0\\\\0&0&1\\end{pmatrix}$ 的可逆矩阵 $P$ 可为（　　）",
+      "opts": [
+        "A. $(\\alpha_1+\\alpha_3,\\ \\alpha_2,\\ -\\alpha_3)$",
+        "B. $(\\alpha_1+\\alpha_2,\\ \\alpha_2,\\ -\\alpha_3)$",
+        "C. $(\\alpha_1+\\alpha_3,\\ -\\alpha_3,\\ \\alpha_2)$",
+        "D. $(\\alpha_1+\\alpha_2,\\ -\\alpha_3,\\ \\alpha_2)$"
+      ],
+      "answer": "B",
+      "solution": [
+        "对角阵给出列的顺序：第 1、3 列须为 $\\lambda=1$ 的特征向量，第 2 列为 $\\lambda=-1$ 的特征向量。",
+        "$\\alpha_1+\\alpha_2$ 与 $\\alpha_2$ 都属 $\\lambda=1$；$-\\alpha_3$ 属 $\\lambda=-1$，且三者线性无关。",
+        "故 $P=(\\alpha_1+\\alpha_2,\\ \\alpha_2,\\ -\\alpha_3)$ 符合要求。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "相似对角化与特征向量",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-09",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "9",
+      "stem": "设 $\\begin{cases}x=\\sqrt{t^2+1}\\\\ y=\\ln(t+\\sqrt{t^2+1})\\end{cases}$，则 $\\left.\\dfrac{\\mathrm{d}^2y}{\\mathrm{d}x^2}\\right|_{t=1}=$ ________.",
+      "opts": [],
+      "answer": "$-\\sqrt{2}$",
+      "solution": [
+        "$\\dfrac{\\mathrm{d}x}{\\mathrm{d}t}=\\dfrac{t}{\\sqrt{t^2+1}}$，$\\dfrac{\\mathrm{d}y}{\\mathrm{d}t}=\\dfrac{1}{\\sqrt{t^2+1}}$，故 $\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}=\\dfrac1t$。",
+        "$\\dfrac{\\mathrm{d}^2y}{\\mathrm{d}x^2}=\\dfrac{\\left(\\frac1t\\right)'}{x'}=\\dfrac{-1/t^2}{t/\\sqrt{t^2+1}}=-\\dfrac{\\sqrt{t^2+1}}{t^3}$。",
+        "代入 $t=1$ 得 $-\\sqrt{2}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "参数方程二阶导",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-10",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "10",
+      "stem": "$\\displaystyle\\int_0^1\\mathrm{d}y\\int_{\\sqrt{y}}^{1}\\sqrt{x^3+1}\\,\\mathrm{d}x=$ ________.",
+      "opts": [],
+      "answer": "$\\dfrac{2}{9}\\left(2\\sqrt2-1\\right)$",
+      "solution": [
+        "交换积分次序：$\\int_0^1\\mathrm{d}x\\int_0^{x^2}\\sqrt{x^3+1}\\,\\mathrm{d}y=\\int_0^1x^2\\sqrt{x^3+1}\\,\\mathrm{d}x$。",
+        "令 $u=x^3+1$，得 $\\dfrac13\\int_1^2\\sqrt u\\,\\mathrm{d}u=\\dfrac13\\cdot\\dfrac23\\left(2\\sqrt2-1\\right)=\\dfrac{2}{9}\\left(2\\sqrt2-1\\right)$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "交换积分次序",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-11",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "11",
+      "stem": "设 $z=\\arctan\\left[xy+\\sin(x+y)\\right]$，则 $\\left.\\mathrm{d}z\\right|_{(0,\\pi)}=$ ________.",
+      "opts": [],
+      "answer": "$(\\pi-1)\\mathrm{d}x-\\mathrm{d}y$",
+      "solution": [
+        "在 $(0,\\pi)$ 处 $xy+\\sin(x+y)=0$，故分母 $1+0^2=1$。",
+        "$z_x=y+\\cos(x+y)=\\pi-1$，$z_y=x+\\cos(x+y)=-1$，故 $\\mathrm{d}z=(\\pi-1)\\mathrm{d}x-\\mathrm{d}y$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "全微分",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-12",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "12",
+      "stem": "斜边长为 $2a$ 的等腰直角三角形平板铅直地沉入水中，且斜边与水面相齐。记重力加速度为 $g$、水密度为 $\\rho$，则该平板一侧所受的水压力为 ________.",
+      "opts": [],
+      "answer": "$\\dfrac{1}{3}\\rho g a^3$",
+      "solution": [
+        "取斜边中点为原点、向下为 $y$ 轴，水面处 $y=0$，顶点在水深 $a$ 处。",
+        "水深 $y$ 处的水平条宽度为 $w=2a\\left(1-\\dfrac ya\\right)$，故 $\\mathrm{d}F=\\rho g\\,y\\cdot w\\,\\mathrm{d}y$。",
+        "$F=\\rho g\\int_0^a 2a\\left(y-\\dfrac{y^2}{a}\\right)\\mathrm{d}y=\\rho g\\cdot2a\\left(\\dfrac{a^2}{2}-\\dfrac{a^2}{3}\\right)=\\dfrac{\\rho g a^3}{3}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "定积分求水压力",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-13",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "13",
+      "stem": "设 $y=y(x)$ 满足 $y''+2y'+y=0$，且 $y(0)=0$，$y'(0)=1$，则 $\\displaystyle\\int_0^{+\\infty}y(x)\\,\\mathrm{d}x=$ ________.",
+      "opts": [],
+      "answer": "$1$",
+      "solution": [
+        "特征根 $\\lambda=-1$（二重），故 $y=(C_1+C_2x)\\mathrm{e}^{-x}$；由初值得 $C_1=0,\\ C_2=1$，即 $y=x\\mathrm{e}^{-x}$。",
+        "$\\int_0^{+\\infty}x\\mathrm{e}^{-x}\\mathrm{d}x=1$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "二阶常系数方程与反常积分",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2020-14",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2020",
+      "moduleName": "外部真题 2020（未核对）",
+      "num": "14",
+      "stem": "行列式 $\\begin{vmatrix}a&0&-1&1\\\\0&a&1&-1\\\\-1&1&a&0\\\\1&-1&0&a\\end{vmatrix}=$ ________.",
+      "opts": [],
+      "answer": "$a^4-4a^2$",
+      "solution": [
+        "按第一行展开或直接对第一列做倍加：将第 3、4 行分别加到第 1、2 行，可化为分块三角。",
+        "计算得 $D=a^2(a^2-4)=a^4-4a^2$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "行列式计算",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-01",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "1",
+      "stem": "当 $x\\to0$ 时，$\\displaystyle\\int_0^{x^2}\\left(\\mathrm{e}^{t^3}-1\\right)\\mathrm{d}t$ 是 $x^7$ 的（　　）",
+      "opts": [
+        "A. 低阶无穷小",
+        "B. 等价无穷小",
+        "C. 高阶无穷小",
+        "D. 同阶但非等价无穷小"
+      ],
+      "answer": "C",
+      "solution": [
+        "$t\\to0$ 时 $\\mathrm{e}^{t^3}-1\\sim t^3$，故积分 $\\sim\\int_0^{x^2}t^3\\mathrm{d}t=\\dfrac{x^8}{4}$。",
+        "$\\dfrac{x^8/4}{x^7}=\\dfrac x4\\to0$，故为 $x^7$ 的高阶无穷小。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "变上限积分与无穷小阶",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-02",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "2",
+      "stem": "函数 $f(x)=\\begin{cases}\\dfrac{\\mathrm{e}^x-1}{x},&x\\ne0\\\\ 1,&x=0\\end{cases}$ 在 $x=0$ 处（　　）",
+      "opts": [
+        "A. 连续且取得极大值",
+        "B. 连续且取得极小值",
+        "C. 可导且导数等于零",
+        "D. 可导且导数不为零"
+      ],
+      "answer": "D",
+      "solution": [
+        "$\\dfrac{\\mathrm{e}^x-1}{x}=1+\\dfrac x2+\\dfrac{x^2}{6}+\\cdots$，故 $f$ 在 0 连续且 $f'(0)=\\dfrac12\\ne0$。",
+        "$f'(0)>0$ 说明 0 附近递增，不取极值。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "分段点处的可导性",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-03",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "3",
+      "stem": "有一圆柱，底面半径与高随时间变化的速率分别为 $2\\,\\mathrm{cm/s}$ 与 $-3\\,\\mathrm{cm/s}$。当底面半径为 $10\\,\\mathrm{cm}$、高为 $5\\,\\mathrm{cm}$ 时，圆柱体积与表面积随时间变化的速率分别为（　　）",
+      "opts": [
+        "A. $125\\,\\mathrm{cm^3/s},\\ 40\\pi\\,\\mathrm{cm^2/s}$",
+        "B. $125\\pi\\,\\mathrm{cm^3/s},\\ -40\\pi\\,\\mathrm{cm^2/s}$",
+        "C. $-100\\pi\\,\\mathrm{cm^3/s},\\ 40\\pi\\,\\mathrm{cm^2/s}$",
+        "D. $-100\\pi\\,\\mathrm{cm^3/s},\\ -40\\pi\\,\\mathrm{cm^2/s}$"
+      ],
+      "answer": "C",
+      "solution": [
+        "$V=\\pi r^2h$ ⇒ $\\dfrac{\\mathrm{d}V}{\\mathrm{d}t}=\\pi(2rh\\,r'+r^2h')=\\pi(2\\cdot10\\cdot5\\cdot2+100\\cdot(-3))=-100\\pi$。",
+        "$S=2\\pi r^2+2\\pi rh$ ⇒ $\\dfrac{\\mathrm{d}S}{\\mathrm{d}t}=2\\pi(2rr'+r'h+rh')=2\\pi(40+10-30)=40\\pi$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "相关变化率",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-04",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "4",
+      "stem": "设函数 $f(x)=ax-b\\ln x\\,(a>0)$ 有 2 个零点，则 $\\dfrac ba$ 的取值范围是（　　）",
+      "opts": [
+        "A. $(\\mathrm{e},+\\infty)$",
+        "B. $(0,\\mathrm{e})$",
+        "C. $\\left(0,\\dfrac1{\\mathrm{e}}\\right)$",
+        "D. $\\left(\\dfrac1{\\mathrm{e}},+\\infty\\right)$"
+      ],
+      "answer": "A",
+      "solution": [
+        "$f'(x)=a-\\dfrac bx=0$ 得唯一驻点 $x=\\dfrac ba$，且为极小值点。",
+        "要有 2 个零点，需极小值 $f\\left(\\dfrac ba\\right)=b-b\\ln\\dfrac ba<0$，即 $1-\\ln\\dfrac ba<0$，故 $\\dfrac ba>\\mathrm{e}$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "零点个数与极值",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-05",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "5",
+      "stem": "设函数 $f(x)=\\sec x$ 在 $x=0$ 处的 2 次泰勒多项式为 $1+ax+bx^2$，则（　　）",
+      "opts": [
+        "A. $a=1,\\ b=-\\dfrac12$",
+        "B. $a=1,\\ b=\\dfrac12$",
+        "C. $a=0,\\ b=-\\dfrac12$",
+        "D. $a=0,\\ b=\\dfrac12$"
+      ],
+      "answer": "D",
+      "solution": [
+        "$\\sec x$ 为偶函数，故 $a=0$；$\\cos x=1-\\dfrac{x^2}{2}+\\cdots$ ⇒ $\\sec x=1+\\dfrac{x^2}{2}+\\cdots$。",
+        "故 $b=\\dfrac12$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "泰勒多项式",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-06",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "6",
+      "stem": "设函数 $f(x,y)$ 可微，且 $f(x+1,\\mathrm{e}^x)=x(x+1)^2$，$f(x,x^2)=2x^2\\ln x$，则 $\\mathrm{d}f(1,1)=$（　　）",
+      "opts": [
+        "A. $\\mathrm{d}x+\\mathrm{d}y$",
+        "B. $\\mathrm{d}x-\\mathrm{d}y$",
+        "C. $\\mathrm{d}y$",
+        "D. $-\\mathrm{d}y$"
+      ],
+      "answer": "C",
+      "solution": [
+        "由 $f(x,x^2)=2x^2\\ln x$ 在 $x=1$ 处求导：$f_x(1,1)+2f_y(1,1)=2$。",
+        "由 $f(x+1,\\mathrm{e}^x)=x(x+1)^2$ 在 $x=0$ 处求导：$f_x(1,1)+f_y(1,1)=1$。",
+        "解得 $f_x(1,1)=0,\\ f_y(1,1)=1$，故 $\\mathrm{d}f=\\mathrm{d}y$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "全微分与复合求导",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-07",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "7",
+      "stem": "设函数 $f(x)$ 在区间 $[0,1]$ 上连续，则 $\\displaystyle\\int_0^1f(x)\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $\\lim\\limits_{n\\to\\infty}\\sum\\limits_{k=1}^{n}f\\left(\\dfrac{2k-1}{2n}\\right)\\dfrac{1}{2n}$",
+        "B. $\\lim\\limits_{n\\to\\infty}\\sum\\limits_{k=1}^{n}f\\left(\\dfrac{2k-1}{2n}\\right)\\dfrac{1}{n}$",
+        "C. $\\lim\\limits_{n\\to\\infty}\\sum\\limits_{k=1}^{2n}f\\left(\\dfrac{k-1}{2n}\\right)\\dfrac{1}{n}$",
+        "D. $\\lim\\limits_{n\\to\\infty}\\sum\\limits_{k=1}^{2n}f\\left(\\dfrac{k}{2n}\\right)\\dfrac{2}{n}$"
+      ],
+      "answer": "B",
+      "solution": [
+        "B 是把 $[0,1]$ 分成 $n$ 等份、取每个小区间中点 $\\dfrac{2k-1}{2n}$ 的黎曼和，步长 $\\dfrac1n$。",
+        "A 的步长写成 $\\dfrac{1}{2n}$ 少了因子 2；C、D 的取点与步长不匹配。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "定积分的定义",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-08",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "8",
+      "stem": "二次型 $f(x_1,x_2,x_3)=(x_1+x_2)^2+(x_2+x_3)^2-(x_3-x_1)^2$ 的正惯性指数与负惯性指数依次为（　　）",
+      "opts": [
+        "A. $2,0$",
+        "B. $1,1$",
+        "C. $2,1$",
+        "D. $1,2$"
+      ],
+      "answer": "C",
+      "solution": [
+        "展开得 $f=x_1^2+2x_2^2+x_3^2+2x_1x_2+2x_2x_3+4x_1x_3$，矩阵 $A=\\begin{pmatrix}1&1&2\\\\1&2&1\\\\2&1&1\\end{pmatrix}$。",
+        "顺序主子式：$1>0$，$\\begin{vmatrix}1&1\\\\1&2\\end{vmatrix}=1>0$，$\\det A=1(2-1)-1(1-2)+2(1-4)=-4<0$。",
+        "故正惯性指数 2、负惯性指数 1。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "二次型的惯性指数",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-09",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "9",
+      "stem": "设 3 阶矩阵 $A=(\\alpha_1,\\alpha_2,\\alpha_3)$，$B=(\\beta_1,\\beta_2,\\beta_3)$。若向量组 $\\alpha_1,\\alpha_2,\\alpha_3$ 可以由 $\\beta_1,\\beta_2,\\beta_3$ 线性表示，则（　　）",
+      "opts": [
+        "A. $Ax=0$ 的解均为 $Bx=0$ 的解",
+        "B. $A^Tx=0$ 的解均为 $B^Tx=0$ 的解",
+        "C. $Bx=0$ 的解均为 $Ax=0$ 的解",
+        "D. $B^Tx=0$ 的解均为 $A^Tx=0$ 的解"
+      ],
+      "answer": "C",
+      "solution": [
+        "$\\alpha$ 组可由 $\\beta$ 组表示 ⇒ 存在矩阵 $K$ 使 $A=BK$。",
+        "若 $Bx=0$，则 $Ax=BKx=0$，故 $Bx=0$ 的解都是 $Ax=0$ 的解。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "向量组的线性表示与解空间",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-10",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "10",
+      "stem": "已知矩阵 $A=\\begin{pmatrix}1&0&-1\\\\2&-1&1\\\\-1&2&-5\\end{pmatrix}$，若下三角可逆矩阵 $P$ 与上三角可逆矩阵 $Q$，使得 $PAQ$ 为对角矩阵，则 $P,Q$ 可以分别取（　　）",
+      "opts": [
+        "A. $P=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix},\\ Q=\\begin{pmatrix}1&0&1\\\\0&1&3\\\\0&0&1\\end{pmatrix}$",
+        "B. $P=\\begin{pmatrix}1&0&0\\\\2&-1&0\\\\-3&2&1\\end{pmatrix},\\ Q=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix}$",
+        "C. $P=\\begin{pmatrix}1&0&0\\\\2&-1&0\\\\-3&2&1\\end{pmatrix},\\ Q=\\begin{pmatrix}1&0&1\\\\0&1&3\\\\0&0&1\\end{pmatrix}$",
+        "D. $P=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\1&3&1\\end{pmatrix},\\ Q=\\begin{pmatrix}1&2&-3\\\\0&-1&2\\\\0&0&1\\end{pmatrix}$"
+      ],
+      "answer": "C",
+      "solution": [
+        "先用初等行变换把 $A$ 化为上三角：$R_2-2R_1$、$R_3+R_1$、$R_3+2R_2$，对应 $P=\\begin{pmatrix}1&0&0\\\\-2&1&0\\\\-3&2&1\\end{pmatrix}$。",
+        "再用列变换 $C_3+C_1+3C_2$ 消去第 3 列的非对角元，对应 $Q=\\begin{pmatrix}1&0&1\\\\0&1&3\\\\0&0&1\\end{pmatrix}$。",
+        "验算 $PAQ=\\mathrm{diag}(1,-1,0)$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "初等变换化对角形",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-11",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "11",
+      "stem": "$\\displaystyle\\int_{-\\infty}^{+\\infty}|x|3^{-x^2}\\,\\mathrm{d}x=$ ________.",
+      "opts": [],
+      "answer": "$\\dfrac{1}{\\ln 3}$",
+      "solution": [
+        "被积函数为偶函数，故原式 $=2\\int_0^{+\\infty}x3^{-x^2}\\mathrm{d}x$。",
+        "令 $u=x^2$：$\\int_0^{+\\infty}3^{-u}\\cdot\\dfrac{\\mathrm{d}u}{2}=\\dfrac{1}{2\\ln 3}$，故原式 $=\\dfrac{1}{\\ln 3}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "对称性与反常积分",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-12",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "12",
+      "stem": "设函数 $y=y(x)$ 由参数方程 $\\begin{cases}x=2\\mathrm{e}^t+t+1\\\\ y=4(t-1)\\mathrm{e}^t+t^2\\end{cases}$ 确定，则 $\\left.\\dfrac{\\mathrm{d}^2y}{\\mathrm{d}x^2}\\right|_{t=0}=$ ________.",
+      "opts": [],
+      "answer": "$\\dfrac{2}{3}$",
+      "solution": [
+        "$x'=2\\mathrm{e}^t+1$，$y'=4t\\mathrm{e}^t+2t$，故 $\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}=\\dfrac{4t\\mathrm{e}^t+2t}{2\\mathrm{e}^t+1}$，在 $t=0$ 处为 0。",
+        "再对 $t$ 求导并除以 $x'$：记 $u=\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}$，$u'(0)=\\dfrac{(6)(3)-0}{9}=2$，故 $\\dfrac{\\mathrm{d}^2y}{\\mathrm{d}x^2}=\\dfrac{u'(0)}{x'(0)}=\\dfrac{2}{3}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "参数方程二阶导",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-13",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "13",
+      "stem": "设函数 $z=z(x,y)$ 由方程 $(x+1)z+y\\ln z-\\arctan(2xy)=1$ 确定，则 $\\left.\\dfrac{\\partial z}{\\partial x}\\right|_{(0,2)}=$ ________.",
+      "opts": [],
+      "answer": "$1$",
+      "solution": [
+        "代入 $x=0,\\ y=2$：$z+2\\ln z=1$，得 $z=1$。",
+        "两边对 $x$ 求导：$z+(x+1)z_x+\\dfrac{y z_x}{z}-\\dfrac{2y}{1+4x^2y^2}=0$。",
+        "代入 $(0,2,1)$：$1+z_x+2z_x-4=0$ ⇒ $z_x=1$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "隐函数求偏导",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2021-15",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2021",
+      "moduleName": "外部真题 2021（未核对）",
+      "num": "15",
+      "stem": "微分方程 $y'''-y=0$ 的通解为 $y=$ ________.",
+      "opts": [],
+      "answer": "$C_1\\mathrm{e}^x+\\mathrm{e}^{-x/2}\\left(C_2\\cos\\dfrac{\\sqrt3x}{2}+C_3\\sin\\dfrac{\\sqrt3x}{2}\\right)$",
+      "solution": [
+        "特征方程 $\\lambda^3-1=(\\lambda-1)(\\lambda^2+\\lambda+1)=0$，根为 $1$ 与 $-\\dfrac12\\pm\\dfrac{\\sqrt3}{2}\\mathrm{i}$。",
+        "故通解如上（$C_1,C_2,C_3$ 为任意常数）。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "三阶常系数齐次方程",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-02",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "2",
+      "stem": "$\\displaystyle\\int_0^2\\mathrm{d}y\\int_y^2\\dfrac{y}{\\sqrt{1+x^3}}\\,\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $\\dfrac{\\sqrt2}{6}$",
+        "B. $\\dfrac13$",
+        "C. $\\dfrac{\\sqrt2}{3}$",
+        "D. $\\dfrac23$"
+      ],
+      "answer": "D",
+      "solution": [
+        "交换次序：$\\int_0^2\\mathrm{d}x\\int_0^x\\dfrac{y}{\\sqrt{1+x^3}}\\mathrm{d}y=\\int_0^2\\dfrac{x^2}{2\\sqrt{1+x^3}}\\mathrm{d}x$。",
+        "令 $u=1+x^3$，得 $\\dfrac16\\int_1^9u^{-1/2}\\mathrm{d}u=\\dfrac16\\cdot2(3-1)=\\dfrac23$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "交换积分次序",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-04",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "4",
+      "stem": "已知 $f(t)$ 连续，令 $F(x,y)=\\displaystyle\\int_0^{x-y}(x-y-t)f(t)\\,\\mathrm{d}t$，则（　　）",
+      "opts": [
+        "A. $\\dfrac{\\partial F}{\\partial x}=\\dfrac{\\partial F}{\\partial y},\\ \\dfrac{\\partial^2F}{\\partial x^2}=\\dfrac{\\partial^2F}{\\partial y^2}$",
+        "B. $\\dfrac{\\partial F}{\\partial x}=\\dfrac{\\partial F}{\\partial y},\\ \\dfrac{\\partial^2F}{\\partial x^2}=-\\dfrac{\\partial^2F}{\\partial y^2}$",
+        "C. $\\dfrac{\\partial F}{\\partial x}=-\\dfrac{\\partial F}{\\partial y},\\ \\dfrac{\\partial^2F}{\\partial x^2}=\\dfrac{\\partial^2F}{\\partial y^2}$",
+        "D. $\\dfrac{\\partial F}{\\partial x}=-\\dfrac{\\partial F}{\\partial y},\\ \\dfrac{\\partial^2F}{\\partial x^2}=-\\dfrac{\\partial^2F}{\\partial y^2}$"
+      ],
+      "answer": "C",
+      "solution": [
+        "记 $u=x-y$，则 $F=u\\int_0^uf(t)\\mathrm{d}t-\\int_0^utf(t)\\mathrm{d}t$，从而 $F_x=\\int_0^uf(t)\\mathrm{d}t$，$F_y=-\\int_0^uf(t)\\mathrm{d}t$。",
+        "故 $F_x=-F_y$；又 $F_{xx}=f(u)$，$F_{yy}=f(u)$，两者相等。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "多元复合求偏导",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-05",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "5",
+      "stem": "设 $p$ 为常数，若反常积分 $\\displaystyle\\int_0^1\\dfrac{\\ln x}{x^p(1-x)^{1-p}}\\,\\mathrm{d}x$ 收敛，则 $p$ 的取值范围是（　　）",
+      "opts": [
+        "A. $(-1,1)$",
+        "B. $(-1,2)$",
+        "C. $(-\\infty,1)$",
+        "D. $(-\\infty,2)$"
+      ],
+      "answer": "A",
+      "solution": [
+        "$x\\to0^+$ 时被积函数 $\\sim x^{-p}\\ln x$，收敛需 $p<1$。",
+        "$x\\to1^-$ 时 $\\ln x\\sim-(1-x)$，被积函数 $\\sim-(1-x)^{p}$，收敛需 $p>-1$。",
+        "故 $-1<p<1$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "反常积分的收敛性",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-09",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "9",
+      "stem": "设矩阵 $A=\\begin{pmatrix}1&1&1\\\\1&a&a^2\\\\1&b&b^2\\end{pmatrix}$，$\\boldsymbol{b}=\\begin{pmatrix}1\\\\2\\\\4\\end{pmatrix}$，则线性方程组 $Ax=\\boldsymbol b$ 的解的情况为（　　）",
+      "opts": [
+        "A. 无解",
+        "B. 有解",
+        "C. 有无穷多解或无解",
+        "D. 有唯一解或无解"
+      ],
+      "answer": "C",
+      "solution": [
+        "$\\det A=(a-1)(b-1)(b-a)$。当 $a,b,1$ 互不相等时 $\\det A\\ne0$，有唯一解。",
+        "若 $a,b$ 中有等于 1 或 $a=b$，则 $\\det A=0$；此时右端 $(1,2,4)$ 与列向量组的关系取决于 $a,b$，可能无解也可能无穷多解。",
+        "故解的情况只能是“有无穷多解或无解”（题目选项中符合的是 C）。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "线性方程组解的判定",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-10",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "10",
+      "stem": "设 $\\boldsymbol\\alpha_1=\\begin{pmatrix}\\lambda\\\\1\\\\1\\end{pmatrix}$，$\\boldsymbol\\alpha_2=\\begin{pmatrix}1\\\\\\lambda\\\\1\\end{pmatrix}$，$\\boldsymbol\\alpha_3=\\begin{pmatrix}1\\\\1\\\\\\lambda\\end{pmatrix}$，$\\boldsymbol\\alpha_4=\\begin{pmatrix}1\\\\\\lambda\\\\\\lambda^2\\end{pmatrix}$。若向量组 $\\boldsymbol\\alpha_1,\\boldsymbol\\alpha_2,\\boldsymbol\\alpha_3$ 与 $\\boldsymbol\\alpha_1,\\boldsymbol\\alpha_2,\\boldsymbol\\alpha_4$ 等价，则 $\\lambda$ 的取值范围是（　　）",
+      "opts": [
+        "A. $\\{\\lambda\\mid\\lambda\\in\\mathbb{R}\\}$",
+        "B. $\\{\\lambda\\mid\\lambda\\in\\mathbb{R},\\lambda\\ne-2\\}$",
+        "C. $\\{\\lambda\\mid\\lambda\\in\\mathbb{R},\\lambda\\ne-1,\\lambda\\ne-2\\}$",
+        "D. $\\{\\lambda\\mid\\lambda\\in\\mathbb{R},\\lambda\\ne-1\\}$"
+      ],
+      "answer": "C",
+      "solution": [
+        "两组等价要求两者秩相等且能互相表示。第一组的行列式为 $(\\lambda-1)^2(\\lambda+2)$。",
+        "第二组 $\\{\\alpha_1,\\alpha_2,\\alpha_4\\}$ 的行列式在 $\\lambda=-1$ 时为 0，故 $\\lambda\\ne-1$。",
+        "综合得 $\\lambda\\ne-1$ 且 $\\lambda\\ne-2$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "向量组等价",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-11",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "11",
+      "stem": "$\\lim\\limits_{x\\to0}\\left(\\dfrac{1+\\mathrm{e}^x}{2}\\right)^{\\cot x}=$ ________.",
+      "opts": [],
+      "answer": "$\\sqrt{\\mathrm{e}}$",
+      "solution": [
+        "取对数：$\\cot x\\ln\\dfrac{1+\\mathrm{e}^x}{2}$。$\\ln\\dfrac{1+\\mathrm{e}^x}{2}=\\ln\\dfrac{2+x+\\frac{x^2}{2}}{2}=\\ln\\left(1+\\dfrac x2+O(x^2)\\right)\\sim\\dfrac x2$。",
+        "故 $\\cot x\\cdot\\dfrac x2\\to\\dfrac12$，原式 $=\\mathrm{e}^{1/2}=\\sqrt{\\mathrm{e}}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "幂指函数极限",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-12",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "12",
+      "stem": "已知函数 $y=y(x)$ 由方程 $x^2+xy+y^3=3$ 确定，则 $y''(1)=$ ________.",
+      "opts": [],
+      "answer": "$-\\dfrac{1}{2}$",
+      "solution": [
+        "$x=1$ 时 $1+y+y^3=3$，得 $y(1)=1$。",
+        "求导：$2x+y+xy'+3y^2y'=0$，代入 $(1,1)$ 得 $3+4y'=0$，$y'=-\\dfrac34$。",
+        "再求导并代入得 $y''=-\\dfrac12$（可由 $2+2y'+xy''+6y(y')^2+3y^2y''=0$ 解出）。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "隐函数二阶导",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-14",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "14",
+      "stem": "微分方程 $y'''-2y''+5y'=0$ 的通解 $y(x)=$ ________.",
+      "opts": [],
+      "answer": "$C_1+\\mathrm{e}^{x}\\left(C_2\\cos2x+C_3\\sin2x\\right)$",
+      "solution": [
+        "特征方程 $\\lambda^3-2\\lambda^2+5\\lambda=\\lambda(\\lambda^2-2\\lambda+5)=0$，根为 $0$ 与 $1\\pm2\\mathrm{i}$。",
+        "故通解为常数项加指数衰减项的组合。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "三阶常系数齐次方程",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-15",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "15",
+      "stem": "已知曲线 $L$ 的极坐标方程为 $r=\\sin3\\theta\\left(0\\le\\theta\\le\\dfrac\\pi3\\right)$，则 $L$ 围成有界区域的面积为 ________.",
+      "opts": [],
+      "answer": "$\\dfrac{\\pi}{12}$",
+      "solution": [
+        "$S=\\dfrac12\\int_0^{\\pi/3}r^2\\mathrm{d}\\theta=\\dfrac12\\int_0^{\\pi/3}\\sin^2 3\\theta\\,\\mathrm{d}\\theta$。",
+        "令 $u=3\\theta$：$\\dfrac12\\cdot\\dfrac13\\int_0^{\\pi}\\sin^2u\\,\\mathrm{d}u=\\dfrac16\\cdot\\dfrac{\\pi}{2}=\\dfrac{\\pi}{12}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "极坐标面积",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2022-13",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2022",
+      "moduleName": "外部真题 2022（未核对）",
+      "num": "13",
+      "stem": "$\\displaystyle\\int_0^1\\dfrac{2x+3}{x^2-x+1}\\,\\mathrm{d}x=$ ________.",
+      "opts": [],
+      "answer": "$\\dfrac{8\\sqrt3\\pi}{9}$",
+      "solution": [
+        "分母 $x^2-x+1=\\left(x-\\frac12\\right)^2+\\frac34$，分子拆为 $(2x-1)+4$。",
+        "$\\int_0^1\\dfrac{2x-1}{x^2-x+1}\\mathrm{d}x=\\left[\\ln(x^2-x+1)\\right]_0^1=0$。",
+        "$\\int_0^1\\dfrac{4}{x^2-x+1}\\mathrm{d}x=\\dfrac{8}{\\sqrt3}\\left[\\arctan\\dfrac{2x-1}{\\sqrt3}\\right]_0^1=\\dfrac{8}{\\sqrt3}\\cdot\\dfrac\\pi3=\\dfrac{8\\sqrt3\\pi}{9}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "有理函数积分",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题面据 PDF 原卷转录，答案独立求解并尽量用 sympy 复核"
       ],
       "reviewStatus": "unverified",
       "contentRevision": "ext"
