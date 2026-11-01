@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-01-ext2022",
+  "rev": "2026-11-01-ext2023",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -816,6 +816,410 @@
       "source": "import",
       "reviewIssues": [
         "外部来源：题干与选项经人工整理，答案已独立核对"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-01",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "1",
+      "stem": "曲线 $y=x\\ln\\left(\\mathrm{e}+\\dfrac{1}{x-1}\\right)$ 的斜渐近线方程为（　　）",
+      "opts": [
+        "A. $y=x+\\mathrm{e}$",
+        "B. $y=x+\\dfrac{1}{\\mathrm{e}}$",
+        "C. $y=x$",
+        "D. $y=x-\\dfrac{1}{\\mathrm{e}}$"
+      ],
+      "answer": "B",
+      "solution": [
+        "$k=\\lim_{x\\to+\\infty}\\dfrac{y}{x}=1$。",
+        "$b=\\lim_{x\\to+\\infty}(y-x)=\\lim_{x\\to+\\infty}x\\left[\\ln\\left(1+\\dfrac{1}{\\mathrm{e}(x-1)}\\right)\\right]=\\lim_{x\\to+\\infty}x\\cdot\\dfrac{1}{\\mathrm{e}x}=\\dfrac{1}{\\mathrm{e}}$。",
+        "故渐近线为 $y=x+\\dfrac{1}{\\mathrm{e}}$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "斜渐近线",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-02",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "2",
+      "stem": "函数 $f(x)=\\begin{cases}\\dfrac{1}{\\sqrt{1+x^{2}}}, & x\\le 0,\\\\ (x+1)\\cos x, & x>0\\end{cases}$ 的一个原函数为（　　）",
+      "opts": [
+        "A. $F(x)=\\begin{cases}\\ln(\\sqrt{1+x^{2}}-x), & x\\le0\\\\ (x+1)\\cos x-\\sin x, & x>0\\end{cases}$",
+        "B. $F(x)=\\begin{cases}\\ln(\\sqrt{1+x^{2}}-x)+1, & x\\le0\\\\ (x+1)\\cos x-\\sin x, & x>0\\end{cases}$",
+        "C. $F(x)=\\begin{cases}\\ln(\\sqrt{1+x^{2}}+x), & x\\le0\\\\ (x+1)\\sin x+\\cos x, & x>0\\end{cases}$",
+        "D. $F(x)=\\begin{cases}\\ln(\\sqrt{1+x^{2}}+x)+1, & x\\le0\\\\ (x+1)\\sin x+\\cos x, & x>0\\end{cases}$"
+      ],
+      "answer": "D",
+      "solution": [
+        "$x\\le0$ 时 $F$ 取对数项，$x>0$ 时取三角项，逐段求导验证：",
+        "$\\left[\\ln(\\sqrt{1+x^{2}}+x)\\right]'=\\dfrac{1}{\\sqrt{1+x^{2}}}$ ✓；$\\left[(x+1)\\sin x+\\cos x\\right]'=(x+1)\\cos x$ ✓。",
+        "再看 $x=0$ 处连续性：左 $F(0)=\\ln1+1=1$，右 $F(0^+)=1$，衔接一致，故 D 成立。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "原函数与分段函数",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-03",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "3",
+      "stem": "已知 $\\{x_n\\},\\{y_n\\}$ 满足 $x_1=y_1=\\dfrac{1}{2}$，$x_{n+1}=\\sin x_n$，$y_{n+1}=y_n^{2}$，则当 $n\\to\\infty$ 时（　　）",
+      "opts": [
+        "A. $x_n$ 是 $y_n$ 的高阶无穷小",
+        "B. $y_n$ 是 $x_n$ 的高阶无穷小",
+        "C. $x_n$ 与 $y_n$ 是等价无穷小",
+        "D. $x_n$ 与 $y_n$ 是同阶但不等价的无穷小"
+      ],
+      "answer": "B",
+      "solution": [
+        "由 $\\sin x=x-\\dfrac{x^{3}}{6}+o(x^{3})$ 得 $x_{n+1}=x_n-\\dfrac{x_n^{3}}{6}$，故 $\\dfrac{1}{x_{n+1}^{2}}\\approx\\dfrac{1}{x_n^{2}}+\\dfrac{1}{3}$，即 $x_n\\sim\\sqrt{\\dfrac{3}{n}}$。",
+        "而 $y_n=\\left(\\dfrac{1}{2}\\right)^{2^{n-1}}$ 以指数速度趋于 0，远快于 $\\dfrac{1}{\\sqrt{n}}$。",
+        "故 $\\dfrac{y_n}{x_n}\\to0$，$y_n$ 是 $x_n$ 的高阶无穷小。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "无穷小的阶",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-05",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "5",
+      "stem": "设函数 $y=f(x)$ 由 $\\begin{cases}x=2t+|t|\\\\ y=|t|\\sin t\\end{cases}$ 确定，则（　　）",
+      "opts": [
+        "A. $f(x)$ 连续，$f'(0)$ 不存在",
+        "B. $f'(0)$ 存在，$f'(x)$ 在 $x=0$ 处不连续",
+        "C. $f'(x)$ 连续，$f''(0)$ 不存在",
+        "D. $f''(0)$ 存在，$f''(x)$ 在 $x=0$ 处不连续"
+      ],
+      "answer": "C",
+      "solution": [
+        "$t\\ge0$ 时 $x=3t,\\ y=t\\sin t$，即 $f(x)=\\dfrac{x}{3}\\sin\\dfrac{x}{3}$；$t<0$ 时 $x=t,\\ y=-t\\sin t$，即 $f(x)=-x\\sin x$。",
+        "两侧 $f'(0)=\\lim\\dfrac{f(x)-0}{x}=0$，故 $f'(0)=0$；且 $x\\to0$ 时 $f'(x)\\to0$，$f'$ 连续。",
+        "但 $f''(0^{+})=\\dfrac{1}{9}$、$f''(0^{-})=-1$，不相等，故 $f''(0)$ 不存在。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "参数方程与分段可导性",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-06",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "6",
+      "stem": "若函数 $f(\\alpha)=\\displaystyle\\int_{2}^{+\\infty}\\dfrac{\\mathrm{d}x}{x(\\ln x)^{\\alpha+1}}$ 在 $\\alpha=\\alpha_0$ 处取得最小值，则 $\\alpha_0=$（　　）",
+      "opts": [
+        "A. $-\\dfrac{1}{\\ln(\\ln 2)}$",
+        "B. $-\\ln(\\ln 2)$",
+        "C. $\\dfrac{1}{\\ln 2}$",
+        "D. $\\ln 2$"
+      ],
+      "answer": "A",
+      "solution": [
+        "$\\alpha>0$ 时收敛，且 $f(\\alpha)=\\left[-\\dfrac{(\\ln x)^{-\\alpha}}{\\alpha}\\right]_2^{+\\infty}=\\dfrac{(\\ln 2)^{-\\alpha}}{\\alpha}$。",
+        "令 $g(\\alpha)=\\ln f=\\alpha\\ln\\dfrac{1}{\\ln 2}-\\ln\\alpha$，则 $g'(\\alpha)=\\ln\\dfrac{1}{\\ln 2}-\\dfrac{1}{\\alpha}=0$。",
+        "解得 $\\alpha_0=-\\dfrac{1}{\\ln(\\ln 2)}$（此时 $\\ln(\\ln2)<0$，故 $\\alpha_0>0$）。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "反常积分与极值",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-07",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "7",
+      "stem": "设函数 $f(x)=(x^{2}+a)\\mathrm{e}^{x}$，若 $f(x)$ 没有极值点，但曲线 $y=f(x)$ 有拐点，则 $a$ 的取值范围是（　　）",
+      "opts": [
+        "A. $[0,1)$",
+        "B. $[1,+\\infty)$",
+        "C. $[1,2)$",
+        "D. $[2,+\\infty)$"
+      ],
+      "answer": "C",
+      "solution": [
+        "$f'(x)=(x^{2}+2x+a)\\mathrm{e}^{x}$，无极值点 ⇒ 判别式 $4-4a<0$ ⇒ $a>1$。",
+        "$f''(x)=(x^{2}+4x+a+2)\\mathrm{e}^{x}$，有拐点 ⇒ 需变号，判别式 $16-4(a+2)>0$ ⇒ $a<2$。",
+        "结合端点（$a=1$ 时 $f'$ 有零点，$a=2$ 时 $f''$ 不变号），得 $a\\in[1,2)$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "极值点与拐点",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-09",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "9",
+      "stem": "二次型 $f(x_1,x_2,x_3)=(x_1+x_2)^{2}+(x_1+x_3)^{2}-4(x_2-x_3)^{2}$ 的规范形为（　　）",
+      "opts": [
+        "A. $y_1^{2}+y_2^{2}$",
+        "B. $y_1^{2}-y_2^{2}$",
+        "C. $y_1^{2}+y_2^{2}-4y_3^{2}$",
+        "D. $y_1^{2}+y_2^{2}-y_3^{2}$"
+      ],
+      "answer": "B",
+      "solution": [
+        "展开得 $f=2x_1^{2}-3x_2^{2}-3x_3^{2}+2x_1x_2+2x_1x_3+8x_2x_3$，矩阵 $A=\\begin{pmatrix}2&1&1\\\\1&-3&4\\\\1&4&-3\\end{pmatrix}$。",
+        "$\\det A=2(9-16)-1(-3-4)+1(4+3)=-14+7+7=0$，故秩为 2。",
+        "两非零特征值一正一负（迹为 $-4$，二阶主子式 $2\\times(-3)-1=-7<0$），故规范形为 $y_1^{2}-y_2^{2}$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "二次型的规范形",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-10",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "10",
+      "stem": "已知向量 $\\boldsymbol{\\alpha}_1=(1,2,3)^{T},\\ \\boldsymbol{\\alpha}_2=(2,1,1)^{T},\\ \\boldsymbol{\\beta}_1=(2,5,9)^{T},\\ \\boldsymbol{\\beta}_2=(1,0,1)^{T}$。若 $\\boldsymbol{\\gamma}$ 既可由 $\\boldsymbol{\\alpha}_1,\\boldsymbol{\\alpha}_2$ 线性表示，也可由 $\\boldsymbol{\\beta}_1,\\boldsymbol{\\beta}_2$ 线性表示，则 $\\boldsymbol{\\gamma}=$（　　）",
+      "opts": [
+        "A. $k(3,3,4)^{T},\\ k\\in\\mathbb{R}$",
+        "B. $k(3,5,10)^{T},\\ k\\in\\mathbb{R}$",
+        "C. $k(-1,1,2)^{T},\\ k\\in\\mathbb{R}$",
+        "D. $k(1,5,8)^{T},\\ k\\in\\mathbb{R}$"
+      ],
+      "answer": "D",
+      "solution": [
+        "$\\boldsymbol{\\gamma}$ 属于两个平面的交线，令 $s\\boldsymbol{\\alpha}_1+t\\boldsymbol{\\alpha}_2=u\\boldsymbol{\\beta}_1+v\\boldsymbol{\\beta}_2$。",
+        "解齐次方程组得解空间方向为 $(1,5,8)^{T}$，故 $\\boldsymbol{\\gamma}=k(1,5,8)^{T}$。"
+      ],
+      "qtype": "选择题",
+      "type": "选择题",
+      "difficulty": "",
+      "point": "向量组的线性表示",
+      "weight": 2.0,
+      "originalQtype": "选择题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-11",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "11",
+      "stem": "当 $x\\to 0$ 时，函数 $f(x)=ax+bx^{2}+\\ln(1+x)$ 与 $g(x)=\\mathrm{e}^{x^{2}}-\\cos x$ 是等价无穷小，则 $ab=$ ________.",
+      "opts": [],
+      "answer": "$-2$",
+      "solution": [
+        "$\\ln(1+x)=x-\\dfrac{x^{2}}{2}+o(x^{2})$，故 $f(x)=(a+1)x+\\left(b-\\dfrac{1}{2}\\right)x^{2}+o(x^{2})$。",
+        "$g(x)=\\left(1+x^{2}\\right)-\\left(1-\\dfrac{x^{2}}{2}\\right)+o(x^{2})=\\dfrac{3}{2}x^{2}+o(x^{2})$。",
+        "等价要求一次项为 0、二次项系数相同：$a=-1$，$b-\\dfrac12=\\dfrac32$ ⇒ $b=2$，故 $ab=-2$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "等价无穷小与泰勒展开",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-12",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "12",
+      "stem": "曲线 $y=\\displaystyle\\int_{-\\sqrt{3}}^{x}\\sqrt{3-t^{2}}\\,\\mathrm{d}t$ 的弧长为 ________.",
+      "opts": [],
+      "answer": "$\\sqrt{3}+\\dfrac{4\\pi}{3}$",
+      "solution": [
+        "被积函数在 $t\\in[-\\sqrt3,\\sqrt3]$ 上有定义，故 $x\\in[-\\sqrt3,\\sqrt3]$，且 $y'=\\sqrt{3-x^{2}}$。",
+        "$L=\\int_{-\\sqrt3}^{\\sqrt3}\\sqrt{1+y'^{2}}\\,\\mathrm{d}x=\\int_{-\\sqrt3}^{\\sqrt3}\\sqrt{4-x^{2}}\\,\\mathrm{d}x$。",
+        "由 $\\int\\sqrt{4-x^{2}}\\mathrm{d}x=\\dfrac{x}{2}\\sqrt{4-x^{2}}+2\\arcsin\\dfrac{x}{2}$，代入得 $L=2\\left(\\dfrac{\\sqrt3}{2}+\\dfrac{2\\pi}{3}\\right)=\\sqrt3+\\dfrac{4\\pi}{3}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "弧长与定积分",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-13",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "13",
+      "stem": "设函数 $z=z(x,y)$ 由 $\\mathrm{e}^{z}+xz=2x-y$ 确定，则 $\\left.\\dfrac{\\partial^{2}z}{\\partial x^{2}}\\right|_{(1,1)}=$ ________.",
+      "opts": [],
+      "answer": "$-\\dfrac{3}{2}$",
+      "solution": [
+        "代入 $x=1,y=1$ 得 $\\mathrm{e}^{z}+z=1$，故 $z=0$。",
+        "对 $x$ 求导：$\\mathrm{e}^{z}z_x+z+xz_x=2$，代入 $(1,1,0)$ 得 $2z_x=2$，即 $z_x=1$。",
+        "再求导：$\\mathrm{e}^{z}z_x^{2}+\\mathrm{e}^{z}z_{xx}+2z_x+xz_{xx}=0$，代入得 $1+z_{xx}+2+z_{xx}=0$，故 $z_{xx}=-\\dfrac32$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "隐函数二阶偏导",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-14",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "14",
+      "stem": "曲线 $3x^{3}=y^{5}+2y^{3}$ 在 $x=1$ 对应点处的法线斜率为 ________.",
+      "opts": [],
+      "answer": "$-\\dfrac{11}{9}$",
+      "solution": [
+        "$x=1$ 时 $3=y^{5}+2y^{3}$，得 $y=1$。",
+        "两边对 $x$ 求导：$9x^{2}=(5y^{4}+6y^{2})y'$，代入 $(1,1)$ 得 $9=11y'$，即切线斜率 $y'=\\dfrac{9}{11}$。",
+        "法线与切线垂直，故法线斜率为 $-\\dfrac{11}{9}$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "隐函数求导与法线",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算",
+        "源答案页写作 11/9，那是切线斜率；按题干“法线”应为 -11/9。"
+      ],
+      "reviewStatus": "unverified",
+      "contentRevision": "ext"
+    },
+    {
+      "id": "ext-2023-15",
+      "subject": "math",
+      "subjectName": "数学二",
+      "module": "ext-2023",
+      "moduleName": "外部真题 2023（未核对）",
+      "num": "15",
+      "stem": "设连续函数 $f(x)$ 满足 $f(x+2)-f(x)=x$，$\\displaystyle\\int_{0}^{2}f(x)\\,\\mathrm{d}x=0$，则 $\\displaystyle\\int_{1}^{3}f(x)\\,\\mathrm{d}x=$ ________.",
+      "opts": [],
+      "answer": "$\\dfrac{1}{2}$",
+      "solution": [
+        "由 $f(x)=f(x-2)+(x-2)$ 得 $\\int_{1}^{3}f(x)\\mathrm{d}x=\\int_{-1}^{1}f(x)\\mathrm{d}x+\\int_{1}^{3}(x-2)\\mathrm{d}x=\\int_{-1}^{1}f(x)\\mathrm{d}x$。",
+        "又 $\\int_{1}^{2}f(x)\\mathrm{d}x=\\int_{-1}^{0}f(x+2)\\mathrm{d}x=\\int_{-1}^{0}[f(x)+x]\\mathrm{d}x=\\int_{-1}^{0}f(x)\\mathrm{d}x-\\dfrac{1}{2}$。",
+        "由 $0=\\int_{0}^{2}f=\\int_{0}^{1}f+\\int_{1}^{2}f$ 联立，得 $\\int_{-1}^{1}f=\\dfrac{1}{2}$，即所求为 $\\dfrac12$。"
+      ],
+      "qtype": "填空题",
+      "type": "填空题",
+      "difficulty": "",
+      "point": "周期型函数方程的积分",
+      "weight": 2.0,
+      "originalQtype": "填空题",
+      "source": "import",
+      "reviewIssues": [
+        "外部来源：题目据用户提供的 PDF 原卷转录，答案独立重算"
       ],
       "reviewStatus": "unverified",
       "contentRevision": "ext"
