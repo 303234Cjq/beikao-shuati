@@ -1403,6 +1403,37 @@ function restoreStudyData(file){
   };
   reader.readAsText(file);
 }
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
+}
 function safeLink(url){try{var u=new URL(url);return u.protocol==='https:'?u.href:'#';}catch(e){return '#';}}
 function attr(value){return esc(value).replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function affairsQuestions(){return CA.data.items.flatMap(function(t){return t.questions.map(function(q){return Object.assign({},q,{topic:t});});});}
@@ -1657,4 +1688,31 @@ initializeExperience();
   window.addEventListener('focus',poll);
 })();
 
-</script></body></html>
+</script><!-- dsh-random-mode:begin -->
+<script>
+/* 每次打开默认「随机」模式：同一个链接，进来看到的题序不同。
+   用户手动切换过模式会记住，不会被覆盖。 */
+(function(){
+  var KEY='study_mode_pref';
+  function apply(){
+    var sel=document.getElementById('f-mode');
+    if(!sel) return;
+    var saved=null;
+    try{ saved=localStorage.getItem(KEY); }catch(e){}
+    var want=saved||'rand';
+    if(sel.value===want) return;
+    sel.value=want;
+    if(typeof window.loadPractice==='function') window.loadPractice();
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    setTimeout(apply,0);
+    setTimeout(apply,600);          // 等应用初始化完成再补一次
+    var sel=document.getElementById('f-mode');
+    if(sel) sel.addEventListener('change',function(){
+      try{ localStorage.setItem(KEY, sel.value); }catch(e){}
+    });
+  });
+})();
+</script>
+<!-- dsh-random-mode:end -->
+</body></html>
