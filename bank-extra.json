@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-04-batch3",
+  "rev": "2026-11-04-batch4",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -3907,6 +3907,115 @@
         "$y'=1-2\\sin x=0$ 得 $\\sin x=\\dfrac12$，即 $x=\\dfrac{\\pi}{6}$。",
         "比较：$y\\left(\\dfrac{\\pi}{6}\\right)=\\dfrac{\\pi}{6}+\\sqrt3\\approx2.26$，$y(0)=2$，$y\\left(\\dfrac{\\pi}{2}\\right)\\approx1.57$。",
         "故最大值 $\\sqrt3+\\dfrac{\\pi}{6}$。"
+      ]
+    },
+    {
+      "id": "exam-1992-4-95",
+      "solution": [
+        "$1-\\sin x=\\left(\\sin\\frac x2-\\cos\\frac x2\\right)^{2}$，故 $\\sqrt{1-\\sin x}=\\left|\\sin\\frac x2-\\cos\\frac x2\\right|$。",
+        "在 $\\left[0,\\frac\\pi2\\right]$ 上 $\\cos\\frac x2\\ge\\sin\\frac x2$，在 $\\left[\\frac\\pi2,\\pi\\right]$ 上相反，故分两段去绝对值。",
+        "$\\int_0^{\\pi/2}\\left(\\cos\\frac x2-\\sin\\frac x2\\right)\\mathrm{d}x=2\\sqrt2-2$，$\\int_{\\pi/2}^{\\pi}\\left(\\sin\\frac x2-\\cos\\frac x2\\right)\\mathrm{d}x=2\\sqrt2-2$。",
+        "合计 $4(\\sqrt2-1)$。"
+      ]
+    },
+    {
+      "id": "exam-1993-1-97",
+      "solution": [
+        "$x\\ln x=\\dfrac{\\ln x}{1/x}$，为 $\\frac{\\infty}{\\infty}$ 型。",
+        "洛必达：$\\lim_{x\\to0^{+}}\\dfrac{1/x}{-1/x^{2}}=\\lim_{x\\to0^{+}}(-x)=0$。"
+      ]
+    },
+    {
+      "id": "exam-1993-2-98",
+      "solution": [
+        "两边对 $x$ 求导：$\\cos(x^{2}+y^{2})(2x+2yy')+\\mathrm{e}^{x}-(y^{2}+2xyy')=0$。",
+        "把含 $y'$ 的项归并：$y'\\left[2y\\cos(x^{2}+y^{2})-2xy\\right]=y^{2}-\\mathrm{e}^{x}-2x\\cos(x^{2}+y^{2})$。",
+        "故 $\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}=\\dfrac{y^{2}-2x\\cos(x^{2}+y^{2})-\\mathrm{e}^{x}}{2y\\cos(x^{2}+y^{2})-2xy}$。"
+      ]
+    },
+    {
+      "id": "exam-1993-4-109",
+      "solution": [
+        "令 $u=1+x$，则 $x=u-1$，积分化为 $\\int_1^{+\\infty}\\dfrac{u-1}{u^{3}}\\mathrm{d}u=\\int_1^{+\\infty}\\left(\\dfrac{1}{u^{2}}-\\dfrac{1}{u^{3}}\\right)\\mathrm{d}u$。",
+        "$=\\left[-\\dfrac1u+\\dfrac{1}{2u^{2}}\\right]_1^{+\\infty}=0-\\left(-1+\\dfrac12\\right)=\\dfrac12$。"
+      ]
+    },
+    {
+      "id": "exam-1994-3-122",
+      "solution": [
+        "$\\tan\\left(\\dfrac\\pi4+\\dfrac2n\\right)=\\dfrac{1+\\tan\\frac2n}{1-\\tan\\frac2n}$，而 $\\tan\\frac2n\\sim\\dfrac2n$，故底数 $=1+\\dfrac4n+o\\left(\\dfrac1n\\right)$。",
+        "于是 $\\left(1+\\dfrac4n\\right)^{n}\\to\\mathrm{e}^{4}$。"
+      ]
+    },
+    {
+      "id": "exam-1995-4-127",
+      "solution": [
+        "夹逼：对每个 $k=1,\\dots,n$，有 $\\dfrac{k}{n^{2}+2n}\\le\\dfrac{k}{n^{2}+n+k}\\le\\dfrac{k}{n^{2}+n}$。",
+        "两边求和：$\\dfrac{n(n+1)}{2(n^{2}+2n)}\\le S_n\\le\\dfrac{n(n+1)}{2(n^{2}+n)}$，两端极限都是 $\\dfrac12$。",
+        "故 $S_n\\to\\dfrac12$。"
+      ]
+    },
+    {
+      "id": "exam-1995-5-128",
+      "solution": [
+        "$x\\to\\pm\\infty$ 时 $\\mathrm{e}^{-x^{2}}\\to0$，而 $x^{2}\\mathrm{e}^{-x^{2}}\\to0$，故 $y\\to0$。",
+        "所以曲线有水平渐近线 $y=0$（无铅直渐近线）。"
+      ]
+    },
+    {
+      "id": "exam-1995-1-133",
+      "solution": [
+        "分子：$1-\\sqrt{\\cos x}=\\dfrac{1-\\cos x}{1+\\sqrt{\\cos x}}\\sim\\dfrac{x^{2}/2}{2}=\\dfrac{x^{2}}{4}$。",
+        "分母：$1-\\cos\\sqrt x\\sim\\dfrac{(\\sqrt x)^{2}}{2}=\\dfrac x2$，故分母 $\\sim\\dfrac{x^{2}}{2}$。",
+        "原式 $=\\dfrac{x^{2}/4}{x^{2}/2}=\\dfrac12$。"
+      ]
+    },
+    {
+      "id": "exam-1995-2-134",
+      "solution": [
+        "两边对 $x$ 求导：$\\mathrm{e}^{f(y)}+x\\mathrm{e}^{f(y)}f'(y)y'=\\mathrm{e}^{y}y'$。",
+        "用 $x\\mathrm{e}^{f(y)}=\\mathrm{e}^{y}$ 化简：$\\mathrm{e}^{y}\\left[1-f'(y)\\right]y'=\\mathrm{e}^{f(y)}$，故 $y'=\\dfrac{1}{x\\left[1-f'(y)\\right]}$。",
+        "再对 $x$ 求导并整理，得 $\\dfrac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}}=\\dfrac{f''(y)-\\left[1-f'(y)\\right]^{2}}{x^{2}\\left[1-f'(y)\\right]^{3}}$。"
+      ]
+    },
+    {
+      "id": "exam-1995-5-137",
+      "solution": [
+        "$x'=\\sin t$，$y'=1-\\cos t$，故 $\\sqrt{x'^{2}+y'^{2}}=\\sqrt{2-2\\cos t}=2\\left|\\sin\\frac t2\\right|$。",
+        "一拱上 $\\sin\\frac t2\\ge0$，$s=\\int_0^{2\\pi}2\\sin\\frac t2\\,\\mathrm{d}t=\\left[-4\\cos\\frac t2\\right]_0^{2\\pi}=8$。"
+      ]
+    },
+    {
+      "id": "exam-1996-3-151",
+      "solution": [
+        "$\\dfrac{\\mathrm{d}x}{\\mathrm{d}t}=f(t^{2})$，$\\dfrac{\\mathrm{d}y}{\\mathrm{d}t}=2f(t^{2})\\cdot f'(t^{2})\\cdot 2t=4tf(t^{2})f'(t^{2})$。",
+        "故 $\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}=4tf'(t^{2})$。",
+        "再对 $x$ 求导：$\\dfrac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}}=\\dfrac{\\frac{\\mathrm{d}}{\\mathrm{d}t}\\left[4tf'(t^{2})\\right]}{f(t^{2})}=\\dfrac{4\\left[f'(t^{2})+2t^{2}f''(t^{2})\\right]}{f(t^{2})}$。"
+      ]
+    },
+    {
+      "id": "exam-1997-2-156",
+      "solution": [
+        "$y=\\dfrac12\\left[\\ln(1-x)-\\ln(1+x^{2})\\right]$，$y'=\\dfrac12\\left[-\\dfrac{1}{1-x}-\\dfrac{2x}{1+x^{2}}\\right]$。",
+        "再求导：$y''=\\dfrac12\\left[-\\dfrac{1}{(1-x)^{2}}-\\dfrac{2(1-x^{2})}{(1+x^{2})^{2}}\\right]$。",
+        "代入 $x=0$：$y''(0)=\\dfrac12(-1-2)=-\\dfrac32$。"
+      ]
+    },
+    {
+      "id": "exam-1997-2-164",
+      "solution": [
+        "$\\dfrac{\\mathrm{d}x}{\\mathrm{d}t}=\\dfrac{1}{1+t^{2}}$。",
+        "对 $2y-ty^{2}+\\mathrm{e}^{t}=5$ 关于 $t$ 求导：$2\\dot y-(y^{2}+2ty\\dot y)+\\mathrm{e}^{t}=0$，故 $\\dot y=\\dfrac{y^{2}-\\mathrm{e}^{t}}{2(1-ty)}$。",
+        "于是 $\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}=\\dfrac{\\dot y}{\\dot x}=\\dfrac{(y^{2}-\\mathrm{e}^{t})(1+t^{2})}{2(1-ty)}$。"
+      ]
+    },
+    {
+      "id": "exam-2013-17-355",
+      "solution": [
+        "三条边界交于 $(0,0)$、$(2,6)$、$(6,2)$，区域按 $x$ 分成两块：$0\\le x\\le2$ 与 $2\\le x\\le6$。",
+        "$\\iint_D x^{2}\\mathrm{d}x\\mathrm{d}y=\\int_0^{2}x^{2}\\left(3x-\\dfrac x3\\right)\\mathrm{d}x+\\int_2^{6}x^{2}\\left[(8-x)-\\dfrac x3\\right]\\mathrm{d}x$。",
+        "前者 $=\\dfrac83\\int_0^2x^{3}\\mathrm{d}x=\\dfrac{32}{3}$；后者 $=\\int_2^6\\left(8x^{2}-\\dfrac{4x^{3}}{3}\\right)\\mathrm{d}x=128$。",
+        "合计 $\\dfrac{32}{3}+128=\\dfrac{416}{3}$。"
       ]
     }
   ]
