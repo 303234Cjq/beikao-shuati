@@ -989,7 +989,7 @@ function setSubject(s){
  if(typeof saveStudyPosition==='function')saveStudyPosition();S.subject=s;S.requestId++;document.body.dataset.subject=s;try{history.replaceState(null,'',location.pathname+location.search+(s==='affairs'?'#affairs':''));}catch(e){}
  [].forEach.call(document.querySelectorAll('.tab'),function(b){b.classList.toggle('on',b.dataset.subject===s);b.setAttribute('aria-pressed',b.dataset.subject===s);});
  if(s==='affairs'){setView('affairs');writeStored('study_last_subject','affairs');return loadAffairs();}
- S.list=[];S.idx=0;S.responses={};['f-src','f-year','f-qtype','f-module','f-search','f-subtype'].forEach(function(id){$(id).value='';});$('f-mode').value='all';$('f-quality').value='ready';setView('practice');
+ S.list=[];S.idx=0;S.responses={};['f-src','f-year','f-qtype','f-module','f-search','f-subtype'].forEach(function(id){$(id).value='';});$('f-mode').value=(function(){try{return localStorage.getItem('study_mode_pref')||'rand';}catch(e){return 'rand';}})();$('f-quality').value='ready';setView('practice');
  var readyBefore=S.positionReady;S.positionReady=false;var existing=stored('study_position_'+s,null);return (existing?restoreStudyPosition(s):loadMeta().then(refillLists).then(loadPractice)).finally(function(){S.positionReady=readyBefore;saveStudyPosition();});
 }
 function setView(v){S.view=v;
@@ -1434,6 +1434,37 @@ function restoreStudyData(file){
   };
   reader.readAsText(file);
 }
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
+}
 function safeLink(url){try{var u=new URL(url);return u.protocol==='https:'?u.href:'#';}catch(e){return '#';}}
 function attr(value){return esc(value).replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function affairsQuestions(){return CA.data.items.flatMap(function(t){return t.questions.map(function(q){return Object.assign({},q,{topic:t});});});}
@@ -1715,4 +1746,31 @@ initializeExperience();
 })();
 </script>
 <!-- dsh-random-mode:end -->
+<!-- dsh-affairs-shuffle:begin -->
+<script>
+/* 时政：每次打开把专题顺序打乱，避免每次都从同一条开始 */
+(function(){
+  var done=false;
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),v=a[i];a[i]=a[j];a[j]=v;}return a;}
+  function apply(){
+    try{
+      if(done) return;
+      if(window.CA && CA.data && Array.isArray(CA.data.items) && CA.data.items.length){
+        shuffle(CA.data.items);
+        if(typeof renderAffairs==='function') renderAffairs();
+        done=true;
+      }
+    }catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    setTimeout(apply,300);
+    setTimeout(apply,1200);
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('[data-subject="affairs"]'):null;
+      if(t){setTimeout(apply,400);}
+    },true);
+  });
+})();
+</script>
+<!-- dsh-affairs-shuffle:end -->
 </body></html>
