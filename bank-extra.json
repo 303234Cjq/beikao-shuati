@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-06-hints-ode",
+  "rev": "2026-11-06-hints-linalg",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -4141,6 +4141,134 @@
     {
       "id": "gen-math-06-ode-593112",
       "hint": "特征方程 $\\lambda^{2}-3\\lambda+2=0$，根 $1,2$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q1",
+      "hint": "按第一行展开（或行变换化上三角）；注意第 1、2 行不成比例，别用错结论。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q2",
+      "hint": "各行加到第一列，提出公因子 $(k+2)$，再化上三角令行列式为 0。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q3",
+      "hint": "用 $|A^*|=|A|^{\\,n-1}$，本题 $n=2$，故 $|A^*|=|A|$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q4",
+      "hint": "由 $\\lambda_1+\\lambda_2=\\mathrm{tr}A$、$\\lambda_1\\lambda_2=|A|$ 解出特征值，再用 $|A-5E|=\\prod(\\lambda_i-5)$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q5",
+      "hint": "用 $|A^*|=|A|^{\\,n-1}$，本题 $n=3$，即 $|A|^2$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q6",
+      "hint": "由 $A^2=3A$ 递推：$A^k=3^{k-1}A$（对 $k\\ge1$ 归纳）。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q7",
+      "hint": "秩 1 矩阵满足 $(\\alpha\\beta^{T})^k=(\\beta^{T}\\alpha)^{k-1}\\alpha\\beta^{T}$，先算 $\\beta^{T}\\alpha$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q8",
+      "hint": "逐条找反例：$AB=0$ 推不出 $A=0$ 或 $B=0$；$(A+B)^2\\ne A^2+2AB+B^2$（除非可交换）。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q9",
+      "hint": "用秩公式 $r(A^{\\mathrm T}A)=r(A)$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q10",
+      "hint": "$XA=B$ 右乘 $A^{-1}$：$X=BA^{-1}$，先求 $A^{-1}$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q11",
+      "hint": "含参数秩：先算 $|A|$ 定位使秩下降的参数值，再逐个代回看秩到底降成几。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q12",
+      "hint": "有解要 $r(A)=r(\\bar A)$：先算 $|A|$ 找临界 $\\lambda$，再比较两个秩。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q13",
+      "hint": "解 $|\\lambda E-A|=0$ 得特征值；几何重数用 $n-r(\\lambda E-A)$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q14",
+      "hint": "平移性质：$B=A-2E$ 的特征值是 $\\lambda_i-2$，$|B|$ 为三者之积。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q15",
+      "hint": "平方项系数进对角、交叉项系数**减半**进非对角；正定看顺序主子式是否全正。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q16",
+      "hint": "$AX=B$ ⇒ $X=A^{-1}B$，对 $(A\\,|\\,B)$ 做行变换化成 $(E\\,|\\,X)$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q17",
+      "hint": "行变换化阶梯形，非零行数即秩；最高阶非零子式取对应的行与列。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q18",
+      "hint": "按 $\\lambda$ 分类：$|A|\\ne0$ 时唯一解；$|A|=0$ 时比较 $r(A)$ 与 $r(\\bar A)$ 判无解/无穷多解。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q19",
+      "hint": "先 $|\\lambda E-A|=0$ 求特征值，再解 $(\\lambda E-A)x=0$ 得特征向量，最后看能否凑齐 3 个线性无关向量。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q20",
+      "hint": "$|A^*|=|A|^{\\,n-1}$（$n=3$），$|A^{-1}|=1/|A|$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q21",
+      "hint": "幂等 $A(A-E)=0$ ⇒ 特征值只能是 0 或 1；由 $A\\ne E$ 说明有特征值 0，故 $|A|=0$。"
+    },
+    {
+      "id": "math-09-linear-algebra-Q22",
+      "hint": "幂等矩阵满足 $r(A)+r(A-E)=n$；结合 $A\\ne0,\\ A\\ne E$ 定出 $r(A)$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-759944",
+      "hint": "二阶行列式 $ad-bc$，注意负号：$2\\times(-3)-(-3)\\times(-1)$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-250854",
+      "hint": "二阶行列式 $ad-bc=4\\times3-(-4)\\times4$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-879950",
+      "hint": "二阶行列式 $ad-bc=2\\times(-2)-(-1)\\times2$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-370516",
+      "hint": "二阶行列式 $ad-bc=(-4)\\times1-2\\times3$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-250988",
+      "hint": "二阶行列式 $ad-bc=(-2)\\times2-4\\times3$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-745546",
+      "hint": "二阶行列式 $ad-bc=3\\times1-(-1)\\times(-2)$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-111927",
+      "hint": "二阶行列式 $ad-bc=4\\times(-4)-4\\times4$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-494717",
+      "hint": "二阶行列式 $ad-bc=(-2)\\times(-3)-(-3)\\times1$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-121445",
+      "hint": "解 $|\\lambda E-A|=\\lambda^{2}-3\\lambda-4=0$。"
+    },
+    {
+      "id": "gen-math-09-linear-algebra-736256",
+      "hint": "上三角矩阵的特征值就是对角元，直接读。"
     }
   ]
 }
