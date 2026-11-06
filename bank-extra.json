@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-06-answer-fix2",
+  "rev": "2026-11-06-hints-ode",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -3653,7 +3653,8 @@
         "$y'=y$ 是可分离变量方程：$\\dfrac{\\mathrm{d}y}{y}=\\mathrm{d}x$。",
         "两边积分得 $\\ln|y|=x+C_0$，即 $y=C\\mathrm{e}^{x}$。",
         "选 A。"
-      ]
+      ],
+      "hint": "分离变量：$\\dfrac{dy}{y}=dx$，得 $y=Ce^{x}$。"
     },
     {
       "answer": "$y' = \\frac{a}{1 + ax}$ , $y'' = -\\frac{a^2}{(1 + ax)^2}$ .",
@@ -4036,6 +4037,110 @@
         "$y'=\\dfrac23\\left(x+\\mathrm{e}^{-x/2}\\right)^{-1/3}\\cdot\\left(1-\\dfrac12\\mathrm{e}^{-x/2}\\right)$。",
         "代入 $x=0$：括号内为 $0+\\mathrm{e}^{0}=1$，故 $y'(0)=\\dfrac23\\cdot1\\cdot\\dfrac12=\\dfrac13$。"
       ]
+    },
+    {
+      "id": "math-06-ode-Q1",
+      "hint": "看方程里最高阶导数是几阶：出现 $y''$ 即为二阶。"
+    },
+    {
+      "id": "math-06-ode-Q2",
+      "hint": "可分离变量，$\\dfrac{dy}{y}=dx$，积分后代入 $y(0)=1$ 定常数。"
+    },
+    {
+      "id": "math-06-ode-Q3",
+      "hint": "对通解求导消去任意常数：$y=x^2+C\\Rightarrow y'=2x$。"
+    },
+    {
+      "id": "math-06-ode-Q4",
+      "hint": "一阶线性通解 $y=e^{-\\int P dx}\\left(\\int Qe^{\\int P dx}dx+C\\right)$。"
+    },
+    {
+      "id": "math-06-ode-Q5",
+      "hint": "积分因子 $e^{x}$，方程化为 $(ye^{x})'=e^{2x}$，再积分。"
+    },
+    {
+      "id": "math-06-ode-Q6",
+      "hint": "令 $y=ux$，则 $y'=u+xu'$，代入后化为可分离方程。"
+    },
+    {
+      "id": "math-06-ode-Q7",
+      "hint": "二阶齐次线性方程的通解为 $y=C_1y_1+C_2y_2$（$y_1,y_2$ 线性无关）。"
+    },
+    {
+      "id": "math-06-ode-Q8",
+      "hint": "非齐次通解 = 对应齐次通解 + 一个特解。"
+    },
+    {
+      "id": "math-06-ode-Q9",
+      "hint": "分离变量：$e^{-y}dy=e^{x}dx$，两边积分。"
+    },
+    {
+      "id": "math-06-ode-Q10",
+      "hint": "先化标准形 $y'+\\dfrac1x y=x$，积分因子 $x$，得 $(xy)'=x^{2}$。"
+    },
+    {
+      "id": "math-06-ode-Q11",
+      "hint": "特征方程 $\\lambda^{2}-4\\lambda+3=0$，根为 $1,3$，通解 $C_1e^{x}+C_2e^{3x}$。"
+    },
+    {
+      "id": "math-06-ode-Q12",
+      "hint": "特征方程 $\\lambda^{2}+4\\lambda+13=0$，根 $-2\\pm3i$，用 $e^{-2x}$ 配三角。"
+    },
+    {
+      "id": "math-06-ode-Q13",
+      "hint": "牛顿冷却：$T'=k(T-25)$，分离变量后代入初值定 $k$。"
+    },
+    {
+      "id": "math-06-ode-Q14",
+      "hint": "化为 $y\\,dy=x\\,dx$，积分后由 $y(0)=1$ 定常数。"
+    },
+    {
+      "id": "math-06-ode-Q15",
+      "hint": "齐次方程，令 $u=y/x$，得 $xu'=\\sqrt{1+u^{2}}$。"
+    },
+    {
+      "id": "math-06-ode-Q16",
+      "hint": "化标准形后乘积分因子 $x$，$(xy)'=x^{2}$，再代 $y(1)=4$。"
+    },
+    {
+      "id": "math-06-ode-Q17",
+      "hint": "特征根 $2$ 为二重根，齐次解 $(C_1+C_2x)e^{2x}$；右端 $e^{x}$ 非特征根，设特解 $Ae^{x}$。"
+    },
+    {
+      "id": "math-06-ode-Q18",
+      "hint": "右端 $\\sin x$ 与齐次解共振，特解应设为 $Ax\\cos x+Bx\\sin x$。"
+    },
+    {
+      "id": "math-06-ode-Q19",
+      "hint": "特征根 $1$ 为二重根；右端 $e^{2x}$ 非特征根，特解设 $Ae^{2x}$，再由初值定常数。"
+    },
+    {
+      "id": "gen-math-06-ode-860450",
+      "hint": "分离变量：$\\dfrac{dy}{y}=2dx$，得 $y=Ce^{2x}$。"
+    },
+    {
+      "id": "gen-math-06-ode-858739",
+      "hint": "分离变量：$\\dfrac{dy}{y}=4dx$，得 $y=Ce^{4x}$。"
+    },
+    {
+      "id": "gen-math-06-ode-577434",
+      "hint": "特征方程 $\\lambda^{2}-4\\lambda+3=0$，根 $1,3$。"
+    },
+    {
+      "id": "gen-math-06-ode-683042",
+      "hint": "特征方程 $\\lambda^{2}+4\\lambda+3=0$，根 $-1,-3$。"
+    },
+    {
+      "id": "gen-math-06-ode-842328",
+      "hint": "特征方程 $\\lambda^{2}-5\\lambda+6=0$，根 $2,3$。"
+    },
+    {
+      "id": "gen-math-06-ode-286805",
+      "hint": "特征方程 $\\lambda^{2}+3\\lambda+2=0$，根 $-1,-2$。"
+    },
+    {
+      "id": "gen-math-06-ode-593112",
+      "hint": "特征方程 $\\lambda^{2}-3\\lambda+2=0$，根 $1,2$。"
     }
   ]
 }

@@ -1667,6 +1667,7 @@ function questionHint(q){
         if (m) formula = m[0];
       }
     }
+    if (q.hint) idea = q.hint;
     var name = String(q.moduleName || '');
     var cue = HINT_CUE[name] || HINT_CUE[name.replace(/^模块\d+\s*/, '')] ||
               (q.subject === 'ee' ? '先标参考方向、画等效电路，再列 KCL/KVL。'
