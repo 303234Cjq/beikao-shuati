@@ -1049,7 +1049,7 @@ function refillLists(){
 }
 function emptyHint(){return '<div class="card"><h3>当前条件下没有题目</h3><p class="sub">试试减少筛选条件，或换一个搜索关键词。</p><button class="btn" onclick="resetFilters()">清除筛选与搜索</button></div>';}
 
-function resetFilters(){['f-module','f-src','f-year','f-qtype','f-search','f-subtype'].forEach(function(id){$(id).value='';});$('f-mode').value='all';$('f-quality').value='ready';return refillLists().then(loadPractice);}
+function resetFilters(){['f-module','f-src','f-year','f-qtype','f-search','f-subtype'].forEach(function(id){$(id).value='';});$('f-mode').value=(function(){try{return localStorage.getItem('study_mode_pref')||'rand';}catch(e){return 'rand';}})();$('f-quality').value='ready';return refillLists().then(loadPractice);}
 function loadPractice(){
  if(S.subject==='affairs')return Promise.resolve();
  var subject=S.subject,mod=$('f-module').value,mode=$('f-mode').value,query=$('f-search').value.trim().toLowerCase(),request=++S.requestId;
@@ -1465,6 +1465,68 @@ function restoreStudyData(file){
   };
   reader.readAsText(file);
 }
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
+}
+function restoreStudyData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var inc;
+    try{inc=JSON.parse(String(reader.result));}catch(e){showToast('文件不是有效的 JSON');return;}
+    if(!inc||typeof inc!=='object'||(!inc.mistakes&&!inc.notes&&!inc.stats&&!inc.custom&&!inc.papers)){
+      showToast('这个文件里没有可识别的学习记录');return;
+    }
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem('study_cloud_state_v2')||'{}');}catch(e){cur={};}
+    var merged={
+      mistakes:(inc.mistakes||[]).slice(),
+      notes:Object.assign({},cur.notes||{},inc.notes||{}),
+      stats:Object.assign({},cur.stats||{},inc.stats||{}),
+      custom:(cur.custom||[]).concat(inc.custom||[]),
+      papers:(cur.papers||[]).concat(inc.papers||[]).slice(-20),
+      ts:Date.now()
+    };
+    (cur.mistakes||[]).forEach(function(id){if(merged.mistakes.indexOf(id)<0)merged.mistakes.push(id);});
+    var seen={};merged.custom=merged.custom.filter(function(q){if(!q||!q.id||seen[q.id])return false;seen[q.id]=1;return true;});
+    var pseen={};merged.papers=merged.papers.filter(function(p){if(!p||!p.id||pseen[p.id])return false;pseen[p.id]=1;return true;});
+    try{
+      localStorage.setItem('study_cloud_state_v2',JSON.stringify(merged));
+      localStorage.removeItem('study_cloud_operations_v2');
+    }catch(e){showToast('本机存储写入失败：'+e.message);return;}
+    showToast('已恢复 '+merged.mistakes.length+' 条错题 / '+Object.keys(merged.notes).length+' 条笔记，正在重新加载…');
+    setTimeout(function(){location.reload();},900);
+  };
+  reader.readAsText(file);
+}
 function safeLink(url){try{var u=new URL(url);return u.protocol==='https:'?u.href:'#';}catch(e){return '#';}}
 function attr(value){return esc(value).replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function affairsQuestions(){return CA.data.items.flatMap(function(t){return t.questions.map(function(q){return Object.assign({},q,{topic:t});});});}
@@ -1580,8 +1642,40 @@ function diagramHTML(q){
 }
 function questionLines(q){return (q.solution||[]).filter(function(line){return !/^\s*(?:答案|正确答案|答)\s*[:：]/.test(line)&&!/^\s*思路/.test(line);});}
 function questionSteps(q){var lines=questionLines(q),steps=[];for(var i=0;i<lines.length;i++){var line=lines[i];if(/[:：]\s*$/.test(line)&&i+1<lines.length)line+='\n'+lines[++i];steps.push(line);}return steps;}
-function questionHint(q){var line=(q.solution||[]).find(function(x){return /^\s*思路/.test(x);});return line||'先列出已知条件和目标量，确定本题考点，再在草稿中写出所用公式或定理。';}
-function solHTML(q){
+var HINT_CUE = {
+  '模块1 极限与连续': '先判类型（0/0、∞/∞、1^∞），再用等价无穷小、洛必达或泰勒。',
+  '模块2 导数与微分': '先看是显式、隐式还是参数方程，再选对应求导法则。',
+  '模块3 中值定理与导数应用': '构造辅助函数，锁定区间，用罗尔或拉格朗日。',
+  '模块4 不定积分': '先看能否凑微分，再考虑换元或分部积分。',
+  '模块5 定积分及其应用': '注意对称性与奇偶性，必要时换元或分部。',
+  '模块6 常微分方程': '先判类型（可分离/一阶线性/常系数），再套通解公式。',
+  '模块7 多元函数微分学': '求偏导时把其余变量当常数，链式法则逐层展开。',
+  '模块8 二重积分': '先画区域、定积分次序，善用对称性。',
+  '模块9 线性代数': '先算行列式与秩，再判可逆性与解的结构。',
+  '模拟卷（一）': '按题型归类：先定性（考点），再定量（公式），最后代值。',
+  '模拟卷（二）': '按题型归类：先定性（考点），再定量（公式），最后代值。'
+};
+function questionHint(q){
+    var pt = String(q.point || q.moduleName || '').trim();
+    var sol = q.solution || [];
+    var idea = '', formula = '';
+    for (var i = 0; i < sol.length; i++) {
+      var s = String(sol[i] || '');
+      if (!idea && /^\s*思路/.test(s)) idea = s.replace(/^\s*思路一句话[:：]?\s*/, '');
+      if (!formula) {
+        var m = s.match(/\$\$?[^$]{4,140}\$\$?/);
+        if (m) formula = m[0];
+      }
+    }
+    var name = String(q.moduleName || '');
+    var cue = HINT_CUE[name] || HINT_CUE[name.replace(/^模块\d+\s*/, '')] ||
+              (q.subject === 'ee' ? '先标参考方向、画等效电路，再列 KCL/KVL。'
+                                  : '先判断题型，再写出对应的定义或定理，最后代入条件。');
+    var parts = ['考点：' + (pt || '见模块')];
+    if (formula && pt.indexOf('$') < 0) parts.push('关键式：' + formula);
+    parts.push('方法：' + (idea || cue));
+    return parts.join('　｜　');
+  } function solHTML(q){
  var answer=(q.answer||'').trim(),L=StudyQuestions.choice(answer);
  if(L&&q.opts&&q.opts.length)answer=L+'　'+q.opts['ABCD'.indexOf(L)].replace(/^[A-D][\.．、]?\s*/,'');
  var lines=questionLines(q).filter(function(line){return !/原卷解析见真题册/.test(line);});
