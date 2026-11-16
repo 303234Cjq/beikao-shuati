@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-06-hints-linalg",
+  "rev": "2026-11-16-sol-a",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -4269,6 +4269,177 @@
     {
       "id": "gen-math-09-linear-algebra-736256",
       "hint": "上三角矩阵的特征值就是对角元，直接读。"
+    },
+    {
+      "id": "exam-1987-2-23",
+      "solution": [
+        "$y=\\arctan x$ 在 $x=1$ 处：$y(1)=\\frac{\\pi}{4}$，$y'=\\dfrac{1}{1+x^{2}}$ 得 $k=\\frac12$。",
+        "切线：$y-\\frac{\\pi}{4}=\\frac12(x-1)$，即 $y=\\frac{x}{2}+\\frac{\\pi-2}{4}$。",
+        "法线斜率为 $-2$：$y-\\frac{\\pi}{4}=-2(x-1)$，即 $y=-2x+\\frac{\\pi+8}{4}$。"
+      ]
+    },
+    {
+      "id": "exam-1987-3-24",
+      "solution": [
+        "**条件**：$f(x)$ 在闭区间 $[a,b]$ 上连续（闭区间连续 + 有界，保证可积且能取到函数值）。",
+        "**结论**：存在 $\\xi\\in[a,b]$，使 $\\displaystyle\\int_a^b f(x)\\mathrm{d}x=f(\\xi)(b-a)$。",
+        "直观理解：曲边梯形的面积等于某个「平均高度」乘底边长，$f(\\xi)$ 就是平均高度。",
+        "注意是开区间可导、闭区间连续这类条件不能互换：连续性给出 $\\xi$ 的存在性，可导性才进一步给「中值点」更强的刻画。"
+      ]
+    },
+    {
+      "id": "exam-1987-1-27",
+      "solution": [
+        "要证单调增，即对任意 $x_2>x_1$（都在 $(a,b)$ 内）有 $f(x_2)>f(x_1)$。",
+        "在 $[x_1,x_2]$ 上用拉格朗日中值定理：$f(x_2)-f(x_1)=f'(\\xi)(x_2-x_1)$，$\\xi\\in(x_1,x_2)$。",
+        "已知 $f'(\\xi)>0$ 且 $x_2-x_1>0$，故 $f(x_2)-f(x_1)>0$，即 $f$ 在 $(a,b)$ 内单调增加。"
+      ]
+    },
+    {
+      "id": "exam-1987-1-29",
+      "solution": [
+        "方程 $x\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}=x-y$ 化为标准形 $y'+\\dfrac1x y=1$（一阶线性）。",
+        "积分因子 $\\mathrm{e}^{\\int\\frac1x dx}=x$，故 $(xy)'=x$，积分得 $xy=\\dfrac{x^{2}}{2}+C$，即 $y=\\dfrac{x}{2}+\\dfrac{C}{x}$。",
+        "代入 $x=\\sqrt2,\\ y=0$：$0=\\dfrac{\\sqrt2}{2}+\\dfrac{C}{\\sqrt2}$，得 $C=-1$。",
+        "所以特解 $y=\\dfrac{x}{2}-\\dfrac{1}{x}$。"
+      ]
+    },
+    {
+      "id": "exam-1987-2-30",
+      "solution": [
+        "齐次部分 $y''+2y'+y=0$：特征方程 $r^{2}+2r+1=(r+1)^{2}=0$，二重根 $r=-1$，故 $y_h=(C_1+C_2x)\\mathrm{e}^{-x}$。",
+        "非齐次项 $x\\mathrm{e}^{x}$：设特解 $y_p=(Ax+B)\\mathrm{e}^{x}$，代入得 $(4Ax+4A+4B)\\mathrm{e}^{x}=x\\mathrm{e}^{x}$。",
+        "比较系数：$4A=1\\Rightarrow A=\\frac14$；$4A+4B=0\\Rightarrow B=-\\frac14$，即 $y_p=\\frac14(x-1)\\mathrm{e}^{x}$。",
+        "通解 $y=(C_1+C_2x)\\mathrm{e}^{-x}+\\frac14(x-1)\\mathrm{e}^{x}$。",
+        "（原答案把齐次解写成 $\\mathrm{e}^{-2x}$，与特征根 $-1$ 不符，已更正。）"
+      ],
+      "answer": "$y=(C_1+C_2x)\\mathrm{e}^{-x}+\\dfrac{1}{4}(x-1)\\mathrm{e}^{x}$"
+    },
+    {
+      "id": "exam-1990-2-59",
+      "solution": [
+        "令 $u=\\dfrac1x$，则 $y=\\mathrm{e}^{\\tan u}\\sin u$，$\\dfrac{\\mathrm{d}u}{\\mathrm{d}x}=-\\dfrac{1}{x^{2}}$。",
+        "$\\dfrac{\\mathrm{d}y}{\\mathrm{d}u}=\\mathrm{e}^{\\tan u}\\sec^{2}u\\sin u+\\mathrm{e}^{\\tan u}\\cos u$。",
+        "故 $y'=-\\dfrac{1}{x^{2}}\\mathrm{e}^{\\tan\\frac1x}\\left(\\sec^{2}\\frac1x\\sin\\frac1x+\\cos\\frac1x\\right)$。"
+      ]
+    },
+    {
+      "id": "exam-1992-4-86",
+      "solution": [
+        "部分分式：$\\dfrac{1}{x(x^{2}+1)}=\\dfrac1x-\\dfrac{x}{x^{2}+1}$。",
+        "原式 $=\\left[\\ln x-\\dfrac12\\ln(x^{2}+1)\\right]_1^{+\\infty}=\\left[\\ln\\dfrac{x}{\\sqrt{x^{2}+1}}\\right]_1^{+\\infty}$。",
+        "$x\\to+\\infty$ 时对数部分趋于 $\\ln1=0$；$x=1$ 时为 $\\ln\\frac{1}{\\sqrt2}=-\\frac12\\ln2$。",
+        "所以积分 $=0-\\left(-\\frac12\\ln2\\right)=\\frac12\\ln2$。"
+      ]
+    },
+    {
+      "id": "exam-1992-5-87",
+      "solution": [
+        "先求交点：$x\\mathrm{e}^{x}=\\mathrm{e}x$，因 $x>0$ 得 $\\mathrm{e}^{x}=\\mathrm{e}$，即 $x=1$（另有 $x=0$）。",
+        "在 $(0,1)$ 上 $\\mathrm{e}x>x\\mathrm{e}^{x}$，故面积 $S=\\int_0^1(\\mathrm{e}x-x\\mathrm{e}^{x})\\mathrm{d}x$。",
+        "$\\int x\\mathrm{e}^{x}\\mathrm{d}x=(x-1)\\mathrm{e}^{x}$，所以 $S=\\left[\\dfrac{\\mathrm{e}}{2}x^{2}-(x-1)\\mathrm{e}^{x}\\right]_0^1=\\dfrac{\\mathrm{e}}{2}-(0-(-1))=\\dfrac{\\mathrm{e}}{2}-1$。"
+      ]
+    },
+    {
+      "id": "exam-1992-1-92",
+      "solution": [
+        "底数 $\\dfrac{3+x}{6+x}=1-\\dfrac{3}{6+x}$，取对数：$\\ln L=\\lim\\dfrac{x-1}{2}\\ln\\left(1-\\dfrac{3}{6+x}\\right)$。",
+        "$\\ln\\left(1-\\dfrac{3}{6+x}\\right)\\sim-\\dfrac{3}{6+x}$，故 $\\ln L\\sim\\dfrac{x-1}{2}\\cdot\\dfrac{-3}{6+x}\\to-\\dfrac32$。",
+        "所以 $L=\\mathrm{e}^{-3/2}$。"
+      ]
+    },
+    {
+      "id": "exam-1992-2-93",
+      "solution": [
+        "$x=0$ 时由 $y-x\\mathrm{e}^{y}=1$ 得 $y=1$。",
+        "隐函数求导：$y'-\\mathrm{e}^{y}-x\\mathrm{e}^{y}y'=0$，故 $y'=\\dfrac{\\mathrm{e}^{y}}{1-x\\mathrm{e}^{y}}$，代入得 $y'(0)=\\mathrm{e}$。",
+        "再求导：$y''=\\dfrac{\\mathrm{e}^{y}y'(1-x\\mathrm{e}^{y})+\\mathrm{e}^{y}(\\mathrm{e}^{y}+x\\mathrm{e}^{y}y')}{(1-x\\mathrm{e}^{y})^{2}}$。",
+        "代入 $x=0,y=1,y'=\\mathrm{e}$：$y''(0)=\\mathrm{e}\\cdot\\mathrm{e}+\\mathrm{e}\\cdot\\mathrm{e}=2\\mathrm{e}^{2}$。"
+      ]
+    },
+    {
+      "id": "exam-1992-3-94",
+      "solution": [
+        "令 $u=1+x^{2}$，则 $x^{2}=u-1$、$x\\,\\mathrm{d}x=\\dfrac12\\mathrm{d}u$。",
+        "原式 $=\\dfrac12\\int\\dfrac{u-1}{\\sqrt{u}}\\mathrm{d}u=\\dfrac12\\int\\left(u^{1/2}-u^{-1/2}\\right)\\mathrm{d}u$。",
+        "$=\\dfrac12\\left(\\dfrac23u^{3/2}-2u^{1/2}\\right)+C=\\dfrac13(1+x^{2})^{3/2}-\\sqrt{1+x^{2}}+C$。"
+      ]
+    },
+    {
+      "id": "exam-1993-4-99",
+      "solution": [
+        "$\\dfrac{\\tan x}{\\sqrt{\\cos x}}=\\dfrac{\\sin x}{\\cos^{3/2}x}$。",
+        "令 $u=\\cos x$，$\\mathrm{d}u=-\\sin x\\,\\mathrm{d}x$，原式 $=-\\int u^{-3/2}\\mathrm{d}u=2u^{-1/2}+C$。",
+        "故原式 $=\\dfrac{2}{\\sqrt{\\cos x}}+C$。"
+      ]
+    },
+    {
+      "id": "exam-1993-5-100",
+      "solution": [
+        "由题意 $f'(x)=x\\ln(1+x^{2})$，积分：令 $u=1+x^{2}$，$x\\,\\mathrm{d}x=\\frac12\\mathrm{d}u$。",
+        "$f(x)=\\dfrac12\\int\\ln u\\,\\mathrm{d}u=\\dfrac12(u\\ln u-u)+C=\\dfrac12(1+x^{2})\\left[\\ln(1+x^{2})-1\\right]+C$。",
+        "代入 $f(0)=-\\dfrac12$：$\\dfrac12\\cdot1\\cdot(-1)+C=-\\dfrac12$，得 $C=0$。",
+        "所以 $f(x)=\\dfrac12(1+x^{2})\\left[\\ln(1+x^{2})-1\\right]$。"
+      ]
+    },
+    {
+      "id": "exam-1993-1-106",
+      "solution": [
+        "令 $u=f(x^{2})$，则 $y=\\sin u$，$u'=2xf'(x^{2})$。",
+        "$y'=\\cos u\\cdot u'=2xf'(x^{2})\\cos[f(x^{2})]$。",
+        "再求导：$y''=2f'(x^{2})\\cos[f]+2x\\left[2xf''(x^{2})\\cos[f]-2xf'(x^{2})^{2}\\sin[f]\\right]$。",
+        "整理得 $y''=2f'(x^{2})\\cos[f]+4x^{2}\\left\\{f''(x^{2})\\cos[f]-\\left[f'(x^{2})\\right]^{2}\\sin[f]\\right\\}$。"
+      ]
+    },
+    {
+      "id": "exam-1993-3-108",
+      "solution": [
+        "$1+\\cos2x=2\\cos^{2}x$，故原式 $=\\dfrac12\\int_0^{\\pi/4}x\\sec^{2}x\\,\\mathrm{d}x$。",
+        "分部积分：$\\int x\\sec^{2}x\\,\\mathrm{d}x=x\\tan x-\\int\\tan x\\,\\mathrm{d}x=x\\tan x+\\ln\\cos x$。",
+        "故原式 $=\\dfrac12\\left[x\\tan x+\\ln\\cos x\\right]_0^{\\pi/4}=\\dfrac12\\left(\\dfrac{\\pi}{4}-\\dfrac12\\ln2\\right)=\\dfrac{\\pi}{8}-\\dfrac14\\ln2$。"
+      ]
+    },
+    {
+      "id": "exam-1993-5-110",
+      "solution": [
+        "方程即 $(x^{2}-1)y'+2xy=\\cos x$，左边恰是 $\\left[(x^{2}-1)y\\right]'$。",
+        "积分得 $(x^{2}-1)y=\\sin x+C$。",
+        "代入 $y(0)=0$：$(0-1)\\cdot0=\\sin0+C$，得 $C=0$。",
+        "故特解 $y=\\dfrac{\\sin x}{x^{2}-1}$。",
+        "（原答案写作 $\\dfrac{\\sin x-1}{x^{2}-1}$，与初值不符，已更正。）"
+      ],
+      "answer": "$y=\\dfrac{\\sin x}{x^{2}-1}$"
+    },
+    {
+      "id": "exam-1994-2-112",
+      "solution": [
+        "$\\dfrac{\\mathrm{d}x}{\\mathrm{d}t}=1-\\dfrac{1}{1+t}=\\dfrac{t}{1+t}$，$\\dfrac{\\mathrm{d}y}{\\mathrm{d}t}=3t^{2}+2t$。",
+        "$\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}=\\dfrac{3t^{2}+2t}{t/(1+t)}=(3t+2)(1+t)$。",
+        "$\\dfrac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}}=\\dfrac{\\left[(3t+2)(1+t)\\right]'}{t/(1+t)}=\\dfrac{(6t+5)(1+t)}{t}$。"
+      ]
+    },
+    {
+      "id": "exam-1994-3-113",
+      "solution": [
+        "上限是 $\\cos3x$，用复合函数求导：$\\dfrac{\\mathrm{d}}{\\mathrm{d}x}\\int_0^{\\cos3x}f(t)\\mathrm{d}t=f(\\cos3x)\\cdot(\\cos3x)'$。",
+        "$(\\cos3x)'=-3\\sin3x$，故结果为 $-3f(\\cos3x)\\sin3x$。"
+      ]
+    },
+    {
+      "id": "exam-1994-4-114",
+      "solution": [
+        "令 $u=x^{2}$，则 $x^{3}\\mathrm{d}x=x^{2}\\cdot x\\,\\mathrm{d}x=u\\cdot\\dfrac12\\mathrm{d}u$。",
+        "原式 $=\\dfrac12\\int u\\mathrm{e}^{u}\\mathrm{d}u=\\dfrac12(u-1)\\mathrm{e}^{u}+C$。",
+        "回代得 $\\dfrac12(x^{2}-1)\\mathrm{e}^{x^{2}}+C$。"
+      ]
+    },
+    {
+      "id": "exam-1994-5-115",
+      "solution": [
+        "分离变量：$\\dfrac{\\mathrm{d}y}{y}=-\\dfrac{\\mathrm{d}x}{x^{2}-4x}=\\dfrac{\\mathrm{d}x}{x(4-x)}$。",
+        "部分分式 $\\dfrac{1}{x(4-x)}=\\dfrac14\\left(\\dfrac1x+\\dfrac{1}{4-x}\\right)$，积分得 $\\ln|y|=\\dfrac14\\left[\\ln x-\\ln(4-x)\\right]+C$。",
+        "整理：$4\\ln|y|=\\ln\\dfrac{x}{4-x}+C'$，即 $y^{4}=C\\dfrac{x}{4-x}$。"
+      ]
     }
   ]
 }
