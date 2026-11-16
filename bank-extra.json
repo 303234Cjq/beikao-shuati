@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-16-sol-a",
+  "rev": "2026-11-16-audit-fix",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -2851,9 +2851,16 @@
       "id": "exam-1995-1-129",
       "point": "连续函数与间断点的运算",
       "solution": [
-        "用反证：若 $\\dfrac{\\varphi(x)}{f(x)}$ 连续，则 $\\varphi(x)=f(x)\\cdot\\dfrac{\\varphi(x)}{f(x)}$ 作为两个连续函数之积也连续。",
-        "这与 $\\varphi(x)$ 有间断点矛盾，故 $\\dfrac{\\varphi(x)}{f(x)}$ 必有间断点。"
-      ]
+        "**思路**：反证——若结论不成立（即商连续），就能反推出 $\\varphi$ 连续，与题设矛盾。",
+        "设 $\\dfrac{\\varphi(x)}{f(x)}$ 处处连续。因为 $f(x)$ 连续且 $f(x)\\neq0$，所以 $\\dfrac{1}{f(x)}$ 也连续。",
+        "于是 $\\varphi(x)=f(x)\\cdot\\dfrac{\\varphi(x)}{f(x)}$ 是两个连续函数之积，必连续。",
+        "这与题设「$\\varphi(x)$ 有间断点」矛盾，故 $\\dfrac{\\varphi(x)}{f(x)}$ 必有间断点。",
+        "（说明：本题原有四个选项，题库缺失选项数据，现改为解答题给出结论。）"
+      ],
+      "type": "解答题",
+      "qtype": "解答题",
+      "originalQtype": "解答题",
+      "answer": "$\\dfrac{\\varphi(x)}{f(x)}$ 必有间断点"
     },
     {
       "id": "exam-1995-2-130",
@@ -4124,7 +4131,12 @@
     },
     {
       "id": "gen-math-06-ode-577434",
-      "hint": "特征方程 $\\lambda^{2}-4\\lambda+3=0$，根 $1,3$。"
+      "hint": "特征方程 $\\lambda^{2}-4\\lambda+3=0$，根 $1,3$。",
+      "solution": [
+        "特征方程 $r^{2}-4r+3=0$，因式分解 $(r-1)(r-3)=0$，得 $r_1=3,\\ r_2=1$（两个不等实根）。",
+        "两个不等实根对应 $y=C_1\\mathrm{e}^{3x}+C_2\\mathrm{e}^{x}$。",
+        "故选 A（$C$ 项对应共轭复根、$B$ 项对应重根，均不符）。"
+      ]
     },
     {
       "id": "gen-math-06-ode-683042",
@@ -4439,6 +4451,32 @@
         "分离变量：$\\dfrac{\\mathrm{d}y}{y}=-\\dfrac{\\mathrm{d}x}{x^{2}-4x}=\\dfrac{\\mathrm{d}x}{x(4-x)}$。",
         "部分分式 $\\dfrac{1}{x(4-x)}=\\dfrac14\\left(\\dfrac1x+\\dfrac{1}{4-x}\\right)$，积分得 $\\ln|y|=\\dfrac14\\left[\\ln x-\\ln(4-x)\\right]+C$。",
         "整理：$4\\ln|y|=\\ln\\dfrac{x}{4-x}+C'$，即 $y^{4}=C\\dfrac{x}{4-x}$。"
+      ]
+    },
+    {
+      "id": "exam-2008-19-280",
+      "answer": "$f(x)=\\dfrac{1}{2}\\left(\\mathrm{e}^{x}+\\mathrm{e}^{-x}\\right)\\ (x\\ge 0)$"
+    },
+    {
+      "id": "ext-2022-12",
+      "answer": "$-\\dfrac{31}{32}$",
+      "solution": [
+        "先求 $y(1)$：代入 $x=1$ 得 $1+y+y^{3}=3$，即 $y=1$（$y^{3}+y-2=0$ 的实根）。",
+        "对 $x^{2}+xy+y^{3}=3$ 求导：$2x+y+xy'+3y^{2}y'=0$，代入 $(1,1)$ 得 $3+4y'=0$，故 $y'=-\\dfrac34$。",
+        "再对 $x$ 求导：$2+y'+\\left(y'+xy''\\right)+6y(y')^{2}+3y^{2}y''=0$，即 $2+2y'+xy''+6y(y')^{2}+3y^{2}y''=0$。",
+        "代入 $x=1,\\ y=1,\\ y'=-\\dfrac34$：$2-\\dfrac32+y''+6\\cdot\\dfrac{9}{16}+3y''=0$。",
+        "即 $\\dfrac12+\\dfrac{27}{8}+4y''=0$，得 $4y''=-\\dfrac{31}{8}$，故 $y''(1)=-\\dfrac{31}{32}$。"
+      ]
+    },
+    {
+      "id": "ext-2021-09",
+      "answer": "D",
+      "solution": [
+        "$\\alpha$ 组可由 $\\beta$ 组线性表示 ⇒ 存在矩阵 $K$ 使 $A=BK$。",
+        "两边转置：$A^{\\mathrm T}=K^{\\mathrm T}B^{\\mathrm T}$。",
+        "若 $B^{\\mathrm T}x=0$，则 $A^{\\mathrm T}x=K^{\\mathrm T}B^{\\mathrm T}x=0$，故 D 成立。",
+        "C 不成立：$Bx=0$ 只能推出 $B(Kx)=0$ 未必成立，$Ax=BKx$ 不一定为 $0$。反例：$B=\\mathrm{diag}(1,0)$，$K=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$，取 $x=(0,1)^{\\mathrm T}$，则 $Bx=0$ 但 $Ax=(1,0)^{\\mathrm T}\\neq0$。",
+        "A、B 同理不成立（方向说反了）。故选 D。"
       ]
     }
   ]
