@@ -17,9 +17,14 @@ h1{font-size:22px;margin:6px 0 4px}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);word-break:break-word}
 table{table-layout:fixed}
-th:nth-child(1),td:nth-child(1){width:22%}
-th:nth-child(2),td:nth-child(2){width:15%}
-th:nth-child(3),td:nth-child(3){width:13%}
+table.score th:nth-child(1),table.score td:nth-child(1){width:22%}
+table.score th:nth-child(2),table.score td:nth-child(2){width:15%}
+table.score th:nth-child(3),table.score td:nth-child(3){width:13%}
+table.fml th:nth-child(1),table.fml td:nth-child(1){width:30%}
+table.fml th:nth-child(2),table.fml td:nth-child(2){width:70%}
+table.fml td:last-child{overflow-x:auto}
+table.fml mjx-container{max-width:100%!important;overflow-x:auto;overflow-y:hidden}
+table.fml{font-size:13px}
 th{color:var(--muted);font-weight:600}
 input[type=date]{font:inherit;padding:4px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
 .day{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--card)}
@@ -36,7 +41,11 @@ a.btn{display:inline-block;margin-top:6px;background:var(--acc);color:#fff;text-
 .note{font-size:13px;color:var(--muted)}
 .warnbox{background:#fff6df;border-left:4px solid #d97706;padding:10px 12px;border-radius:8px;font-size:13.5px}
 .foot{color:var(--muted);font-size:12.5px;text-align:center;margin-top:18px}
-</style></head>
+</style><script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},svg:{fontCache:'global'}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
 <body><main>
 <h1>30 天冲刺打卡</h1>
 <p class="sub">目标总分 287 · 英语必须过国家线（单科 ≥ 42）</p>
@@ -56,7 +65,7 @@ a.btn{display:inline-block;margin-top:6px;background:var(--acc);color:#fff;text-
 
 <div class="card">
   <h2 style="font-size:16px;margin:0 0 8px">分数目标</h2>
-  <table>
+  <table class="score">
     <tr><th>科目</th><th>满分</th><th>目标</th><th>硬指标</th></tr>
     <tr><td>数学二</td><td>150</td><td>100</td><td>选填 80 分拿 55+</td></tr>
     <tr><td>811 电路</td><td>150</td><td>90</td><td>8 类模板题各拿 10 分</td></tr>
@@ -71,6 +80,36 @@ a.btn{display:inline-block;margin-top:6px;background:var(--acc);color:#fff;text-
   <h2 style="font-size:16px;margin:0 0 8px">每日保底（每天必做）</h2>
   <div class="note">数学选填 15 题 · 数学大题 2 道 · 电路 12 题 · 英语阅读 2 篇 · 英语作文 3 句 · 政治 60 题 · 错因复盘 1 页</div>
   <a class="btn" href="https://303234cjq.github.io/beikao-shuati/">打开刷题站 →</a>
+</div>
+
+
+<div class="card">
+  <h2 style="font-size:16px;margin:0 0 8px">公式速查（考前只看这一页）</h2>
+
+  <h3 style="font-size:14px;color:var(--acc);margin:10px 0 4px">数学二</h3>
+  <table class="fml">
+    <tr><th>考点</th><th>公式</th></tr>
+    <tr><td>等价无穷小</td><td>$\sin x\sim x,\ \tan x\sim x,\ \ln(1+x)\sim x$</td></tr>
+    <tr><td></td><td>$1-\cos x\sim \dfrac{x^{2}}{2},\ (1+x)^{\alpha}-1\sim \alpha x$</td></tr>
+    <tr><td>泰勒（常用三项）</td><td>$\mathrm{e}^{x}=1+x+\dfrac{x^{2}}{2}+o(x^{2})$，$\ln(1+x)=x-\dfrac{x^{2}}{2}+o(x^{2})$</td></tr>
+    <tr><td>分部积分</td><td>$\displaystyle\int u\,\mathrm{d}v=uv-\int v\,\mathrm{d}u$</td></tr>
+    <tr><td>一阶线性通解</td><td>$y=\mathrm{e}^{-\int P\mathrm{d}x}\left(\int Q\,\mathrm{e}^{\int P\mathrm{d}x}\mathrm{d}x+C\right)$</td></tr>
+    <tr><td>旋转体体积</td><td>$V=\pi\displaystyle\int_{a}^{b}f^{2}(x)\,\mathrm{d}x$</td></tr>
+    <tr><td>特征值</td><td>$|\lambda E-A|=0$，$\displaystyle\sum\lambda_i=\operatorname{tr}A$，$\prod\lambda_i=|A|$</td></tr>
+  </table>
+
+  <h3 style="font-size:14px;color:var(--acc);margin:14px 0 4px">811 电路</h3>
+  <table class="fml">
+    <tr><th>考点</th><th>公式</th></tr>
+    <tr><td>节点电压法</td><td>$\mathbf{G}\,\mathbf{U}=\mathbf{I}_s$（自导纳为对角元，互导纳取负）</td></tr>
+    <tr><td>戴维南 / 最大功率</td><td>$U_{\mathrm{oc}}$、$R_{\mathrm{eq}}$，$P_{\max}=\dfrac{U_{\mathrm{oc}}^{2}}{4R_{\mathrm{eq}}}$</td></tr>
+    <tr><td>一阶三要素</td><td>$f(t)=f(\infty)+\left[f(0^{+})-f(\infty)\right]\mathrm{e}^{-t/\tau}$</td></tr>
+    <tr><td></td><td>$\tau=RC$（RC 电路）或 $\tau=\dfrac{L}{R}$（RL 电路）</td></tr>
+    <tr><td>相量与功率</td><td>$P=UI\cos\varphi$，$Q=UI\sin\varphi$，$S=UI=\sqrt{P^{2}+Q^{2}}$</td></tr>
+    <tr><td>三相（对称 Y）</td><td>$U_{L}=\sqrt{3}\,U_{P}$，$P=\sqrt{3}\,U_{L}I_{L}\cos\varphi$</td></tr>
+    <tr><td>二端口级联</td><td>$\mathbf{T}=\mathbf{T}_1\mathbf{T}_2$（T 参数相乘）</td></tr>
+  </table>
+  <p class="note">公式由 MathJax 排版；若首次打开没渲染（离线或 CDN 不通），刷新一次即可。</p>
 </div>
 
 <div id="days"></div>
