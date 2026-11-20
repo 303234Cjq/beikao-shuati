@@ -1,202 +1,281 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>30 天冲刺打卡 · 目标 287</title>
-<style>
-*{box-sizing:border-box}
-:root{--bg:#f3f6fa;--card:#fff;--ink:#182437;--muted:#6b7683;--line:#e2e8f0;--acc:#1f4e79;--ok:#1f7a3d;--warn:#b45309}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC",system-ui,sans-serif}
-main{max-width:860px;margin:auto;padding:18px 14px 90px}
-h1{font-size:22px;margin:6px 0 4px}
-.sub{color:var(--muted);font-size:13px;margin:0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
-.top{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.badge{background:#eef4fa;color:var(--acc);border:1px solid #dbe6f2;border-radius:999px;padding:2px 10px;font-size:12.5px}
-.badge.ok{background:#e8f5ec;color:var(--ok);border-color:#cfe8d8}
-.badge.warn{background:#fdf3e7;color:var(--warn);border-color:#f3ddc0}
-.grid{display:grid;gap:10px}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);word-break:break-word}
-table{table-layout:fixed}
-table.score th:nth-child(1),table.score td:nth-child(1){width:22%}
-table.score th:nth-child(2),table.score td:nth-child(2){width:15%}
-table.score th:nth-child(3),table.score td:nth-child(3){width:13%}
-table.fml th:nth-child(1),table.fml td:nth-child(1){width:30%}
-table.fml th:nth-child(2),table.fml td:nth-child(2){width:70%}
-table.fml td:last-child{overflow-x:auto}
-table.fml mjx-container{max-width:100%!important;overflow-x:auto;overflow-y:hidden}
-table.fml{font-size:13px}
-th{color:var(--muted);font-weight:600}
-input[type=date]{font:inherit;padding:4px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
-.day{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--card)}
-.day.today{border-color:var(--acc);box-shadow:0 0 0 2px #dfeaf5 inset}
-.day.done{opacity:.72}
-.day h3{margin:0 0 2px;font-size:16px}
-.day .meta{color:var(--muted);font-size:12.5px;margin-bottom:8px}
-label.task{display:flex;gap:8px;align-items:flex-start;padding:5px 0;font-size:14px;cursor:pointer}
-label.task input{margin-top:5px;width:17px;height:17px;accent-color:var(--acc)}
-label.task span.done{text-decoration:line-through;color:var(--muted)}
-.bar{height:8px;background:#e8eef5;border-radius:99px;overflow:hidden;margin:8px 0}
-.bar>i{display:block;height:100%;background:var(--acc);width:0}
-a.btn{display:inline-block;margin-top:6px;background:var(--acc);color:#fff;text-decoration:none;padding:9px 16px;border-radius:10px;font-size:14px}
-.note{font-size:13px;color:var(--muted)}
-.warnbox{background:#fff6df;border-left:4px solid #d97706;padding:10px 12px;border-radius:8px;font-size:13.5px}
-.foot{color:var(--muted);font-size:12.5px;text-align:center;margin-top:18px}
-</style><script>
+<meta name="theme-color" content="#1f4e79">
+<title>30 天冲刺 · 今日任务</title>
+<script>
 window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},svg:{fontCache:'global'}};
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<body><main>
-<h1>30 天冲刺打卡</h1>
-<p class="sub">目标总分 283 · 四科全部过国家线（单科 37 / 56）</p>
-
-<div class="card">
-  <div class="top">
-    <span class="badge" id="dLeft">—</span>
-    <span class="badge" id="dNow">—</span>
-    <span class="badge ok" id="dRate">—</span>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f2f5f9;--card:#fff;--ink:#15202e;--muted:#69738a;--line:#e3e9f0;--acc:#1f4e79;--acc2:#e8f1fa;--ok:#1a7f45;--warn:#b45309;--bad:#b91c1c;--r:14px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,"PingFang SC","Helvetica Neue",sans-serif;padding-bottom:76px}
+main{max-width:780px;margin:auto;padding:0 12px 20px}
+/* 顶部状态栏 */
+.hdr{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,#1f4e79,#2b6394);color:#fff;margin:0;padding:12px 14px 14px;border-radius:0 0 18px 18px;box-shadow:0 4px 14px rgba(31,78,121,.22)}
+.hdr .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.hdr h1{font-size:17px;margin:0;font-weight:600}
+.hdr .sub{font-size:12.5px;opacity:.85}
+.chips{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.16);border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:500}
+.chip.on{background:#fff;color:var(--acc)}
+.pbar{height:6px;background:rgba(255,255,255,.22);border-radius:99px;margin-top:10px;overflow:hidden}
+.pbar>i{display:block;height:100%;background:#8fe3a8;width:0;border-radius:99px;transition:width .25s}
+/* 卡片 */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;margin:10px 0}
+.card h2{font-size:14px;margin:0 0 8px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+/* 今日任务大按钮 */
+.tasks{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+.t{display:flex;align-items:center;gap:11px;width:100%;text-align:left;border:1px solid var(--line);background:#fbfcfe;border-radius:12px;padding:13px 13px;font:inherit;cursor:pointer;transition:background .12s,border-color .12s}
+.t:active{transform:scale(.995)}
+.t .box{flex:0 0 24px;width:24px;height:24px;border:2px solid #c6d2e0;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:#fff}
+.t .txt{flex:1;font-size:14.5px;line-height:1.45}
+.t .num{font-size:11.5px;color:var(--muted);display:block;margin-top:1px}
+.t.done{border-color:#bfe4cc;background:#f2fbf5}
+.t.done .box{background:var(--ok);border-color:var(--ok)}
+.t.done .txt{color:var(--muted);text-decoration:line-through}
+/* 普通按钮 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;background:var(--acc);color:#fff;padding:11px 16px;border-radius:11px;font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;text-decoration:none}
+.btn.ghost{background:var(--acc2);color:var(--acc)}
+.btn.line{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn.wide{width:100%}
+.btn:active{opacity:.9}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
+th,td{padding:9px 8px;text-align:left;border-bottom:1px solid var(--line);word-break:break-word}
+th{color:var(--muted);font-weight:600;font-size:12.5px}
+table.score th:nth-child(1),table.score td:nth-child(1){width:26%}
+table.score th:nth-child(2),table.score td:nth-child(2){width:20%}
+table.score th:nth-child(3),table.score td:nth-child(3){width:22%}
+table.fml th:nth-child(1),table.fml td:nth-child(1){width:32%}
+table.fml{margin-top:4px}
+table.fml td:last-child{overflow-x:auto}
+table.fml mjx-container{max-width:100%!important;overflow-x:auto;overflow-y:hidden}
+/* 折叠列表 */
+details{border:1px solid var(--line);border-radius:var(--r);background:var(--card);margin:10px 0;overflow:hidden}
+summary{padding:13px 14px;font-size:14px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"展开";font-size:12.5px;color:var(--acc);font-weight:500}
+details[open] summary::after{content:"收起"}
+.day{border-top:1px solid var(--line);padding:10px 14px}
+.day .dh{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;margin-bottom:6px}
+.day .dh b{font-size:14px}
+.day .cols{display:flex;flex-wrap:wrap;gap:5px}
+.dtask{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--muted)}
+.dtask.on{background:var(--acc2);border-color:#cfe0ef;color:var(--acc)}
+/* 底部导航 */
+nav.tab{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.97);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:6px 4px calc(6px + env(safe-area-inset-bottom));backdrop-filter:blur(10px)}
+nav.tab a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--muted);font-size:11.5px;padding:6px 0;border-radius:10px}
+nav.tab a b{font-size:19px;line-height:1;font-weight:400}
+nav.tab a.on{color:var(--acc)}
+nav.tab a.on b{color:var(--acc)}
+.note{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.warnbox{background:#fff7e6;border-left:4px solid #e0a030;padding:10px 12px;border-radius:9px;font-size:13px;line-height:1.6}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(8px);background:#15202e;color:#fff;padding:9px 16px;border-radius:999px;font-size:13.5px;opacity:0;transition:.2s;pointer-events:none;z-index:50;white-space:nowrap}
+.toast.on{opacity:.95;transform:translateX(-50%) translateY(0)}
+</style></head>
+<body>
+<header class="hdr" id="today">
+  <div class="row">
+    <h1 id="hDay">第 1 天 / 30</h1>
+    <span class="sub" id="hExam">距考试 —</span>
   </div>
-  <div class="bar"><i id="barAll"></i></div>
-  <div class="top" style="margin-top:8px">
-    <label class="note">开始日期 <input type="date" id="startDate"></label>
-    <label class="note">考试日期 <input type="date" id="examDate"></label>
+  <div class="chips">
+    <span class="chip on" id="hDone">今日 0/7</span>
+    <span class="chip" id="hTotal">总进度 0%</span>
+    <span class="chip" id="hWeek">第 1 周</span>
   </div>
-</div>
+  <div class="pbar"><i id="hBar"></i></div>
+</header>
 
-<div class="card">
-  <h2 style="font-size:16px;margin:0 0 8px">分数目标（四科全部要过国家线）</h2>
-  <table class="score">
-    <tr><th>科目</th><th>满分</th><th>国家线</th><th>目标</th></tr>
-    <tr><td>数学二</td><td>150</td><td>56</td><td><b>95</b></td></tr>
-    <tr><td>811 电路</td><td>150</td><td>56</td><td><b>88</b></td></tr>
-    <tr><td>英语</td><td>100</td><td>37</td><td><b>45</b></td></tr>
-    <tr><td>政治</td><td>100</td><td>37</td><td><b>55</b></td></tr>
-    <tr><td><b>合计</b></td><td>500</td><td><b>273</b></td><td><b>283</b></td></tr>
-  </table>
-  <div class="warnbox" style="margin-top:10px">
-    <b>单科线是硬门槛，四科都不能掉。</b>工科/电子信息近年国家线约 273 分、单科 37（满分 100 的科目）与 56（满分 150 的科目）。任何一科不过线，总分再高也进不了复试。<br>
-    最容易掉线的是英语：阅读每天 2 篇不能停；其次是数学，选填 80 分必须拿 55 以上。
+<main>
+  <div class="card">
+    <h2>今日任务 · 点一下即打卡</h2>
+    <div class="tasks" id="todayTasks"></div>
+    <div class="row2">
+      <button class="btn ghost" id="allDone">全部完成</button>
+      <button class="btn line" id="allClear">清空今天</button>
+    </div>
+    <p class="note" id="tip">本周主攻：—</p>
   </div>
-</div>
 
+  <div class="card">
+    <h2>本周该做的卷子</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div id="paperInfo" style="font-size:14px">—</div>
+      <a class="btn" href="papers.html">去交卷</a>
+    </div>
+  </div>
 
-<div class="card">
-  <h2 style="font-size:16px;margin:0 0 8px">周测与预测卷</h2>
-  <table class="fml">
-    <tr><th>时间</th><th>内容</th></tr>
-    <tr><td>第 1 周周日</td><td>第 1 周小测（20 题 / 100 分 / 90 分钟）</td></tr>
-    <tr><td>第 2 周周日</td><td>第 2 周小测</td></tr>
-    <tr><td>第 3 周周日</td><td>第 3 周小测</td></tr>
-    <tr><td>第 4 周周三</td><td><b>预测卷 A</b>（40 题 / 100 分 / 180 分钟，全真）</td></tr>
-    <tr><td>第 4 周周六</td><td><b>预测卷 B</b>（40 题 / 100 分 / 180 分钟，全真）</td></tr>
-  </table>
-  <p class="note">达标线：周测 70 分、预测卷 65 分。低于达标线，把下一周的时间从新题挪到错题上。</p>
-  <a class="btn" href="papers.html">开始周测 / 预测卷 →</a>
-</div>
+  <div class="card">
+    <h2>四科目标（全部要过国家线）</h2>
+    <table class="score">
+      <tr><th>科目</th><th>国家线</th><th>目标</th></tr>
+      <tr><td>数学二</td><td>56</td><td><b>95</b></td></tr>
+      <tr><td>811 电路</td><td>56</td><td><b>88</b></td></tr>
+      <tr><td>英语</td><td>37</td><td><b>45</b></td></tr>
+      <tr><td>政治</td><td>37</td><td><b>55</b></td></tr>
+    </table>
+    <div class="warnbox" style="margin-top:10px">任一单科不过线，总分再高也进不了复试。最容易掉链子的是英语：每天 2 篇阅读不能停。</div>
+    <div class="row2">
+      <a class="btn" href="index.html">刷题</a>
+      <a class="btn ghost" href="papers.html">周测 / 预测卷</a>
+    </div>
+  </div>
 
-<div class="card">
-  <h2 style="font-size:16px;margin:0 0 8px">每日保底（每天必做）</h2>
-  <div class="note">数学选填 15 题 · 数学大题 2 道 · 电路 12 题 · 英语阅读 2 篇 · 英语作文 3 句 · 政治 60 题 · 错因复盘 1 页</div>
-  <a class="btn" href="https://303234cjq.github.io/beikao-shuati/">打开刷题站 →</a>
-</div>
+  <div class="card" id="formulas">
+    <h2>公式速查（考前只看这页）</h2>
+    <h3 style="font-size:13px;color:var(--acc);margin:8px 0 2px">数学二</h3>
+    <table class="fml">
+      <tr><th>考点</th><th>公式</th></tr>
+      <tr><td>等价无穷小</td><td>$\sin x\sim x,\ \tan x\sim x,\ \ln(1+x)\sim x$</td></tr>
+      <tr><td></td><td>$1-\cos x\sim \dfrac{x^{2}}{2},\ (1+x)^{\alpha}-1\sim \alpha x$</td></tr>
+      <tr><td>泰勒（三项）</td><td>$\mathrm{e}^{x}=1+x+\dfrac{x^{2}}{2}+o(x^{2})$</td></tr>
+      <tr><td></td><td>$\ln(1+x)=x-\dfrac{x^{2}}{2}+o(x^{2})$</td></tr>
+      <tr><td>分部积分</td><td>$\displaystyle\int u\,\mathrm{d}v=uv-\int v\,\mathrm{d}u$</td></tr>
+      <tr><td>一阶线性</td><td>$y=\mathrm{e}^{-\int P\mathrm{d}x}\left(\int Q\,\mathrm{e}^{\int P\mathrm{d}x}\mathrm{d}x+C\right)$</td></tr>
+      <tr><td>旋转体体积</td><td>$V=\pi\displaystyle\int_{a}^{b}f^{2}(x)\,\mathrm{d}x$</td></tr>
+      <tr><td>特征值</td><td>$|\lambda E-A|=0,\ \sum\lambda_i=\operatorname{tr}A,\ \prod\lambda_i=|A|$</td></tr>
+    </table>
+    <h3 style="font-size:13px;color:var(--acc);margin:12px 0 2px">811 电路</h3>
+    <table class="fml">
+      <tr><th>考点</th><th>公式</th></tr>
+      <tr><td>节点电压法</td><td>$\mathbf{G}\,\mathbf{U}=\mathbf{I}_s$</td></tr>
+      <tr><td>戴维南</td><td>$P_{\max}=\dfrac{U_{\mathrm{oc}}^{2}}{4R_{\mathrm{eq}}}$</td></tr>
+      <tr><td>一阶三要素</td><td>$f(t)=f(\infty)+\left[f(0^{+})-f(\infty)\right]\mathrm{e}^{-t/\tau}$</td></tr>
+      <tr><td></td><td>$\tau=RC$ 或 $\tau=\dfrac{L}{R}$</td></tr>
+      <tr><td>功率</td><td>$P=UI\cos\varphi,\ Q=UI\sin\varphi,\ S=UI$</td></tr>
+      <tr><td>三相对称</td><td>$U_{L}=\sqrt{3}U_{P},\ P=\sqrt{3}U_{L}I_{L}\cos\varphi$</td></tr>
+      <tr><td>二端口级联</td><td>$\mathbf{T}=\mathbf{T}_1\mathbf{T}_2$</td></tr>
+    </table>
+  </div>
 
+  <details id="alldays">
+    <summary>查看全部 30 天</summary>
+    <div id="dayList"></div>
+  </details>
 
-<div class="card">
-  <h2 style="font-size:16px;margin:0 0 8px">公式速查（考前只看这一页）</h2>
-
-  <h3 style="font-size:14px;color:var(--acc);margin:10px 0 4px">数学二</h3>
-  <table class="fml">
-    <tr><th>考点</th><th>公式</th></tr>
-    <tr><td>等价无穷小</td><td>$\sin x\sim x,\ \tan x\sim x,\ \ln(1+x)\sim x$</td></tr>
-    <tr><td></td><td>$1-\cos x\sim \dfrac{x^{2}}{2},\ (1+x)^{\alpha}-1\sim \alpha x$</td></tr>
-    <tr><td>泰勒（常用三项）</td><td>$\mathrm{e}^{x}=1+x+\dfrac{x^{2}}{2}+o(x^{2})$，$\ln(1+x)=x-\dfrac{x^{2}}{2}+o(x^{2})$</td></tr>
-    <tr><td>分部积分</td><td>$\displaystyle\int u\,\mathrm{d}v=uv-\int v\,\mathrm{d}u$</td></tr>
-    <tr><td>一阶线性通解</td><td>$y=\mathrm{e}^{-\int P\mathrm{d}x}\left(\int Q\,\mathrm{e}^{\int P\mathrm{d}x}\mathrm{d}x+C\right)$</td></tr>
-    <tr><td>旋转体体积</td><td>$V=\pi\displaystyle\int_{a}^{b}f^{2}(x)\,\mathrm{d}x$</td></tr>
-    <tr><td>特征值</td><td>$|\lambda E-A|=0$，$\displaystyle\sum\lambda_i=\operatorname{tr}A$，$\prod\lambda_i=|A|$</td></tr>
-  </table>
-
-  <h3 style="font-size:14px;color:var(--acc);margin:14px 0 4px">811 电路</h3>
-  <table class="fml">
-    <tr><th>考点</th><th>公式</th></tr>
-    <tr><td>节点电压法</td><td>$\mathbf{G}\,\mathbf{U}=\mathbf{I}_s$（自导纳为对角元，互导纳取负）</td></tr>
-    <tr><td>戴维南 / 最大功率</td><td>$U_{\mathrm{oc}}$、$R_{\mathrm{eq}}$，$P_{\max}=\dfrac{U_{\mathrm{oc}}^{2}}{4R_{\mathrm{eq}}}$</td></tr>
-    <tr><td>一阶三要素</td><td>$f(t)=f(\infty)+\left[f(0^{+})-f(\infty)\right]\mathrm{e}^{-t/\tau}$</td></tr>
-    <tr><td></td><td>$\tau=RC$（RC 电路）或 $\tau=\dfrac{L}{R}$（RL 电路）</td></tr>
-    <tr><td>相量与功率</td><td>$P=UI\cos\varphi$，$Q=UI\sin\varphi$，$S=UI=\sqrt{P^{2}+Q^{2}}$</td></tr>
-    <tr><td>三相（对称 Y）</td><td>$U_{L}=\sqrt{3}\,U_{P}$，$P=\sqrt{3}\,U_{L}I_{L}\cos\varphi$</td></tr>
-    <tr><td>二端口级联</td><td>$\mathbf{T}=\mathbf{T}_1\mathbf{T}_2$（T 参数相乘）</td></tr>
-  </table>
-  <p class="note">公式由 MathJax 排版；若首次打开没渲染（离线或 CDN 不通），刷新一次即可。</p>
-</div>
-
-<div id="days"></div>
-<p class="foot">勾选状态保存在本机浏览器 · 换设备会丢失</p>
+  <div class="card">
+    <h2>设置</h2>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13.5px">
+      <label>开始 <input type="date" id="startDate" style="font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:9px"></label>
+      <label>考试 <input type="date" id="examDate" style="font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:9px"></label>
+      <button class="btn line" id="saveCfg">保存</button>
+    </div>
+    <p class="note">打卡记录保存在本机浏览器，换设备不会同步。</p>
+  </div>
 </main>
+
+<nav class="tab">
+  <a href="#today" class="on"><b>◎</b>今日</a>
+  <a href="papers.html"><b>▤</b>卷子</a>
+  <a href="#formulas"><b>∑</b>公式</a>
+  <a href="index.html"><b>✎</b>刷题</a>
+</nav>
+<div class="toast" id="toast"></div>
+
 <script>
 (function(){
-  var LS='study_plan_v1';
+  var LS='study_plan_v2';
   var cfg={start:'2026-11-21',exam:'2026-12-20',done:{}};
   try{Object.assign(cfg,JSON.parse(localStorage.getItem(LS)||'{}'));}catch(e){}
-  if(!cfg.done||typeof cfg.done!=='object')cfg.done={};
+  if(!cfg.done)cfg.done={};
 
-  var WEEKS=['极限/导数/一元积分 | 节点、网孔、戴维南','微分方程/定积分应用/二重积分 | 三要素、相量与功率','线代全科 | 三相、耦合、二端口','真题套卷 | 复频域与整卷'];
-  var EXTRA=[['数学：模块1/2/4/5','电路：模块1/2/3/4'],['数学：模块5/6/8','电路：模块9/5'],['数学：模块9（线代）','电路：模块7/6/12'],['数学：真题套卷','电路：模块10 + 整套真题']];
-  var TASKS=['数学选填 15 题（计时 20 分钟）','数学大题 2 道','电路 12 题','英语阅读 2 篇（18 分钟做题 + 精读）','英语作文 3 句 / 换词套写','政治 60 题','错因复盘 1 页（只写一句错因）'];
+  var WEEKS=[
+    {w:1,focus:'极限 / 导数 / 不定积分 / 定积分 ｜ 电路模型、等效变换、一般分析法、电路定理',paper:'第 1 周小测 · 极限导数 + 电路基础',mods:'数学 模块1/2/4/5 · 电路 模块1-4'},
+    {w:2,focus:'定积分应用 / 常微分方程 / 二重积分 ｜ 一阶动态电路、正弦稳态',paper:'第 2 周小测 · 微分方程积分应用 + 动态与正弦',mods:'数学 模块5/6/8/3 · 电路 模块9/5'},
+    {w:3,focus:'线性代数全科 ｜ 三相、耦合电感、二端口',paper:'第 3 周小测 · 线代为主 + 三相耦合二端口',mods:'数学 模块9/2/6 · 电路 模块7/6/12'},
+    {w:4,focus:'全科综合 + 真题套卷 ｜ 复频域与整卷',paper:'预测卷 A / B（全真 150 分钟）',mods:'数学 全部模块 · 电路 模块10 + 整套'}
+  ];
+  var TASKS=[
+    ['数学选填 15 题','计时 20 分钟'],
+    ['数学大题 2 道','先看模板再独立写'],
+    ['电路 12 题','按本周模块'],
+    ['英语阅读 2 篇','18 分钟做题 + 精读'],
+    ['英语作文 3 句','换词套写'],
+    ['政治 60 题','错题标红'],
+    ['错因复盘 1 页','只写一句错因']
+  ];
 
-  function fmt(d){function z(n){return n<10?'0'+n:''+n;}return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());}
-  function parse(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
-  function dayIndex(){var s=parse(cfg.start),n=new Date();s.setHours(0,0,0,0);n.setHours(0,0,0,0);return Math.floor((n-s)/86400000);}
+  var $=function(id){return document.getElementById(id);};
+  function z(n){return n<10?'0'+n:''+n;}
+  function key(d,i){return d+'-'+i;}
+  function save(){try{localStorage.setItem(LS,JSON.stringify(cfg));}catch(e){}}
+  function toast(msg){var t=$('toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on');},1400);}
+  function parseDate(s){var p=(s||'').split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function dayIdx(){var s=parseDate(cfg.start),n=new Date();s.setHours(0,0,0,0);n.setHours(0,0,0,0);return Math.round((n-s)/86400000);}
+  function weekOf(i){return Math.min(3,Math.floor(i/7));}
 
-  function render(){
-    var start=parse(cfg.start), exam=parse(cfg.exam);
-    var left=Math.max(0,Math.ceil((exam-new Date())/86400000));
-    var idx=dayIndex();
-    var total=0, doneAll=0;
-    document.getElementById('dLeft').textContent='距考试 '+left+' 天';
-    document.getElementById('dNow').textContent= idx<0? '计划未开始' : (idx<30? '第 '+(idx+1)+' 天' : '计划已结束');
-    var box=document.getElementById('days'); box.innerHTML='';
-    for(var i=0;i<30;i++){
-      var week=Math.min(3,Math.floor(i/7));
-      var d=new Date(start.getTime()+i*86400000);
-      var el=document.createElement('div');
-      el.className='day'+(i===idx?' today':'');
-      var h='<h3>第 '+(i+1)+' 天 <span class="badge">第 '+(week+1)+' 周</span></h3>'+
-            '<div class="meta">'+fmt(d)+' · '+WEEKS[week]+'</div>'+
-            '<div class="note" style="margin-bottom:6px">本周题目：'+EXTRA[week][0]+' · '+EXTRA[week][1]+'</div>';
-      for(var j=0;j<TASKS.length;j++){
-        var key=i+'-'+j, checked=!!cfg.done[key];
-        total++; if(checked)doneAll++;
-        h+='<label class="task"><input type="checkbox" data-k="'+key+'"'+(checked?' checked':'')+'>'+
-           '<span class="'+(checked?'done':'')+'">'+TASKS[j]+'</span></label>';
-      }
-      el.innerHTML=h;
-      box.appendChild(el);
-      if(i===idx)el.scrollIntoView({block:'center'});
-    }
-    var rate=total? Math.round(doneAll/total*100):0;
-    document.getElementById('dRate').textContent='总完成 '+rate+'%';
-    document.getElementById('barAll').style.width=rate+'%';
+  var idx=dayIdx();
+  var curDay=Math.min(29,Math.max(0,idx));
+
+  function renderToday(){
+    var box=$('todayTasks'); box.innerHTML='';
+    TASKS.forEach(function(t,i){
+      var on=!!cfg.done[key(curDay,i)];
+      var b=document.createElement('button');
+      b.className='t'+(on?' done':'');
+      b.setAttribute('data-i',i);
+      b.innerHTML='<span class="box">'+(on?'✓':'')+'</span><span class="txt">'+t[0]+'<span class="num">'+t[1]+'</span></span>';
+      box.appendChild(b);
+    });
+    var done=0; for(var i=0;i<TASKS.length;i++) if(cfg.done[key(curDay,i)])done++;
+    $('hDone').textContent='今日 '+done+'/'+TASKS.length;
+    var total=0; for(var k in cfg.done) if(cfg.done[k])total++;
+    $('hTotal').textContent='总进度 '+Math.round(total/(30*TASKS.length)*100)+'%';
+    $('hBar').style.width=Math.round(done/TASKS.length*100)+'%';
+    var wk=weekOf(curDay);
+    $('hWeek').textContent='第 '+(wk+1)+' 周';
+    $('tip').textContent='本周主攻：'+WEEKS[wk].focus;
+    $('paperInfo').innerHTML='<b>'+WEEKS[wk].paper+'</b><div class="note">'+WEEKS[wk].mods+'</div>';
   }
 
-  document.getElementById('startDate').value=cfg.start;
-  document.getElementById('examDate').value=cfg.exam;
-  document.getElementById('startDate').addEventListener('change',function(){cfg.start=this.value;save();render();});
-  document.getElementById('examDate').addEventListener('change',function(){cfg.exam=this.value;save();render();});
-  document.getElementById('days').addEventListener('change',function(ev){
-    var t=ev.target; if(t.type!=='checkbox')return;
-    var k=t.getAttribute('data-k');
-    if(t.checked)cfg.done[k]=1; else delete cfg.done[k];
-    var span=t.parentNode.querySelector('span');
-    if(span)span.className=t.checked?'done':'';
-    save();
-    var total=document.querySelectorAll('#days input[type=checkbox]').length;
-    var done=document.querySelectorAll('#days input[type=checkbox]:checked').length;
-    var rate=total?Math.round(done/total*100):0;
-    document.getElementById('dRate').textContent='总完成 '+rate+'%';
-    document.getElementById('barAll').style.width=rate+'%';
+  function renderDays(){
+    var box=$('dayList'); box.innerHTML='';
+    var start=parseDate(cfg.start);
+    for(var d=0;d<30;d++){
+      var dt=new Date(start.getTime()+d*86400000);
+      var done=0, chips='';
+      TASKS.forEach(function(t,i){
+        var on=!!cfg.done[key(d,i)]; if(on)done++;
+        chips+='<span class="dtask'+(on?' on':'')+'">'+t[0].replace(/ \d+.*/,'')+'</span>';
+      });
+      var el=document.createElement('div');
+      el.className='day';
+      el.innerHTML='<div class="dh"><b>第 '+(d+1)+' 天 · '+dt.getFullYear()+'-'+z(dt.getMonth()+1)+'-'+z(dt.getDate())+'</b><span class="note">'+done+'/'+TASKS.length+'</span></div><div class="cols">'+chips+'</div>';
+      box.appendChild(el);
+    }
+  }
+
+  function renderHeader(){
+    var exam=parseDate(cfg.exam), left=Math.ceil((exam-new Date())/86400000);
+    $('hExam').textContent='距考试 '+Math.max(0,left)+' 天';
+    if(idx<0){ $('hDay').textContent='第 1 天 / 30'; }
+    else if(idx<30){ $('hDay').textContent='第 '+(idx+1)+' 天 / 30'; }
+    else { $('hDay').textContent='计划已结束'; }
+  }
+
+  $('todayTasks').addEventListener('click',function(e){
+    var b=e.target.closest('.t'); if(!b)return;
+    var i=+b.getAttribute('data-i'), k=key(curDay,i);
+    if(cfg.done[k]) delete cfg.done[k]; else cfg.done[k]=1;
+    save(); renderToday();
   });
-  function save(){try{localStorage.setItem(LS,JSON.stringify(cfg));}catch(e){}}
-  render();
+  $('allDone').onclick=function(){
+    TASKS.forEach(function(_,i){cfg.done[key(curDay,i)]=1;});
+    save(); renderToday(); toast('今天全部完成 ✓');
+  };
+  $('allClear').onclick=function(){
+    TASKS.forEach(function(_,i){delete cfg.done[key(curDay,i)];});
+    save(); renderToday(); toast('已清空今天');
+  };
+  $('saveCfg').onclick=function(){save();renderHeader();renderToday();renderDays();toast('已保存');};
+  $('startDate').value=cfg.start; $('examDate').value=cfg.exam;
+  $('startDate').onchange=function(){cfg.start=this.value;};
+  $('examDate').onchange=function(){cfg.exam=this.value;};
+
+  renderHeader(); renderToday(); renderDays();
+  if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise();
 })();
 </script></body></html>
