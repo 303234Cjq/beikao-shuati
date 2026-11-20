@@ -1,0 +1,145 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>30 天冲刺打卡 · 目标 287</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f3f6fa;--card:#fff;--ink:#182437;--muted:#6b7683;--line:#e2e8f0;--acc:#1f4e79;--ok:#1f7a3d;--warn:#b45309}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC",system-ui,sans-serif}
+main{max-width:860px;margin:auto;padding:18px 14px 90px}
+h1{font-size:22px;margin:6px 0 4px}
+.sub{color:var(--muted);font-size:13px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+.top{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.badge{background:#eef4fa;color:var(--acc);border:1px solid #dbe6f2;border-radius:999px;padding:2px 10px;font-size:12.5px}
+.badge.ok{background:#e8f5ec;color:var(--ok);border-color:#cfe8d8}
+.badge.warn{background:#fdf3e7;color:var(--warn);border-color:#f3ddc0}
+.grid{display:grid;gap:10px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);word-break:break-word}
+table{table-layout:fixed}
+th:nth-child(1),td:nth-child(1){width:22%}
+th:nth-child(2),td:nth-child(2){width:15%}
+th:nth-child(3),td:nth-child(3){width:13%}
+th{color:var(--muted);font-weight:600}
+input[type=date]{font:inherit;padding:4px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.day{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--card)}
+.day.today{border-color:var(--acc);box-shadow:0 0 0 2px #dfeaf5 inset}
+.day.done{opacity:.72}
+.day h3{margin:0 0 2px;font-size:16px}
+.day .meta{color:var(--muted);font-size:12.5px;margin-bottom:8px}
+label.task{display:flex;gap:8px;align-items:flex-start;padding:5px 0;font-size:14px;cursor:pointer}
+label.task input{margin-top:5px;width:17px;height:17px;accent-color:var(--acc)}
+label.task span.done{text-decoration:line-through;color:var(--muted)}
+.bar{height:8px;background:#e8eef5;border-radius:99px;overflow:hidden;margin:8px 0}
+.bar>i{display:block;height:100%;background:var(--acc);width:0}
+a.btn{display:inline-block;margin-top:6px;background:var(--acc);color:#fff;text-decoration:none;padding:9px 16px;border-radius:10px;font-size:14px}
+.note{font-size:13px;color:var(--muted)}
+.warnbox{background:#fff6df;border-left:4px solid #d97706;padding:10px 12px;border-radius:8px;font-size:13.5px}
+.foot{color:var(--muted);font-size:12.5px;text-align:center;margin-top:18px}
+</style></head>
+<body><main>
+<h1>30 天冲刺打卡</h1>
+<p class="sub">目标总分 287 · 英语必须过国家线（单科 ≥ 42）</p>
+
+<div class="card">
+  <div class="top">
+    <span class="badge" id="dLeft">—</span>
+    <span class="badge" id="dNow">—</span>
+    <span class="badge ok" id="dRate">—</span>
+  </div>
+  <div class="bar"><i id="barAll"></i></div>
+  <div class="top" style="margin-top:8px">
+    <label class="note">开始日期 <input type="date" id="startDate"></label>
+    <label class="note">考试日期 <input type="date" id="examDate"></label>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:16px;margin:0 0 8px">分数目标</h2>
+  <table>
+    <tr><th>科目</th><th>满分</th><th>目标</th><th>硬指标</th></tr>
+    <tr><td>数学二</td><td>150</td><td>100</td><td>选填 80 分拿 55+</td></tr>
+    <tr><td>811 电路</td><td>150</td><td>90</td><td>8 类模板题各拿 10 分</td></tr>
+    <tr><td>英语</td><td>100</td><td><b>42</b></td><td><b>必须 ≥ 国家线</b>，阅读 20 + 作文 17</td></tr>
+    <tr><td>政治</td><td>100</td><td>55</td><td>选择 30 + 大题 25</td></tr>
+    <tr><td><b>合计</b></td><td>500</td><td><b>287</b></td><td></td></tr>
+  </table>
+  <div class="warnbox" style="margin-top:10px">英语单科线是硬门槛：总分再高，英语不过线也进不了复试。每天 2 篇阅读不能停，作文模板必须背到能默写。</div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:16px;margin:0 0 8px">每日保底（每天必做）</h2>
+  <div class="note">数学选填 15 题 · 数学大题 2 道 · 电路 12 题 · 英语阅读 2 篇 · 英语作文 3 句 · 政治 60 题 · 错因复盘 1 页</div>
+  <a class="btn" href="https://303234cjq.github.io/beikao-shuati/">打开刷题站 →</a>
+</div>
+
+<div id="days"></div>
+<p class="foot">勾选状态保存在本机浏览器 · 换设备会丢失</p>
+</main>
+<script>
+(function(){
+  var LS='study_plan_v1';
+  var cfg={start:'2026-11-21',exam:'2026-12-20',done:{}};
+  try{Object.assign(cfg,JSON.parse(localStorage.getItem(LS)||'{}'));}catch(e){}
+  if(!cfg.done||typeof cfg.done!=='object')cfg.done={};
+
+  var WEEKS=['极限/导数/一元积分 | 节点、网孔、戴维南','微分方程/定积分应用/二重积分 | 三要素、相量与功率','线代全科 | 三相、耦合、二端口','真题套卷 | 复频域与整卷'];
+  var EXTRA=[['数学：模块1/2/4/5','电路：模块1/2/3/4'],['数学：模块5/6/8','电路：模块9/5'],['数学：模块9（线代）','电路：模块7/6/12'],['数学：真题套卷','电路：模块10 + 整套真题']];
+  var TASKS=['数学选填 15 题（计时 20 分钟）','数学大题 2 道','电路 12 题','英语阅读 2 篇（18 分钟做题 + 精读）','英语作文 3 句 / 换词套写','政治 60 题','错因复盘 1 页（只写一句错因）'];
+
+  function fmt(d){function z(n){return n<10?'0'+n:''+n;}return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());}
+  function parse(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function dayIndex(){var s=parse(cfg.start),n=new Date();s.setHours(0,0,0,0);n.setHours(0,0,0,0);return Math.floor((n-s)/86400000);}
+
+  function render(){
+    var start=parse(cfg.start), exam=parse(cfg.exam);
+    var left=Math.max(0,Math.ceil((exam-new Date())/86400000));
+    var idx=dayIndex();
+    var total=0, doneAll=0;
+    document.getElementById('dLeft').textContent='距考试 '+left+' 天';
+    document.getElementById('dNow').textContent= idx<0? '计划未开始' : (idx<30? '第 '+(idx+1)+' 天' : '计划已结束');
+    var box=document.getElementById('days'); box.innerHTML='';
+    for(var i=0;i<30;i++){
+      var week=Math.min(3,Math.floor(i/7));
+      var d=new Date(start.getTime()+i*86400000);
+      var el=document.createElement('div');
+      el.className='day'+(i===idx?' today':'');
+      var h='<h3>第 '+(i+1)+' 天 <span class="badge">第 '+(week+1)+' 周</span></h3>'+
+            '<div class="meta">'+fmt(d)+' · '+WEEKS[week]+'</div>'+
+            '<div class="note" style="margin-bottom:6px">本周题目：'+EXTRA[week][0]+' · '+EXTRA[week][1]+'</div>';
+      for(var j=0;j<TASKS.length;j++){
+        var key=i+'-'+j, checked=!!cfg.done[key];
+        total++; if(checked)doneAll++;
+        h+='<label class="task"><input type="checkbox" data-k="'+key+'"'+(checked?' checked':'')+'>'+
+           '<span class="'+(checked?'done':'')+'">'+TASKS[j]+'</span></label>';
+      }
+      el.innerHTML=h;
+      box.appendChild(el);
+      if(i===idx)el.scrollIntoView({block:'center'});
+    }
+    var rate=total? Math.round(doneAll/total*100):0;
+    document.getElementById('dRate').textContent='总完成 '+rate+'%';
+    document.getElementById('barAll').style.width=rate+'%';
+  }
+
+  document.getElementById('startDate').value=cfg.start;
+  document.getElementById('examDate').value=cfg.exam;
+  document.getElementById('startDate').addEventListener('change',function(){cfg.start=this.value;save();render();});
+  document.getElementById('examDate').addEventListener('change',function(){cfg.exam=this.value;save();render();});
+  document.getElementById('days').addEventListener('change',function(ev){
+    var t=ev.target; if(t.type!=='checkbox')return;
+    var k=t.getAttribute('data-k');
+    if(t.checked)cfg.done[k]=1; else delete cfg.done[k];
+    var span=t.parentNode.querySelector('span');
+    if(span)span.className=t.checked?'done':'';
+    save();
+    var total=document.querySelectorAll('#days input[type=checkbox]').length;
+    var done=document.querySelectorAll('#days input[type=checkbox]:checked').length;
+    var rate=total?Math.round(done/total*100):0;
+    document.getElementById('dRate').textContent='总完成 '+rate+'%';
+    document.getElementById('barAll').style.width=rate+'%';
+  });
+  function save(){try{localStorage.setItem(LS,JSON.stringify(cfg));}catch(e){}}
+  render();
+})();
+</script></body></html>
