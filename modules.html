@@ -1,0 +1,92 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f4e79">
+<title>模块必会清单</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f2f5f9;--card:#fff;--ink:#15202e;--muted:#69738a;--line:#e3e9f0;--acc:#1f4e79;--acc2:#e8f1fa;--ok:#1a7f45;--r:14px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,"PingFang SC",sans-serif;padding-bottom:84px}
+.hdr{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,#1f4e79,#2b6394);color:#fff;padding:12px 14px 13px;border-radius:0 0 18px 18px}
+.hdr h1{font-size:18px;margin:0 0 2px;font-weight:600}
+.hdr .sub{font-size:12.5px;opacity:.88}
+.chips{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.16);border:0;border-radius:999px;padding:5px 12px;font:inherit;font-size:12.5px;color:#fff;cursor:pointer}
+.chip.on{background:#fff;color:var(--acc);font-weight:600}
+main{max-width:780px;margin:auto;padding:10px 12px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;margin:10px 0}
+.card h2{font-size:15px;margin:0 0 2px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card h2 span{font-size:11.5px;color:var(--muted);font-weight:400}
+.bar{height:5px;background:#e9eef5;border-radius:99px;margin:8px 0 6px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--ok);width:0}
+.item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.8px}
+.item:last-child{border-bottom:0}
+.item .ic{flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:#e8f5ec;color:var(--ok);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;font-weight:700}
+.item .ic.no{background:#fdecec;color:#b91c1c}
+.item b{font-weight:600}
+.item .d{color:var(--muted);font-size:12.5px;display:block;margin-top:1px}
+.item .c{margin-left:auto;font-size:11.5px;color:var(--acc);background:var(--acc2);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.note{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+nav.tab{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.98);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+nav.tab a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--muted);font-size:11.5px;padding:6px 0}
+nav.tab a b{font-size:19px;line-height:1;font-weight:400}
+nav.tab a.on{color:var(--acc)}
+a.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;text-decoration:none;padding:10px 16px;border-radius:11px;font-size:14px;margin-top:8px}
+</style></head><body>
+<header class="hdr">
+  <h1>模块必会清单</h1>
+  <div class="sub" id="sum">—</div>
+  <div class="chips">
+    <button class="chip on" data-f="all">全部</button>
+    <button class="chip" data-f="math">数学二</button>
+    <button class="chip" data-f="ee">811 电路</button>
+  </div>
+</header>
+<main>
+  <div class="card">
+    <div style="font-size:13.5px">每个模块的「必会点」= 考试里一定会考、做不出来就丢分的东西。括号里的数字是题库中对应题目数量，点「去练」到刷题站选同一模块即可。</div>
+    <a class="btn" href="index.html">打开刷题站</a>
+  </div>
+  <div id="list"></div>
+  <p class="note">清单按考研大纲整理；811 电路各校侧重点不同，拿到目标院校真题后可按真题权重调整练习顺序。</p>
+</main>
+<nav class="tab">
+  <a href="plan.html"><b>◎</b>今日</a>
+  <a href="papers.html"><b>▤</b>卷子</a>
+  <a href="modules.html" class="on"><b>☰</b>模块</a>
+  <a href="index.html"><b>✎</b>刷题</a>
+</nav>
+<script>
+(function(){
+  var data=[], filter='all';
+  var $=function(id){return document.getElementById(id);};
+  function render(){
+    var list=$('list'); list.innerHTML='';
+    var mods=data.filter(function(m){return filter==='all'||m.subject===filter;});
+    var totMust=0, covMust=0;
+    mods.forEach(function(m){
+      var box=document.createElement('div'); box.className='card';
+      var el=m.must.length, got=m.must.filter(function(x){return x.count>0;}).length;
+      totMust+=el; covMust+=got;
+      var h='<h2>'+m.module+'<span>'+m.total+' 题 · 必会 '+el+' 个</span></h2><div class="bar"><i style="width:'+Math.round(got/el*100)+'%"></i></div>';
+      m.must.forEach(function(it){
+        var ok=it.count>0;
+        h+='<div class="item"><span class="ic'+(ok?'':' no')+'">'+(ok?'✓':'!')+'</span>'+
+           '<div style="flex:1"><b>'+it.title+'</b><span class="d">'+it.desc+'</span></div>'+
+           '<span class="c">'+(ok?it.count+' 题':'缺')+'</span></div>';
+      });
+      box.innerHTML=h; list.appendChild(box);
+    });
+    $('sum').textContent=mods.length+' 个模块 · 必会点 '+totMust+' 个 · 已覆盖 '+covMust+' / '+totMust;
+  }
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.onclick=function(){
+      document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});
+      c.classList.add('on'); filter=c.getAttribute('data-f'); render();
+      window.scrollTo({top:0,behavior:'smooth'});
+    };
+  });
+  fetch('modules.json?t='+Date.now()).then(function(r){return r.json();}).then(function(d){
+    data=d; render();
+  }).catch(function(){ $('list').innerHTML='<div class="card">modules.json 加载失败，请刷新。</div>'; });
+})();
+</script></body></html>

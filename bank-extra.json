@@ -1,5 +1,5 @@
 {
-  "rev": "2026-11-16-sol-c",
+  "rev": "2026-11-20-modules",
   "_说明": "题库增量的格式说明见 README；questions 里加题、removed 里写要下架的 id，改 rev 后保存即生效。",
   "questions": [
     {
@@ -2531,6 +2531,106 @@
       ],
       "reviewStatus": "unverified",
       "contentRevision": "ext"
+    },
+    {
+      "id": "extra-math-101",
+      "subject": "math",
+      "module": "04-integral-indefinite",
+      "moduleName": "模块4 不定积分",
+      "type": "选择题",
+      "point": "三角代换（$x=a\\sin t$）",
+      "stem": "计算 $\\displaystyle\\int\\sqrt{4-x^{2}}\\,\\mathrm{d}x=$（　　）",
+      "opts": [
+        "A. $2\\arcsin\\dfrac{x}{2}+\\dfrac{x}{2}\\sqrt{4-x^{2}}+C$",
+        "B. $\\arcsin\\dfrac{x}{2}+\\dfrac{x}{2}\\sqrt{4-x^{2}}+C$",
+        "C. $2\\arcsin\\dfrac{x}{2}-\\dfrac{x}{2}\\sqrt{4-x^{2}}+C$",
+        "D. $\\dfrac{x}{2}\\sqrt{4-x^{2}}+C$"
+      ],
+      "answer": "A",
+      "hint": "含 $\\sqrt{a^{2}-x^{2}}$ 就令 $x=a\\sin t$：本题 $x=2\\sin t$，$\\mathrm{d}x=2\\cos t\\,\\mathrm{d}t$，根式化为 $2\\cos t$。",
+      "solution": [
+        "令 $x=2\\sin t$，$\\mathrm{d}x=2\\cos t\\,\\mathrm{d}t$，且 $\\sqrt{4-x^{2}}=2\\cos t$。",
+        "原式 $=\\displaystyle\\int 4\\cos^{2}t\\,\\mathrm{d}t=2\\int(1+\\cos 2t)\\mathrm{d}t=2t+\\sin 2t+C$。",
+        "回代：$t=\\arcsin\\dfrac{x}{2}$，$\\sin 2t=2\\sin t\\cos t=2\\cdot\\dfrac{x}{2}\\cdot\\dfrac{\\sqrt{4-x^{2}}}{2}=\\dfrac{x\\sqrt{4-x^{2}}}{2}$。",
+        "故原式 $=2\\arcsin\\dfrac{x}{2}+\\dfrac{x}{2}\\sqrt{4-x^{2}}+C$，选 A。"
+      ],
+      "reviewStatus": "self",
+      "source": "generated"
+    },
+    {
+      "id": "extra-math-102",
+      "subject": "math",
+      "module": "07-multivar",
+      "moduleName": "模块7 多元函数微分学",
+      "type": "选择题",
+      "point": "方向导数与梯度",
+      "stem": "设 $f(x,y)=x^{2}+y^{2}$，则它在点 $(1,2)$ 处沿方向 $\\vec{l}=(3,4)$ 的方向导数为（　　）",
+      "opts": [
+        "A. $22$",
+        "B. $4$",
+        "C. $\\dfrac{22}{5}$",
+        "D. $\\dfrac{26}{5}$"
+      ],
+      "answer": "C",
+      "hint": "方向导数 $=\\nabla f\\cdot\\vec{e}_l$，先把方向向量 $(3,4)$ 单位化再用内积。",
+      "solution": [
+        "梯度：$\\nabla f=(2x,2y)$，在 $(1,2)$ 处 $\\nabla f=(2,4)$。",
+        "方向单位化：$|\\vec{l}|=5$，$\\vec{e}_l=\\left(\\dfrac{3}{5},\\dfrac{4}{5}\\right)$。",
+        "方向导数 $=(2,4)\\cdot\\left(\\dfrac{3}{5},\\dfrac{4}{5}\\right)=\\dfrac{6}{5}+\\dfrac{16}{5}=\\dfrac{22}{5}$，选 C。",
+        "注意：$\\vec{l}$ 不是单位向量时不能直接内积，必须先除模长。"
+      ],
+      "reviewStatus": "self",
+      "source": "generated"
+    },
+    {
+      "id": "extra-math-103",
+      "subject": "math",
+      "module": "08-double-integral",
+      "moduleName": "模块8 二重积分",
+      "type": "选择题",
+      "point": "分块积分与对称性",
+      "stem": "设 $D=\\{(x,y):|x|+|y|\\le 1\\}$，则 $\\displaystyle\\iint_{D}|x|\\,\\mathrm{d}x\\mathrm{d}y=$（　　）",
+      "opts": [
+        "A. $\\dfrac{1}{3}$",
+        "B. $\\dfrac{2}{3}$",
+        "C. $1$",
+        "D. $\\dfrac{4}{3}$"
+      ],
+      "answer": "B",
+      "hint": "区域关于两坐标轴都对称，$|x|$ 是偶函数，可先算第一象限再乘 4 —— 这就是「分块」。",
+      "solution": [
+        "$D$ 与 $|x|$ 都关于两坐标轴对称，故原式 $=4\\displaystyle\\iint_{D_1}x\\,\\mathrm{d}x\\mathrm{d}y$，$D_1$ 为第一象限部分。",
+        "$D_1:\\ x\\ge0,\\ y\\ge0,\\ x+y\\le1$，化累次积分 $\\displaystyle\\int_0^1 x\\,\\mathrm{d}x\\int_0^{1-x}\\mathrm{d}y=\\int_0^1 x(1-x)\\mathrm{d}x$。",
+        "$=\\left[\\dfrac{x^{2}}{2}-\\dfrac{x^{3}}{3}\\right]_0^1=\\dfrac{1}{6}$。",
+        "故原式 $=4\\times\\dfrac{1}{6}=\\dfrac{2}{3}$，选 B。"
+      ],
+      "reviewStatus": "self",
+      "source": "generated"
+    },
+    {
+      "id": "extra-ee-101",
+      "subject": "ee",
+      "module": "07-three-phase",
+      "moduleName": "模块7 三相电路",
+      "type": "选择题",
+      "point": "单相等效（对称三相取一相）",
+      "stem": "对称三相负载作星形连接，接在线电压 $U_{L}=380\\,\\text{V}$ 的电源上，每相阻抗 $Z=10\\angle 30^{\\circ}\\,\\Omega$。则线电流为（　　）",
+      "opts": [
+        "A. $22\\,\\text{A}$",
+        "B. $38\\,\\text{A}$",
+        "C. $12.7\\,\\text{A}$",
+        "D. $63.5\\,\\text{A}$"
+      ],
+      "answer": "A",
+      "hint": "对称三相只取一相：Y 接先把线电压换成相电压 $U_P=U_L/\\sqrt3$，再用 $I=U_P/|Z|$。",
+      "solution": [
+        "Y 接：$U_{P}=\\dfrac{U_{L}}{\\sqrt{3}}=\\dfrac{380}{\\sqrt{3}}\\approx220\\,\\text{V}$。",
+        "取一相等效：$I_{P}=\\dfrac{U_{P}}{|Z|}=\\dfrac{220}{10}=22\\,\\text{A}$。",
+        "星形连接中线电流等于相电流，故 $I_{L}=22\\,\\text{A}$，选 A。",
+        "若误用线电压除以阻抗会得 38 A（选项 B），这是最常见的错法。"
+      ],
+      "reviewStatus": "self",
+      "source": "generated"
     }
   ],
   "removed": [],
