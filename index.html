@@ -1167,12 +1167,12 @@ function makePaper(useFilter){
    api('/api/paper?id='+r.id).then(showPaper);});}
 function showPaper(p){var h='<div class="card paper"><h2>'+(p.subject==='ee'?'811 电路':'数学二')+
  ' 预测卷</h2><div class="sub">生成时间 '+p.created+'　总分 '+p.total+' 分　'+(p.note?('抽题：'+p.note+'　'):'')+
- '<button class="btn o noprint" onclick="window.print()">打印/存PDF</button></div>';
+ '<button class="btn o noprint" onclick="var b=document.getElementById('paperbox');b.classList.toggle('show-ans');this.textContent=b.classList.contains('show-ans')?'隐藏答案':'显示答案'">显示答案</button> <button class="btn o noprint" onclick="window.print()">打印/存PDF</button></div>';
  p.parts.forEach(function(pt,pi){h+='<h4>'+pt.title+'（每题 '+pt.per+' 分）</h4>';
   pt.questions.forEach(function(q,i){h+='<div class="q"><div class="qh">'+(i+1)+'. '+q.stem+'</div>'+
    (q.opts||[]).map(function(o){return '<p style="margin:2px 0 2px 12px">'+esc(o)+'</p>';}).join('')+
    '<div class="ansline">答案：'+esc(q.answer||'见解析')+'</div></div>';});});
- h+='<div class="hint noprint">提示：这份卷子是按各章权重随机抽题生成的<b>预测练习卷</b>，不是真题。</div></div>';
+ h+='<div class="hint noprint">提示：这份卷子是按各章权重随机抽题生成的<b>预测练习卷</b>，不是真题。答案默认隐藏，做完再点「显示答案」对答案。</div></div>';
  $('paperbox').innerHTML=h; TSel('#paperbox');}
 function doImport(kind){var d={subject:S.subject};
  if(kind==='url')d.url=$('imp-url').value.trim();else d.text=$('imp-text').value;
@@ -1255,6 +1255,49 @@ function regen(){var n=+$('gen-n').value||8;
    loadMeta();loadBankMeta();});}
 function toggleNight(){document.body.classList.toggle('night');savePreferences();}
 function cycleFont(){var c=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--reader-font'))||16;c=c>=20?16:c+2;document.documentElement.style.setProperty('--reader-font',c+'px');savePreferences();showToast('阅读字号 '+c+'px');}
+
+function __urlWait(matchFn, cb){
+  var n=0;
+  (function tick(){
+    var ok=matchFn();
+    if(ok){ cb(ok); return; }
+    if(++n>30) return;
+    setTimeout(tick,200);
+  })();
+}
+function applyUrlParams(){
+  if(window.__urlApplied) return;
+  var u;
+  try{ u=new URLSearchParams(location.search); }catch(e){ return; }
+  var subj=u.get('subject'), mod=u.get('module'), rand=u.get('rand');
+  if(!subj && !mod) return;
+  if(subj==='math'||subj==='ee'){
+    var tab=document.querySelector('.tab[data-subject="'+subj+'"]');
+    if(tab && !tab.classList.contains('on')){ try{ tab.click(); }catch(e){} }
+  }
+  var modeEl=document.getElementById('f-mode');
+  if(modeEl && rand==='1'){ modeEl.value='rand'; try{localStorage.setItem('study_mode_pref','rand');}catch(e){} }
+  if(!mod){ window.__urlApplied=true; return; }
+  __urlWait(function(){
+    var sel=document.getElementById('f-module');
+    if(!sel || sel.options.length<2) return null;
+    var want=mod.trim(), val='';
+    [].forEach.call(sel.options,function(o){ if(!val && (o.value===want || o.textContent.trim()===want)) val=o.value; });
+    if(!val)[].forEach.call(sel.options,function(o){ if(!val && o.textContent.indexOf(want)>=0) val=o.value; });
+    return val? {sel:sel,val:val} : null;
+  }, function(hit){
+    hit.sel.value=hit.val;
+    hit.sel.dispatchEvent(new Event('change',{bubbles:true}));
+    window.__urlApplied=true;
+    if(typeof loadPractice==='function'){ try{ loadPractice(); }catch(e){} }
+  });
+}
+(function(){
+  function kick(){ try{ applyUrlParams(); }catch(e){} }
+  if(document.readyState!=='loading') setTimeout(kick,400);
+  else document.addEventListener('DOMContentLoaded',function(){ setTimeout(kick,400); });
+  setTimeout(kick,1500); setTimeout(kick,3500);
+})();
 window.__studyBoot=loadMeta().then(function(){return refillLists().then(loadPractice);});loadBankMeta();
 document.addEventListener('keydown',function(e){
   var tag=(e.target.tagName||'').toLowerCase();

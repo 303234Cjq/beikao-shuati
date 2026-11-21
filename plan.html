@@ -34,6 +34,7 @@ main{max-width:780px;margin:auto;padding:0 12px 20px}
 .t.done{border-color:#bfe4cc;background:#f2fbf5}
 .t.done .box{background:var(--ok);border-color:var(--ok)}
 .t.done .txt{color:var(--muted);text-decoration:line-through}
+.t .go{margin-left:auto;font-size:12px;color:var(--acc);background:var(--acc2);border:0;border-radius:999px;padding:5px 11px;text-decoration:none;white-space:nowrap;font-weight:600}
 /* 普通按钮 */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;background:var(--acc);color:#fff;padding:11px 16px;border-radius:11px;font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;text-decoration:none}
 .btn.ghost{background:var(--acc2);color:var(--acc)}
@@ -199,6 +200,12 @@ nav.tab a.on b{color:var(--acc)}
     {w:3,focus:'线性代数全科 ｜ 三相、耦合电感、二端口',paper:'第 3 周小测 · 线代为主 + 三相耦合二端口',mods:'数学 模块9/2/6 · 电路 模块7/6/12'},
     {w:4,focus:'全科综合 + 真题套卷 ｜ 复频域与整卷',paper:'预测卷 A / B（全真 150 分钟）',mods:'数学 全部模块 · 电路 模块10 + 整套'}
   ];
+  var WEEKMODS=[
+    {math:'模块1 极限与连续', ee:'模块3 一般分析法'},
+    {math:'模块6 常微分方程', ee:'模块9 一阶动态电路'},
+    {math:'模块9 线性代数', ee:'模块7 三相电路'},
+    {math:'模块8 二重积分', ee:'模块10 复频域分析'}
+  ];
   var TASKS=[
     ['数学选填 15 题','计时 20 分钟'],
     ['数学大题 2 道','先看模板再独立写'],
@@ -229,10 +236,17 @@ nav.tab a.on b{color:var(--acc)}
     var box=$('todayTasks'); box.innerHTML='';
     TASKS.forEach(function(t,i){
       var on=!!cfg.done[key(curDay,i)];
-      var b=document.createElement('button');
+      var b=document.createElement('div');
       b.className='t'+(on?' done':'');
       b.setAttribute('data-i',i);
-      b.innerHTML='<span class="box">'+(on?'✓':'')+'</span><span class="txt">'+t[0]+'<span class="num">'+t[1]+'</span></span>';
+      b.setAttribute('role','checkbox');
+      b.setAttribute('aria-checked',on?'true':'false');
+      var wm=WEEKMODS[weekOf(curDay)];
+      var link='';
+      if(i===0||i===1){ link='index.html?subject=math&module='+encodeURIComponent(wm.math)+'&rand=1'; }
+      else if(i===2){ link='index.html?subject=ee&module='+encodeURIComponent(wm.ee)+'&rand=1'; }
+      b.innerHTML='<span class="box">'+(on?'✓':'')+'</span><span class="txt">'+t[0]+'<span class="num">'+t[1]+'</span></span>'+
+        (link?'<a class="go" href="'+link+'" onclick="event.stopPropagation()">去练</a>':'');
       box.appendChild(b);
     });
     var done=0; for(var i=0;i<TASKS.length;i++) if(cfg.done[key(curDay,i)])done++;
