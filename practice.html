@@ -1,0 +1,181 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f4e79">
+<title>模块刷题</title>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},svg:{fontCache:'global'}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f2f5f9;--card:#fff;--ink:#15202e;--muted:#69738a;--line:#e3e9f0;--acc:#1f4e79;--acc2:#e8f1fa;--ok:#1a7f45;--bad:#b91c1c;--warn:#b45309}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,"PingFang SC",sans-serif;padding-bottom:86px}
+.hdr{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:10px 14px}
+.hdr .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.hdr b{font-size:14.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{font-size:12px;color:var(--muted)}
+.bar{height:4px;background:#e9eef5;border-radius:99px;margin-top:7px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+main{max-width:780px;margin:auto;padding:10px 12px 16px}
+.qh{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap;margin:4px 0 8px}
+.tag{background:var(--acc2);color:var(--acc);border-radius:999px;padding:2px 10px;font-size:11.5px}
+.tag.ee{background:#fdf1e7;color:var(--warn)}
+.stem{font-size:15.5px;line-height:1.75;margin-bottom:12px;overflow-wrap:anywhere}
+.stem mjx-container{max-width:100%!important;overflow-x:auto}
+label.opt{display:flex;gap:11px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:12px;margin:9px 0;cursor:pointer;font-size:14.5px;background:#fbfcfe;overflow-wrap:anywhere}
+label.opt .k{flex:0 0 26px;width:26px;height:26px;border:1.5px solid #c6d2e0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--muted);background:#fff}
+label.opt.right{border-color:#9fd8b3;background:#f2fbf5}
+label.opt.right .k{background:var(--ok);border-color:var(--ok);color:#fff}
+label.opt.wrong{border-color:#efb9b9;background:#fdf4f4}
+label.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:#fff}
+.panel{background:#f7fafc;border-left:3px solid var(--acc);border-radius:9px;padding:10px 12px;margin:10px 0;font-size:13.8px;overflow-wrap:anywhere}
+.panel.hint{border-left-color:#c98a00;background:#fffaf0}
+.panel p{margin:5px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;background:var(--acc);color:#fff;padding:11px 15px;border-radius:11px;font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;text-decoration:none}
+.btn.ghost{background:var(--acc2);color:var(--acc)}
+.btn.line{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.wide{width:100%}
+.actbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.98);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin:10px 0}
+a{color:var(--acc)}
+</style></head><body>
+<div class="hdr">
+  <div class="row">
+    <div style="min-width:0"><b id="hTitle">模块刷题</b><div class="meta" id="hSub">加载中…</div></div>
+    <div style="text-align:right"><div class="meta">今日已练</div><b id="hToday" style="font-size:17px">0</b></div>
+  </div>
+  <div class="bar"><i id="hBar"></i></div>
+</div>
+<main id="main"></main>
+<div class="actbar">
+  <button class="btn line" id="prevBtn">上一题</button>
+  <button class="btn ghost" id="hintBtn">只看提示</button>
+  <button class="btn" id="nextBtn">下一题</button>
+</div>
+<script>
+(function(){
+  var LS='practice_v1', S={list:[],idx:0,revealed:{},answered:{},mod:'',today:{}};
+  var $=function(id){return document.getElementById(id);};
+  function z(n){return n<10?'0'+n:''+n;}
+  function todayKey(){var d=new Date();return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());}
+  function save(){try{localStorage.setItem(LS,JSON.stringify({today:S.today}));}catch(e){}}
+  try{var st=JSON.parse(localStorage.getItem(LS)||'{}');if(st.today)S.today=st.today;}catch(e){}
+  if(!S.today[todayKey()])S.today[todayKey()]={n:0};
+  function bumpToday(){S.today[todayKey()].n=(S.today[todayKey()].n||0)+1;save();$('hToday').textContent=S.today[todayKey()].n;}
+
+  function qs(k){var m=new RegExp('[?&]'+k+'=([^&]*)').exec(location.search);return m?decodeURIComponent(m[1].replace(/\+/g,' ')):'';}
+  var wantMod=qs('module'), wantN=parseInt(qs('n')||'0',10);
+
+  function cleanOpt(o){return String(o).replace(/^\s*[A-DＡ-Ｄ]\s*[\.、．:：\)]\s*/,'');}
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+
+  fetch('practice/index.json?t='+Date.now()).then(function(r){return r.json();}).then(function(idx){
+    if(!wantMod){ renderPicker(idx); return; }
+    var hit=idx.filter(function(x){return x.module===wantMod||x.module.indexOf(wantMod)>=0;})[0];
+    if(!hit){ renderPicker(idx,'没找到模块：'+wantMod); return; }
+    S.mod=hit.module;
+    fetch(hit.file+'?t='+Date.now()).then(function(r){return r.json();}).then(function(rows){
+      rows.sort(function(){return Math.random()-0.5;});
+      S.list=wantN?rows.slice(0,wantN):rows;
+      $('hTitle').textContent=hit.module;
+      $('hSub').textContent=(hit.subject==='ee'?'811 电路':'数学二')+' · '+S.list.length+' 题（随机顺序）';
+      $('hToday').textContent=(S.today[todayKey()]||{}).n||0;
+      renderQ();
+    });
+  }).catch(function(e){
+    $('main').innerHTML='<div class="card">题库加载失败：'+esc(e.message)+'</div>';
+  });
+
+  function renderPicker(idx,msg){
+    var h='<div class="card"><b>选一个模块开始</b>'+(msg?'<div class="meta" style="color:#b91c1c">'+esc(msg)+'</div>':'')+'</div>';
+    h+='<div class="card">';
+    idx.forEach(function(x){
+      h+='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)">'+
+         '<span>'+esc(x.module)+' <span class="meta">'+x.n+' 题</span></span>'+
+         '<a class="btn ghost" style="padding:6px 12px;font-size:13px" href="practice.html?module='+encodeURIComponent(x.module)+'&n=15">练 15 题</a></div>';
+    });
+    h+='</div>';
+    $('main').innerHTML=h;
+    $('hSub').textContent='共 '+idx.length+' 个模块';
+    document.querySelector('.actbar').style.display='none';
+  }
+
+  function renderQ(){
+    var q=S.list[S.idx]; if(!q)return;
+    var tag=q.type==='选择题'?'':'';
+    var h='<div class="qh"><span class="tag">'+esc(S.mod)+'</span><span>第 '+(S.idx+1)+' / '+S.list.length+' 题</span>'+(q.point?'<span>'+esc(String(q.point).slice(0,24))+'</span>':'')+'</div>';
+    h+='<div class="stem">'+q.stem+'</div>';
+    if(q.opts&&q.opts.length){
+      h+='<div id="opts">';
+      q.opts.forEach(function(o,i){
+        var L='ABCD'[i];
+        h+='<label class="opt" data-l="'+L+'"><span class="k">'+L+'</span><span>'+cleanOpt(o)+'</span></label>';
+      });
+      h+='</div>';
+    }
+    $('main').innerHTML=h;
+    $('hBar').style.width=Math.round((S.idx+1)/S.list.length*100)+'%';
+    $('prevBtn').disabled=S.idx===0;
+    $('nextBtn').textContent=S.idx===S.list.length-1?'回到第一题':'下一题';
+    $('hintBtn').textContent=S.revealed[S.idx]==='hint'?'收起提示':'只看提示';
+    if(S.revealed[S.idx]==='hint')showHint();
+    if(S.revealed[S.idx]==='sol')showSol();
+    bindOpts();
+    if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise();
+    window.scrollTo(0,0);
+  }
+
+  function bindOpts(){
+    var box=$('opts'); if(!box)return;
+    [].forEach.call(box.querySelectorAll('label.opt'),function(lb){
+      lb.onclick=function(){
+        var q=S.list[S.idx], picked=lb.getAttribute('data-l');
+        var ans=String(q.answer||'').trim();
+        if(ans.length===1&&'ABCD'.indexOf(ans)>=0){
+          [].forEach.call(box.querySelectorAll('label.opt'),function(x){
+            if(x.getAttribute('data-l')===ans)x.classList.add('right');
+            else if(x.getAttribute('data-l')===picked)x.classList.add('wrong');
+          });
+          if(!S.answered[S.idx]){S.answered[S.idx]=true; bumpToday();}
+          if(picked!==ans)showSol();
+          else showHintOnly();
+        } else { showSol(); }
+      };
+    });
+  }
+  function showHintOnly(){ if(S.revealed[S.idx]!=='sol'){S.revealed[S.idx]='hint';} }
+  function showHint(){
+    var q=S.list[S.idx], h=$('hintPanel');
+    if(h){h.remove();return;}
+    var d=document.createElement('div'); d.className='panel hint'; d.id='hintPanel';
+    d.innerHTML='<b>提示</b><p>'+(q.hint?q.hint:'这道题没有单独提示，直接看解析。')+'</p>';
+    $('main').appendChild(d);
+    S.revealed[S.idx]='hint';
+    $('hintBtn').textContent='收起提示';
+    if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise();
+  }
+  function showSol(){
+    var q=S.list[S.idx], old=$('solPanel'); if(old)old.remove();
+    var d=document.createElement('div'); d.className='panel'; d.id='solPanel';
+    var ans=String(q.answer||'');
+    var body=(q.sol||[]).map(function(s){return '<p>'+s+'</p>';}).join('')||'<p>（本题暂无解析）</p>';
+    d.innerHTML='<b>答案：'+esc(ans.length>60?ans.slice(0,60)+'…':ans)+'</b>'+body;
+    $('main').appendChild(d);
+    S.revealed[S.idx]='sol';
+    $('hintBtn').textContent='只看提示';
+    if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise();
+  }
+
+  $('prevBtn').onclick=function(){ if(S.idx>0){S.idx--;renderQ();} };
+  $('nextBtn').onclick=function(){
+    if(S.idx<S.list.length-1){S.idx++;}
+    else {S.idx=0;}
+    renderQ();
+  };
+  $('hintBtn').onclick=function(){
+    var cur=S.revealed[S.idx];
+    if(cur==='hint'||cur==='sol'){ var p=$('hintPanel')||$('solPanel'); if(p)p.remove(); delete S.revealed[S.idx]; $('hintBtn').textContent='只看提示'; }
+    else showHint();
+  };
+})();
+</script></body></html>

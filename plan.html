@@ -243,8 +243,8 @@ nav.tab a.on b{color:var(--acc)}
       b.setAttribute('aria-checked',on?'true':'false');
       var wm=WEEKMODS[weekOf(curDay)];
       var link='';
-      if(i===0||i===1){ link='index.html?subject=math&module='+encodeURIComponent(wm.math)+'&rand=1'; }
-      else if(i===2){ link='index.html?subject=ee&module='+encodeURIComponent(wm.ee)+'&rand=1'; }
+      if(i===0||i===1){ link='practice.html?n=15&module='+encodeURIComponent(wm.math); }
+      else if(i===2){ link='practice.html?n=12&module='+encodeURIComponent(wm.ee); }
       b.innerHTML='<span class="box">'+(on?'✓':'')+'</span><span class="txt">'+t[0]+'<span class="num">'+t[1]+'</span></span>'+
         (link?'<a class="go" href="'+link+'" onclick="event.stopPropagation()">去练</a>':'');
       box.appendChild(b);
