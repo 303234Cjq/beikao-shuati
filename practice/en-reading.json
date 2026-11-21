@@ -1,0 +1,470 @@
+[
+ {
+  "id": "en-r1",
+  "title": "Passage 1",
+  "topic": "教育",
+  "passage": "For decades the school timetable was organized around a single question: what will be on the examination? Teachers taught towards the test, parents judged schools by published results, and pupils learned early that a mark was the truest description of their ability.\n\nA growing number of schools have begun to dismantle that arrangement. In place of a final rank they issue a portfolio: samples of work, a record of projects, and a short account, written by the pupil, of what proved difficult and how it was overcome. The intention is to capture the process of learning rather than one frozen moment of it.\n\nThe reasoning is attractive; the practice is demanding. A portfolio has to be read, and reading takes time. One teacher may spend an hour on a single file, while an admissions officer facing thousands of applications has minutes. Confronted with that imbalance, institutions tend to retreat to the one measure that can be compared at speed. The portfolio is then reduced to a supporting document, and the ranking it was meant to replace returns through the back door.\n\nNone of this makes the reform worthless. Portfolios can reveal qualities that a score cannot, and pupils who are never asked to explain their own work rarely learn to. But a change in assessment is not a change in selection, and reformers who ignore the difference should not be surprised when their new instrument is used to measure the old thing.",
+  "questions": [
+   {
+    "n": 1,
+    "stem": "According to the first paragraph, the school timetable was chiefly organized around ___",
+    "opts": [
+     "A. what would appear in examinations",
+     "B. parents' complaints about teachers",
+     "C. the number of teachers available",
+     "D. pupils' personal interests"
+    ],
+    "answer": "A",
+    "locate": "For decades the school timetable was organized around a single question: what will be on the examination?",
+    "why": "首段第一句即点明课表围绕\"考试考什么\"这一单一问题安排，organized around a single question 与题干 chiefly organized around 对应；what will be on the examination 与 A 项 what would appear in examinations 属同义替换（be on the exam = appear in the exam）。",
+    "whyNot": "D 原文未提学生兴趣，反而说学生很早就相信分数最能说明能力；B 原文只说家长\"用公布的成绩评判学校\"，这是课表的结果而非依据；C 教师数量全文未提及。"
+   },
+   {
+    "n": 2,
+    "stem": "The phrase \"dismantle that arrangement\" (Paragraph 2) most probably means ___",
+    "opts": [
+     "A. explain it to parents",
+     "B. defend it more firmly",
+     "C. take it apart piece by piece",
+     "D. extend it to other schools"
+    ],
+    "answer": "C",
+    "locate": "A growing number of schools have begun to dismantle that arrangement.",
+    "why": "dismantle 本义为\"拆卸、拆除\"，此处宾语是\"以考试为中心的旧安排\"；紧接着的 In place of a final rank they issue a portfolio 说明旧制度正被逐步废止，故 C 项 take it apart piece by piece 保留了\"逐件拆解\"的核心义。",
+    "whyNot": "B 与下文\"用档案袋取代排名\"方向相反；D 原文说的是越来越多学校加入改革，并非把旧安排推广出去；A 与学校实际动作 issue a portfolio 不符。"
+   },
+   {
+    "n": 3,
+    "stem": "Portfolios may fail to replace rankings mainly because admissions officers ___",
+    "opts": [
+     "A. prefer work that is longer",
+     "B. have to compare large numbers of applications quickly",
+     "C. are trained only to mark examinations",
+     "D. distrust pupils' own written accounts"
+    ],
+    "answer": "B",
+    "locate": "One teacher may spend an hour on a single file, while an admissions officer facing thousands of applications has minutes.",
+    "why": "第三段以\"教师一小时\"与\"招生官面对成千上万份申请只有几分钟\"作对比，随后 retreat to the one measure that can be compared at speed 点明原因是时间压力，需要能快速比较的指标；B 项 have to compare large numbers of applications quickly 正是 compared at speed 的同义改写。",
+    "whyNot": "D 原文把问题归于阅读时间不足，而非不信任学生自述；A 全文没有\"偏好更长材料\"的比较；C are trained only to mark 属无中生有，原文归因于时间而非训练。"
+   },
+   {
+    "n": 4,
+    "stem": "The author's attitude towards the portfolio reform can best be described as ___",
+    "opts": [
+     "A. complete indifference",
+     "B. open hostility",
+     "C. unreserved enthusiasm",
+     "D. sympathetic yet clear-eyed"
+    ],
+    "answer": "D",
+    "locate": "None of this makes the reform worthless.",
+    "why": "作者一面肯定 Portfolios can reveal qualities that a score cannot，一面指出 a change in assessment is not a change in selection，既认同改革初衷又看清其现实局限，故为 sympathetic yet clear-eyed（同情而清醒）。",
+    "whyNot": "C 忽略了第三、四段对时间成本与选拔机制的保留；A 作者通篇分析利弊并给出建议，绝非漠不关心；B 与 None of this makes the reform worthless 直接矛盾。"
+   },
+   {
+    "n": 5,
+    "stem": "Which of the following best states the main idea of the passage?",
+    "opts": [
+     "A. Portfolios cost too much to be worth trying.",
+     "B. An assessment reform may be quietly absorbed by the selection system it challenges.",
+     "C. Pupils write better when they are not ranked.",
+     "D. Marks should be abolished without delay."
+    ],
+    "answer": "B",
+    "locate": "But a change in assessment is not a change in selection, and reformers who ignore the difference should not be surprised when their new instrument is used to measure the old thing.",
+    "why": "全文脉络为\"旧制—改革—受阻—结论\"，末段这句是主旨句：评价方式的改变不等于选拔方式的改变，新工具最终会被旧体系用来衡量旧东西，B 项正是其概括。",
+    "whyNot": "D 与末段「a change in assessment is not a change in selection」相悖——作者并不认为改评价方式就能改选拔；A 只是第三段提到的成本细节，且作者明言改革并非 worthless；C 的「不排名就写得更好」原文没有这一比较，属无关推断。"
+   }
+  ]
+ },
+ {
+  "id": "en-r2",
+  "title": "Passage 2",
+  "topic": "人工智能与就业",
+  "passage": "Every wave of automation has produced the same forecast, and every wave has produced the same disappointment: the machines arrive, the occupations survive, and the work inside them quietly changes. This time, we are told, the machines will not stop at the factory gate.\n\nThe forecast is not so much wrong as badly aimed. Artificial intelligence rarely replaces an occupation outright; it replaces tasks within one. An assistant who once spent her mornings searching archives may now spend them checking a system's summaries — the same job title, a different job.\n\nThe distinction matters because occupations are bundles of tasks rather than single skills. The tasks that yield most easily are repetitive, well documented and judged by a clear standard. Those that resist involve negotiation, physical dexterity in unpredictable surroundings, or responsibility for a decision that somebody must be answerable for. A machine may draft the letter; it cannot be blamed for sending it.\n\nThe policy consequence is easily missed. If the unit of change is the task, the useful question is not how many jobs will vanish but which workers can move, and how quickly. Training that teaches a particular tool dates within a year or two; training that builds the capacity to learn the next one does not. Firms that treat automation as an excuse to stop investing in their staff usually discover that the savings are brief and the loss of know-how is not.",
+  "questions": [
+   {
+    "n": 1,
+    "stem": "The author suggests that earlier waves of automation ___",
+    "opts": [
+     "A. were confined to factory work",
+     "B. were predicted more accurately than the present wave",
+     "C. eliminated most occupations",
+     "D. changed what people did inside their jobs"
+    ],
+    "answer": "D",
+    "locate": "the machines arrive, the occupations survive, and the work inside them quietly changes.",
+    "why": "首段这一句三层递进：机器来了、职业仍在、职业内部的工作悄然改变。D 项 changed what people did inside their jobs 与 the work inside them quietly changes 同义，且 occupations survive 也支持\"职业未被消灭\"。",
+    "whyNot": "C 与 occupations survive 直接冲突；A 原文 will not stop at the factory gate 是比喻，说这一轮不止于工厂，并非指过去只限工厂；B the same disappointment 说明过去预测同样落空，而非更准确。"
+   },
+   {
+    "n": 2,
+    "stem": "The comment that the forecast is \"badly aimed\" (Paragraph 2) suggests that it ___",
+    "opts": [
+     "A. is deliberately dishonest",
+     "B. is directed at the wrong target",
+     "C. relies on invented figures",
+     "D. is too pessimistic"
+    ],
+    "answer": "B",
+    "locate": "The forecast is not so much wrong as badly aimed.",
+    "why": "not so much...as... 意为\"与其说错，不如说瞄错了目标\"；下文解释 AI rarely replaces an occupation outright; it replaces tasks within one，即预测把矛头对准\"职业\"而非\"任务\"，B 项 directed at the wrong target 正是 badly aimed 的同义替换。",
+    "whyNot": "C 全文未涉及数据造假；D 该预测称机器将取代一切，本身偏悲观，但这并非作者使用 badly aimed 的批评点；A not so much wrong as 是方法论上的纠正，不是指责其存心说谎。"
+   },
+   {
+    "n": 3,
+    "stem": "Which of the following tasks is least likely to be automated, according to the passage?",
+    "opts": [
+     "A. answering for a contested decision",
+     "B. sorting records by a fixed rule",
+     "C. summarising a long document",
+     "D. drafting a standard letter"
+    ],
+    "answer": "A",
+    "locate": "Those that resist involve negotiation, physical dexterity in unpredictable surroundings, or responsibility for a decision that somebody must be answerable for.",
+    "why": "第三段列出三类\"抗自动化\"的任务，其中 responsibility for a decision that somebody must be answerable for 与 A 项 answering for a contested decision 对应（answer for = be answerable for），这类责任无法交给机器。",
+    "whyNot": "C 对应第二段 checking a system's summaries，已是系统承担的工作；D 与第三段“a machine may draft the letter”一句直接冲突，属最易被替代的一类；B 属 repetitive...judged by a clear standard 的任务，最易自动化。"
+   },
+   {
+    "n": 4,
+    "stem": "The author's attitude towards firms that cut training budgets is ___",
+    "opts": [
+     "A. sympathetic",
+     "B. neutral",
+     "C. critical",
+     "D. amused"
+    ],
+    "answer": "C",
+    "locate": "Firms that treat automation as an excuse to stop investing in their staff usually discover that the savings are brief and the loss of know-how is not.",
+    "why": "excuse 一词带明显贬义，且作者判断节省是短暂的、技术诀窍的损失却是长久的，语气为批评，C 项 critical 与之吻合。",
+    "whyNot": "A 与 excuse 的贬义相悖；B 作者给出明确判断（usually discover...），并非中立陈述；D 末段讨论的是严肃的政策后果，没有戏谑意味。"
+   },
+   {
+    "n": 5,
+    "stem": "Which of the following would be the best title for the passage?",
+    "opts": [
+     "A. Why Machines Cannot Write",
+     "B. The Hidden Cost of Retraining",
+     "C. The End of Work",
+     "D. Tasks, Not Jobs: How Automation Really Bites"
+    ],
+    "answer": "D",
+    "locate": "Artificial intelligence rarely replaces an occupation outright; it replaces tasks within one.",
+    "why": "全文以\"分析单位是任务而非职业\"为轴心，并据此推出培训与投资建议，D 项既点出核心概念 tasks 又概括了论证方向。",
+    "whyNot": "C 与 occupations survive 相反，且过于耸动；A 只对应第四段 draft the letter 一个例子，以偏概全；B 仅涉及末段培训一句，无法覆盖全文。"
+   }
+  ]
+ },
+ {
+  "id": "en-r3",
+  "title": "Passage 3",
+  "topic": "环境保护",
+  "passage": "Few words in conservation are as seductive, or as slippery, as \"rewilding\". In its simplest form the idea is to step back: fill in the drainage ditches, take down the fences, bring back a missing species, and let the land find its own way.\n\nPart of the appeal is moral. Much conventional conservation resembles gardening on a large scale — a habitat held in a chosen state, often at great expense, because that state happens to be the one we remember. Rewilding concedes that memory is an unreliable guide. What we call natural is frequently a photograph taken at the moment we began to pay attention.\n\nYet stepping back is rarely simple. Land left alone does not revert to the landscape of a century ago; it becomes whatever present conditions permit. Where the great grazers have gone, scrub closes over open grassland; where a river has been straightened, it may not meander again by itself. Several rewilding projects have therefore found themselves intervening extensively in order to be less interventionist.\n\nThe paradox is no argument for abandoning the idea, but it should temper the language used to sell it. Restoration is a practice, not a return. It requires choices — which species, which point in time, whose memory to trust — and those choices are human ones, made with imperfect knowledge and at somebody's expense. A project that admits this is more likely to be trusted, and more likely to last, than one that presents itself as nature simply being allowed to happen.",
+  "questions": [
+   {
+    "n": 1,
+    "stem": "Conventional conservation is compared to gardening because it ___",
+    "opts": [
+     "A. refuses to remove fences",
+     "B. imports plants from abroad",
+     "C. keeps a habitat in a chosen state at considerable cost",
+     "D. depends on unpaid volunteers"
+    ],
+    "answer": "C",
+    "locate": "Much conventional conservation resembles gardening on a large scale — a habitat held in a chosen state, often at great expense, because that state happens to be the one we remember.",
+    "why": "破折号后的解释即答案所在：held in a chosen state 与 often at great expense，C 项 chosen state + at considerable cost 逐词对应，说明传统保护像园艺一样要人为维持并付出高昂代价。",
+    "whyNot": "B 原文未提\"从国外引进植物\"；D 未提志愿者；A 与第一段 take down the fences 相反，那是 rewilding 的做法而非传统保护的做法。"
+   },
+   {
+    "n": 2,
+    "stem": "The word \"slippery\" (Paragraph 1) most nearly means ___",
+    "opts": [
+     "A. morally questionable",
+     "B. easily forgotten",
+     "C. dangerous to apply",
+     "D. hard to pin down in meaning"
+    ],
+    "answer": "D",
+    "locate": "Few words in conservation are as seductive, or as slippery, as \"rewilding\".",
+    "why": "slippery 与 seductive 并列修饰 rewilding 这个词；下文用 In its simplest form the idea is... 及 Yet stepping back is rarely simple 反复显示该概念界定不清、理解不一，故 slippery 指语义\"滑溜\"、难以把握。",
+    "whyNot": "C 原文讨论的是概念模糊而非实践危险；A 作者明确说 The appeal is partly moral，并非道德指责；B \"易被遗忘\"与上下文无关，该词强调的是含义不稳定。"
+   },
+   {
+    "n": 3,
+    "stem": "The examples of scrub and of a straightened river are used to show that ___",
+    "opts": [
+     "A. nature always recovers its earlier form",
+     "B. land left alone may change in ways that call for further management",
+     "C. grazers should never be reintroduced",
+     "D. rivers cannot be restored at all"
+    ],
+    "answer": "B",
+    "locate": "Where the great grazers have gone, scrub closes over open grassland; where a river has been straightened, it may not meander again by itself.",
+    "why": "两个例子说明\"放任不管\"的结果不是旧日景观，而是当下条件允许的样子；紧接着 found themselves intervening extensively in order to be less interventionist 点明仍需人工介入，B 项正是这一逻辑的概括。",
+    "whyNot": "A 与 does not revert to the landscape of a century ago 相反；C 原文只说大型食草动物消失后灌木侵入，并未反对重新引入；D cannot be restored at all 过于绝对，原文是\"不会自行蜿蜒\"。"
+   },
+   {
+    "n": 4,
+    "stem": "The author's attitude towards the way rewilding is often promoted is ___",
+    "opts": [
+     "A. critical of its rhetoric while sympathetic to the idea",
+     "B. total rejection",
+     "C. indifference",
+     "D. wholehearted approval"
+    ],
+    "answer": "A",
+    "locate": "The paradox is no argument for abandoning the idea, but it should temper the language used to sell it.",
+    "why": "该句同时给出两面：不因悖论而放弃理念（sympathetic to the idea），但应收敛推销时的措辞（temper the language used to sell it），A 项准确复现这一\"理念可取而宣传需谨慎\"的立场。",
+    "whyNot": "D 忽略了 temper the language 的批评；B 与 no argument for abandoning the idea 矛盾；C 作者通篇评价该理念的论证与表述，并非漠然。"
+   },
+   {
+    "n": 5,
+    "stem": "Which of the following best summarizes the passage?",
+    "opts": [
+     "A. Rivers and grasslands should be engineered.",
+     "B. Rewilding is an impossible ideal.",
+     "C. Rewilding is worthwhile, but it is a series of human choices rather than a simple retreat.",
+     "D. Conservationists cannot agree on how to raise funds."
+    ],
+    "answer": "C",
+    "locate": "Restoration is a practice, not a return.",
+    "why": "末段这句收束全文：修复是一种实践而非\"回到过去\"，需要选择物种、时点与所信的记忆，而这些选择都是人的选择；C 项 worthwhile + human choices rather than a simple retreat 与之对应。",
+    "whyNot": "B 与 no argument for abandoning the idea 冲突；D 资金问题只在第二段 at great expense 一笔带过，不是主旨；A 原文批评的是过度干预的悖论，并未主张把河流草地工程化。"
+   }
+  ]
+ },
+ {
+  "id": "en-r4",
+  "title": "Passage 4",
+  "topic": "公共卫生",
+  "passage": "A screening test appears to be an unqualified good: find disease early, treat it sooner, suffer less. The intuition is powerful, and in some cases sound. But it rests on an assumption that is frequently false — that a condition discovered early would have followed the same course had it been discovered late.\n\nScreening does not only find the illnesses that would have harmed; it also finds those that would never have caused trouble at all. The patient is treated, sometimes at real cost to body and peace of mind, and afterwards counted as a survivor. The programme looks effective, and the arithmetic behind that appearance is an illusion.\n\nThere is a second difficulty, which concerns what a result actually means. A test described as highly accurate sounds reassuring until one asks: accurate at what? Where a condition is rare, even a good test will produce more false alarms than true ones, and each false alarm carries its own consequences.\n\nNone of this argues against screening as such. It argues for a more modest and more honest defence of it. The case for a programme should not be that it detects disease, but that those who pass through it are better off than they would otherwise have been — a claim that can only be tested by following people for years, and one that some programmes would struggle to support.",
+  "questions": [
+   {
+    "n": 1,
+    "stem": "The appeal of screening rests on the assumption that ___",
+    "opts": [
+     "A. early treatment is always cheaper",
+     "B. a condition found early would have taken the same course if found later",
+     "C. tests are never wrong",
+     "D. patients would rather not know"
+    ],
+    "answer": "B",
+    "locate": "But it rests on an assumption that is frequently false — that a condition discovered early would have followed the same course had it been discovered late.",
+    "why": "首段末句以破折号明确给出这一假设的内容：早发现的病若晚发现，病程本会一样；B 项是原句条件句的同义改写（had it been discovered late = if found later；followed the same course = taken the same course）。",
+    "whyNot": "A 费用比较全文未涉及；C 与后文\"假阳性多于真阳性\"的论述矛盾；D 患者意愿原文未讨论。"
+   },
+   {
+    "n": 2,
+    "stem": "The statement that \"the arithmetic behind that appearance is an illusion\" means that ___",
+    "opts": [
+     "A. the apparent success comes from counting patients who were never at risk",
+     "B. the programme costs more than it returns",
+     "C. no statistics are collected",
+     "D. the figures have been deliberately falsified"
+    ],
+    "answer": "A",
+    "locate": "The patient is treated, sometimes at real cost to body and peace of mind, and afterwards counted as a survivor.",
+    "why": "前一句说明筛查也找出\"永不会致病\"的病例，这些人在接受治疗后被记为 survivor，于是存活数字好看、实际获益被夸大——illusion 指的是统计口径造成的假象，A 项点明\"把本无风险者计入成果\"。",
+    "whyNot": "D 原文用 illusion（错觉）而非造假，作者批评的是推理而非诚信；B 讨论的是效果而非成本收益；C 与\"有统计但口径有问题\"的判断相反。"
+   },
+   {
+    "n": 3,
+    "stem": "It can be inferred that a test described as \"highly accurate\" may still ___",
+    "opts": [
+     "A. be unavailable in most places",
+     "B. harm the laboratory staff",
+     "C. be too expensive for hospitals",
+     "D. produce more false alarms than true findings when the condition is rare"
+    ],
+    "answer": "D",
+    "locate": "Where a condition is rare, even a good test will produce more false alarms than true ones, and each false alarm carries its own consequences.",
+    "why": "第三段把\"准确率\"转向\"准确于什么\"，并指出在患病率低时，即便是好测试也会假阳性多于真阳性；D 项 produce more false alarms than true findings 与 produce more false alarms than true ones 几乎逐字对应。",
+    "whyNot": "C、A、B 均属无中生有，该段只讨论检测结果的概率含义，未涉及价格、可及性或实验室人员。"
+   },
+   {
+    "n": 4,
+    "stem": "The author's attitude towards screening programmes is best described as ___",
+    "opts": [
+     "A. confident that every programme saves lives",
+     "B. opposed to screening in every form",
+     "C. supportive provided their benefits are honestly demonstrated",
+     "D. indifferent to their results"
+    ],
+    "answer": "C",
+    "locate": "None of this argues against screening as such. It argues for a more modest and more honest defence of it.",
+    "why": "argues for a more modest and more honest defence 表明作者不反对筛查本身，而是要求以\"受检者是否真的更好\"来诚实论证，C 项 supportive provided... honestly demonstrated 与之吻合。",
+    "whyNot": "B 与 None of this argues against screening as such 矛盾；D 作者花大量篇幅辨析效果，并非漠视；A 末句 some programmes would struggle to support 恰恰否定了\"每个项目都救命\"。"
+   },
+   {
+    "n": 5,
+    "stem": "Which of the following best expresses the main idea?",
+    "opts": [
+     "A. Screening's intuitive appeal must be tested against whether it actually leaves people better off.",
+     "B. False results are the only problem with screening.",
+     "C. Patients should not be told about risk.",
+     "D. Screening should be abandoned."
+    ],
+    "answer": "A",
+    "locate": "The case for a programme should not be that it detects disease, but that those who pass through it are better off than they would otherwise have been",
+    "why": "全文从\"直觉上显然有益\"出发，逐层拆解早发现假设、过度诊断与结果解读，末段落到\"应以受检者是否真正受益为标准\"，A 项即这条主线。",
+    "whyNot": "D 与 None of this argues against screening as such 相反；B 只覆盖第二、三段的一个方面，遗漏结果解读与评价标准；C 原文未涉及信息披露政策。"
+   }
+  ]
+ },
+ {
+  "id": "en-r5",
+  "title": "Passage 5",
+  "topic": "消费文化",
+  "passage": "The advertisement of an earlier era had a simple task: to describe a product and explain why it beat its rival. The advertisement of the present is more likely to describe a person, and to imply that the product is what separates that person from everybody else.\n\nThis shift is often traced to how firms understood themselves. A company that sold soap was in the business of soap; a company that sold a way of living was in the business of meaning, and meaning can be attached to almost anything. Once that step had been taken, the object became almost incidental. What was on offer was a version of the self, available for purchase.\n\nThe reaction has been instructive. A generation raised inside this language learned to read it, and much of what looked like rebellion — buying less, buying second-hand, buying nothing — was absorbed with remarkable speed. Refusal has itself become a style. Cupboards are emptied, and the shelves that replace them hold books about emptying cupboards.\n\nIt would be easy to conclude that nothing can escape, and that every gesture of resistance will be repackaged and sold. That conclusion is too neat. The language of selling is flexible, but flexibility is not omnipotence. What has changed is not that criticism is impossible, but that it must now be made in a vocabulary the market already knows how to answer. The question worth asking of any purchase is therefore not whether it is authentic, but who benefits from the story attached to it.",
+  "questions": [
+   {
+    "n": 1,
+    "stem": "Present-day advertising differs from earlier advertising in that it tends to focus on ___",
+    "opts": [
+     "A. the weaknesses of rivals",
+     "B. technical specifications",
+     "C. low prices",
+     "D. the kind of person the buyer becomes"
+    ],
+    "answer": "D",
+    "locate": "The advertisement of the present is more likely to describe a person, and to imply that the product is what separates that person from everybody else.",
+    "why": "首段对比两代广告：过去描述产品并说明何以胜过对手，现在描述\"人\"并暗示产品让人与众不同；D 项 the kind of person the buyer becomes 即 describe a person 与 a version of the self 的概括。",
+    "whyNot": "B、C 属于 describe a product 的旧式做法，原文未提具体价格或参数；A 对应首句 explain why it beat its rival，是旧广告的特征而非当下趋势。"
+   },
+   {
+    "n": 2,
+    "stem": "The phrase \"the object became almost incidental\" (Paragraph 2) means that the product ___",
+    "opts": [
+     "A. was given away free",
+     "B. was no longer manufactured",
+     "C. mattered less than the meaning attached to it",
+     "D. became a luxury good"
+    ],
+    "answer": "C",
+    "locate": "Once that step had been taken, the object became almost incidental.",
+    "why": "前文说公司从\"卖肥皂\"转为\"卖生活方式\"、进入\"意义的生意\"，且 meaning can be attached to almost anything；incidental 意为\"次要的、附带的\"，即产品本身退居次位，真正出售的是意义，C 项正确。",
+    "whyNot": "B 与产品仍在售卖、available for purchase 矛盾；D 原文未提奢侈化；A 与 available for purchase（供购买）相反。"
+   },
+   {
+    "n": 3,
+    "stem": "The books about emptying cupboards are mentioned to show that ___",
+    "opts": [
+     "A. resistance to consumption has been turned into a purchasable style",
+     "B. bookshops are losing customers",
+     "C. people read fewer books than before",
+     "D. minimalism saves money"
+    ],
+    "answer": "A",
+    "locate": "Refusal has itself become a style. Cupboards are emptied, and the shelves that replace them hold books about emptying cupboards.",
+    "why": "第三段先说\"拒买也被迅速吸纳\"，随即用\"清空橱柜后又摆上教人清空橱柜的书\"这一画面坐实：反消费本身成了可以购买的风格，A 项直接对应 Refusal has itself become a style。",
+    "whyNot": "D 原文未讨论省钱效果；B、C 把例子的字面意思当成论点，没有回到\"被市场吸纳\"这一论证目的。"
+   },
+   {
+    "n": 4,
+    "stem": "The author's attitude towards the conclusion that \"nothing can escape\" is that it is ___",
+    "opts": [
+     "A. fully justified",
+     "B. too tidy to be true",
+     "C. morally offensive",
+     "D. irrelevant to the argument"
+    ],
+    "answer": "B",
+    "locate": "That conclusion is too neat.",
+    "why": "作者先替读者说出\"一切抵抗都会被重新包装出售\"，随即以 too neat 否定其过度简化，并补充 flexibility is not omnipotence，B 项 too tidy to be true 正是 too neat 的同义改写。",
+    "whyNot": "A 与 too neat 相反；C 作者批评的是论证上的简单化，未作道德指控；D 这一结论正是全文要回应的对象，绝非无关。"
+   },
+   {
+    "n": 5,
+    "stem": "Which of the following best states the main idea?",
+    "opts": [
+     "A. Second-hand goods are better for the environment.",
+     "B. Consumers no longer believe advertisements.",
+     "C. Advertising has become more truthful over time.",
+     "D. Consumption now sells identity, and even the refusal of it is absorbed into the same trade."
+    ],
+    "answer": "D",
+    "locate": "What has changed is not that criticism is impossible, but that it must now be made in a vocabulary the market already knows how to answer.",
+    "why": "全文由\"广告从卖产品转向卖自我\"写到\"反消费被收编\"，末段这句给出总结：批评仍有可能，但必须在市场熟悉的语汇中进行，D 项涵盖这条主线。",
+    "whyNot": "C 与\"卖意义\"及\"被收编\"的判断不符；A 环保角度全文未提；B 原文说这一代人 learned to read it（学会了读广告），并非不再相信。"
+   }
+  ]
+ },
+ {
+  "id": "en-r6",
+  "title": "Passage 6",
+  "topic": "职场沟通",
+  "passage": "Few managerial rituals are as widely recommended, and as reliably ineffective, as the feedback sandwich: place a criticism between two slices of praise and hope that the recipient swallows it.\n\nThe metaphor is more revealing than its inventors intended. Recipients tend to remember the filling and to discount the bread, having learned to hear praise as a preparation for bad news. The habit is not merely unhelpful. Once praise is used as packaging, it stops carrying information; a manager who says \"you are doing great\" to everyone has said nothing at all.\n\nA second difficulty is the medium. Much workplace conversation now happens in writing, and writing strips out the tone, timing and small repairs that speech allows. A remark that would have passed unnoticed in a corridor becomes, in a message window, a permanent record that can be reread at midnight. The problem is not that people have become more sensitive; it is that the channel has removed the signals that once made a blunt sentence survivable.\n\nWhat works is duller than any of these techniques: specificity, timeliness, and a clear statement of what the speaker would like to see changed. \"The report reached the client on Thursday; she needed it on Tuesday\" is more useful than any amount of encouragement to be more proactive. Praise, too, earns its value only by naming something. The aim is not to make criticism painless — a painless criticism is usually a forgettable one — but to make it precise enough to act on.",
+  "questions": [
+   {
+    "n": 1,
+    "stem": "The feedback sandwich often fails because recipients ___",
+    "opts": [
+     "A. hear praise as preparation and discount it",
+     "B. reject every kind of criticism",
+     "C. prefer to be praised in public",
+     "D. forget both the praise and the criticism"
+    ],
+    "answer": "A",
+    "locate": "Recipients tend to remember the filling and to discount the bread, having learned to hear praise as a preparation for bad news.",
+    "why": "第二段直陈受话者的反应：记住\"夹心\"、打折看待\"面包\"，因为已学会把表扬听成坏消息的前奏；A 项 hear praise as preparation and discount it 与 hear praise as a preparation 及 discount the bread 对应。",
+    "whyNot": "D 与 remember the filling 相反，批评恰恰被记住了；B 原文批评的是方法，而非受话者拒绝一切批评；C \"in public\" 原文未提。"
+   },
+   {
+    "n": 2,
+    "stem": "In the second paragraph, \"the filling\" refers to ___",
+    "opts": [
+     "A. the praise",
+     "B. the criticism",
+     "C. the manager's tone",
+     "D. the meeting itself"
+    ],
+    "answer": "B",
+    "locate": "place a criticism between two slices of praise",
+    "why": "首段已把三明治比作\"两片表扬夹一条批评\"，故\"夹心\"即批评、\"面包\"即表扬；第二段 discount the bread 也印证面包是表扬，B 项正确。",
+    "whyNot": "A 是\"面包\"（two slices of praise），位置正好颠倒；C、D 根本未出现在这个比喻中。"
+   },
+   {
+    "n": 3,
+    "stem": "Written channels make a blunt remark more damaging mainly because they ___",
+    "opts": [
+     "A. encourage people to write at length",
+     "B. reach a larger audience",
+     "C. remove tone and timing and leave a permanent record",
+     "D. are always misinterpreted"
+    ],
+    "answer": "C",
+    "locate": "A remark that would have passed unnoticed in a corridor becomes, in a message window, a permanent record that can be reread at midnight.",
+    "why": "第三段指出书面渠道 strips out the tone, timing and small repairs that speech allows，并使走廊里本无妨碍的一句话变成可反复重读的永久记录，C 项把这两点合并，与原句同义。",
+    "whyNot": "B 原文未提传播范围；D always 过于绝对，原文归因于渠道而非理解能力；A 未讨论篇幅长短。"
+   },
+   {
+    "n": 4,
+    "stem": "The author's attitude towards vague praise is ___",
+    "opts": [
+     "A. amused",
+     "B. neutral",
+     "C. tolerant",
+     "D. disapproving"
+    ],
+    "answer": "D",
+    "locate": "The habit is not merely unhelpful. Once praise is used as packaging, it stops carrying information",
+    "why": "not merely unhelpful 与 stops carrying information 是对笼统表扬的明确否定；末段又说 Praise, too, earns its value only by naming something，可见作者不赞成空泛表扬，D 项 disapproving 恰当。",
+    "whyNot": "C 与 not merely unhelpful 矛盾；A 全文虽用三明治作讽喻，但对笼统表扬的判断是严肃否定，并非觉得有趣；B 作者立场明确，不是中立。"
+   },
+   {
+    "n": 5,
+    "stem": "Which of the following best states the main idea?",
+    "opts": [
+     "A. Useful feedback depends on specificity and timing rather than on technique or channel.",
+     "B. Written communication should be avoided at work.",
+     "C. Praise is unnecessary in the workplace.",
+     "D. Managers should stop giving feedback altogether."
+    ],
+    "answer": "A",
+    "locate": "What works is duller than any of these techniques: specificity, timeliness, and a clear statement of what the speaker would like to see changed.",
+    "why": "文章先破\"三明治法\"，再析书面渠道的损耗，最后立论：有效反馈靠具体、及时与明确要求，而非技巧或媒介，A 项概括了这一\"破—立\"结构。",
+    "whyNot": "D 作者主张改进反馈方式，并未主张取消反馈；B 书面渠道只是第三段的分析对象，作者没有主张禁用；C 末段说表扬只有点名具体内容才有价值，是要其具体而非取消。"
+   }
+  ]
+ }
+]

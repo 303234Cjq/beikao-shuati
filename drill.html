@@ -1,0 +1,219 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f4e79">
+<title>英语 · 政治 刷题</title>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},svg:{fontCache:'global'}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f2f5f9;--card:#fff;--ink:#15202e;--muted:#69738a;--line:#e3e9f0;--acc:#1f4e79;--acc2:#e8f1fa;--ok:#1a7f45;--bad:#b91c1c;--warn:#b45309}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC",sans-serif;padding-bottom:80px}
+.hdr{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:10px 14px}
+.hdr .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.hdr b{font-size:14.5px}
+.meta{font-size:12px;color:var(--muted)}
+.bar{height:4px;background:#e9eef5;border-radius:99px;margin-top:7px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--acc);width:0}
+main{max-width:780px;margin:auto;padding:10px 12px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin:10px 0}
+.rowitem{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.rowitem:last-child{border-bottom:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--acc);color:#fff;padding:10px 14px;border-radius:11px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none}
+.btn.ghost{background:var(--acc2);color:var(--acc)}
+.btn.line{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.passage{font-size:14.5px;line-height:1.85;max-height:260px;overflow:auto;background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:10px 12px;white-space:pre-wrap}
+.qh{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);margin:12px 0 6px;flex-wrap:wrap}
+.tag{background:var(--acc2);color:var(--acc);border-radius:999px;padding:2px 10px;font-size:11.5px}
+.stem{font-size:15px;margin-bottom:10px;overflow-wrap:anywhere}
+label.opt{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:11px;margin:8px 0;cursor:pointer;font-size:14px;background:#fbfcfe;overflow-wrap:anywhere}
+label.opt .k{flex:0 0 24px;width:24px;height:24px;border:1.5px solid #c6d2e0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;color:var(--muted);background:#fff}
+label.opt.right{border-color:#9fd8b3;background:#f2fbf5}
+label.opt.right .k{background:var(--ok);border-color:var(--ok);color:#fff}
+label.opt.wrong{border-color:#efb9b9;background:#fdf4f4}
+label.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:#fff}
+.sol{background:#f7fafc;border-left:3px solid var(--acc);border-radius:9px;padding:10px 12px;margin:10px 0;font-size:13.5px;overflow-wrap:anywhere}
+.sol.hint{background:#fffaf0;border-left-color:#c98a00}
+.sol p{margin:5px 0}
+.actbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.98);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.sk{white-space:pre-wrap;font-size:14px;line-height:1.8;background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+</style></head><body>
+<div class="hdr"><div class="row">
+  <div><b id="hTitle">加载中</b><div class="meta" id="hSub"></div></div>
+  <div class="meta" id="hIdx"></div>
+</div><div class="bar"><i id="hBar"></i></div></div>
+<main id="main"></main>
+<div class="actbar" id="bar" style="display:none">
+  <button class="btn line" id="prevBtn">上一题</button>
+  <button class="btn ghost" id="solBtn">答案</button>
+  <button class="btn" id="nextBtn">下一题</button>
+</div>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  function qs(k){var m=new RegExp('[?&]'+k+'=([^&]*)').exec(location.search);return m?decodeURIComponent(m[1].replace(/\+/g,' ')):'';}
+  function cleanOpt(o){return String(o).replace(/^\s*[A-DＡ-Ｄ]\s*[\.、．:：\)]\s*/,'');}
+
+  var set=qs('set')||'reading', data=[], cur=0, qi=0, revealed={};
+  var TITLES={reading:['英语阅读','原创 6 篇 · 每篇 5 题'],writing:['英语作文','原创 6 题 · 模板与范文'],politics:['政治选择题','原创 60 题 · 五科覆盖']};
+  var FILES={reading:'practice/en-reading.json',writing:'practice/en-writing.json',politics:'practice/pol.json'};
+
+  $('hTitle').textContent=(TITLES[set]||['练习',''])[0];
+  $('hSub').textContent=(TITLES[set]||['',''])[1];
+
+  fetch(FILES[set]+'?t='+Date.now()).then(function(r){return r.json();}).then(function(d){
+    data=d; renderList();
+  }).catch(function(e){ $('main').innerHTML='<div class="card">题库加载失败：'+esc(e.message)+'</div>'; });
+
+  function renderList(){
+    var m=$('main'); m.innerHTML='';
+    if(!data.length){ m.innerHTML='<div class="card">暂无内容</div>'; return; }
+    if(set==='reading'){
+      m.innerHTML='<div class="card"><b>选一篇开始</b><div class="meta">先读文章（可展开），再逐题作答</div></div><div class="card" id="lst"></div>';
+      var l=$('lst');
+      data.forEach(function(p,i){
+        var d=document.createElement('div'); d.className='rowitem';
+        d.innerHTML='<span><b>'+esc(p.title)+'</b> <span class="meta">'+esc(p.topic||'')+' · '+p.questions.length+' 题</span></span>';
+        var b=document.createElement('button'); b.className='btn'; b.textContent='开始';
+        b.onclick=function(){ cur=i; qi=0; revealed={}; renderReading(); };
+        d.appendChild(b); l.appendChild(d);
+      });
+    } else if(set==='writing'){
+      m.innerHTML='<div class="card"><b>选一题开始</b><div class="meta">先自己写，再点「答案」看模板与范文</div></div><div class="card" id="lst"></div>';
+      var l2=$('lst');
+      data.forEach(function(w,i){
+        var d=document.createElement('div'); d.className='rowitem';
+        d.innerHTML='<span><b>'+esc(w.kind||'')+'</b> <span class="meta">'+esc(w.topic||'')+'</span></span>';
+        var b=document.createElement('button'); b.className='btn'; b.textContent='开始';
+        b.onclick=function(){ cur=i; renderWriting(); };
+        d.appendChild(b); l2.appendChild(d);
+      });
+    } else {
+      renderPolitics();
+    }
+  }
+
+  function showBar(on){ $('bar').style.display=on?'grid':'none'; }
+
+  function renderReading(){
+    var p=data[cur], q=p.questions[qi];
+    showBar(true);
+    var h='<div class="card"><div class="meta" style="margin-bottom:6px">'+esc(p.title)+' · '+esc(p.topic||'')+'</div>'+
+      '<div class="passage">'+esc(p.passage)+'</div></div>';
+    h+='<div class="card"><div class="qh"><span class="tag">第 '+(qi+1)+' / '+p.questions.length+' 题</span></div>'+
+       '<div class="stem">'+esc(q.stem)+'</div><div id="opts"></div><div id="solbox"></div></div>';
+    $('main').innerHTML=h;
+    var box=$('opts');
+    q.opts.forEach(function(o,i){
+      var L='ABCD'[i], lb=document.createElement('label'); lb.className='opt'; lb.setAttribute('data-l',L);
+      lb.innerHTML='<span class="k">'+L+'</span><span>'+esc(cleanOpt(o))+'</span>';
+      lb.onclick=function(){ pick(lb,q); };
+      box.appendChild(lb);
+    });
+    $('hIdx').textContent=(qi+1)+'/'+p.questions.length;
+    $('hBar').style.width=Math.round((qi+1)/p.questions.length*100)+'%';
+    $('prevBtn').disabled=qi===0;
+    $('nextBtn').textContent=qi===p.questions.length-1?'下一篇':'下一题';
+    $('solBtn').textContent='答案';
+    bindNav(function(){
+      if(qi<p.questions.length-1){qi++;renderReading();}
+      else if(cur<data.length-1){cur++;qi=0;renderReading();}
+      else renderList();
+    },function(){ if(qi>0){qi--;renderReading();} }, function(){ revealReading(q); });
+    if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise();
+    window.scrollTo(0,0);
+  }
+
+  function pick(lb,q){
+    var picked=lb.getAttribute('data-l');
+    var box=lb.parentNode;
+    [].forEach.call(box.querySelectorAll('label.opt'),function(x){
+      if(x.getAttribute('data-l')===q.answer)x.classList.add('right');
+      else if(x.getAttribute('data-l')===picked)x.classList.add('wrong');
+    });
+    revealReading(q,true);
+  }
+
+  function revealReading(q,afterPick){
+    var sb=$('solbox'); if(!sb)return;
+    if(sb.innerHTML){ sb.innerHTML=''; return; }
+    var h='<div class="sol"><p><b>答案：'+esc(q.answer)+'</b></p>';
+    if(q.locate)h+='<p><b>定位句：</b>'+esc(q.locate)+'</p>';
+    if(q.why)h+='<p><b>解析：</b>'+esc(q.why)+'</p>';
+    if(q.whyNot)h+='<p><b>错项：</b>'+esc(q.whyNot)+'</p>';
+    h+='</div>';
+    sb.innerHTML=h;
+  }
+
+  function renderWriting(){
+    var w=data[cur];
+    showBar(true);
+    $('prevBtn').disabled=false;
+    $('hIdx').textContent=(cur+1)+'/'+data.length;
+    $('hBar').style.width=Math.round((cur+1)/data.length*100)+'%';
+    $('nextBtn').textContent=cur===data.length-1?'回到列表':'下一题';
+    $('solBtn').textContent='答案';
+    var h='<div class="card"><div class="qh"><span class="tag">'+esc(w.kind||'作文')+'</span><span>'+esc(w.topic||'')+'</span></div>'+
+      '<div class="stem">'+esc(w.prompt)+'</div><div class="meta">先动笔写一遍，再点「答案」对照模板与范文。</div>'+
+      '<div id="solbox" style="margin-top:10px"></div></div>';
+    $('main').innerHTML=h;
+    bindNav(function(){ if(cur<data.length-1){cur++;renderWriting();} else renderList(); },
+            function(){ if(cur>0){cur--;renderWriting();} },
+            function(){
+              var sb=$('solbox'); if(!sb)return;
+              if(sb.innerHTML){sb.innerHTML='';return;}
+              var x='<div class="sol"><p><b>模板骨架</b></p><div class="sk">'+esc(w.skeleton)+'</div>';
+              x+='<p style="margin-top:10px"><b>原创范文</b></p><div class="sk">'+esc(w.sample)+'</div>';
+              if(w.tips&&w.tips.length){ x+='<p style="margin-top:10px"><b>得分点</b></p><ul style="margin:4px 0 0 18px;padding:0">'+w.tips.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul>'; }
+              x+='</div>';
+              sb.innerHTML=x;
+            });
+    window.scrollTo(0,0);
+  }
+
+  function renderPolitics(){
+    var cats=['全部'].concat([...new Set(data.map(function(q){return q.cat||'其他';}))]);
+    var curCat=window.__polCat||'全部';
+    var list=data.filter(function(q){return curCat==='全部'||q.cat===curCat;});
+    showBar(true);
+    if(qi>=list.length)qi=0;
+    var q=list[qi];
+    var h='<div class="card"><div class="meta" style="margin-bottom:6px">'+cats.map(function(c){
+      return '<button class="btn '+(c===curCat?'':'line')+'" data-c="'+esc(c)+'" style="padding:5px 10px;font-size:12px;margin:0 6px 6px 0">'+esc(c)+'</button>';
+    }).join('')+'</div>';
+    h+='<div class="qh"><span class="tag">'+esc(q.cat||'')+'</span><span>第 '+(qi+1)+' / '+list.length+' 题</span><span>'+esc(q.point||'')+'</span></div>';
+    h+='<div class="stem">'+esc(q.stem)+'</div><div id="opts"></div><div id="solbox"></div></div>';
+    $('main').innerHTML=h;
+    var box=$('opts');
+    q.opts.forEach(function(o,i){
+      var L='ABCD'[i], lb=document.createElement('label'); lb.className='opt'; lb.setAttribute('data-l',L);
+      lb.innerHTML='<span class="k">'+L+'</span><span>'+esc(cleanOpt(o))+'</span>';
+      lb.onclick=function(){ pick(lb,q); };
+      box.appendChild(lb);
+    });
+    [].forEach.call($('main').querySelectorAll('button[data-c]'),function(b){
+      b.onclick=function(){ window.__polCat=b.getAttribute('data-c'); qi=0; renderPolitics(); };
+    });
+    $('hIdx').textContent=(qi+1)+'/'+list.length;
+    $('hBar').style.width=Math.round((qi+1)/list.length*100)+'%';
+    $('prevBtn').disabled=qi===0;
+    $('nextBtn').textContent=qi===list.length-1?'回到第一题':'下一题';
+    $('solBtn').textContent='答案';
+    bindNav(function(){ qi=(qi+1)%list.length; renderPolitics(); },
+            function(){ if(qi>0){qi--;renderPolitics();} },
+            function(){
+              var sb=$('solbox'); if(!sb)return;
+              if(sb.innerHTML){sb.innerHTML='';return;}
+              var x='<div class="sol"><p><b>答案：'+esc(q.answer)+'</b></p>'+(q.why?'<p><b>解析：</b>'+esc(q.why)+'</p>':'')+(q.whyNot?'<p><b>错项：</b>'+esc(q.whyNot)+'</p>':'')+'</div>';
+              sb.innerHTML=x;
+            });
+    window.scrollTo(0,0);
+  }
+
+  function bindNav(next,prev,sol){
+    $('nextBtn').onclick=next; $('prevBtn').onclick=prev; $('solBtn').onclick=sol;
+  }
+})();
+</script></body></html>

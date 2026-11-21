@@ -245,6 +245,9 @@ nav.tab a.on b{color:var(--acc)}
       var link='';
       if(i===0||i===1){ link='practice.html?n=15&module='+encodeURIComponent(wm.math); }
       else if(i===2){ link='practice.html?n=12&module='+encodeURIComponent(wm.ee); }
+      else if(i===3){ link='drill.html?set=reading'; }
+      else if(i===4){ link='drill.html?set=writing'; }
+      else if(i===5){ link='drill.html?set=politics'; }
       b.innerHTML='<span class="box">'+(on?'✓':'')+'</span><span class="txt">'+t[0]+'<span class="num">'+t[1]+'</span></span>'+
         (link?'<a class="go" href="'+link+'" onclick="event.stopPropagation()">去练</a>':'');
       box.appendChild(b);

@@ -1,0 +1,86 @@
+[
+ {
+  "id": "en-w1",
+  "kind": "大作文",
+  "topic": "图表作文",
+  "prompt": "Part B 图表作文（柱状图）。某校学习支持中心调查了在校生 2019 年与 2024 年每周课外学习时间的分配，数据如下（小时/周）：纸质教材 8.5 → 5.0；视频课程 3.0 → 6.5；AI 辅助工具 0.5 → 5.5；同伴学习小组 2.0 → 3.0。\n\nDirections: Write an essay of 160–180 words based on the chart. In your essay, you should\n1) describe the chart briefly,\n2) give possible reasons for the changes, and\n3) give your comments.\nWrite your essay neatly on the ANSWER SHEET. (20 points)",
+  "skeleton": "Paragraph 1 (describe)\nThe bar chart compares how much time [group of people] devoted to [topic] in [year A] and [year B]. In [year A], they spent [X] hours per week on [item 1], whereas the figure for [year B] stood at [Y]. By contrast, [item 2] rose from [a] to [b], and [item 3] recorded the sharpest growth, climbing from [c] to [d].\nParagraph 2 (explain)\nSeveral factors may account for these shifts. To begin with, [reason 1], which has made [change] possible. In addition, [reason 2]. A third contributor is that [reason 3].\nParagraph 3 (comment)\nFrom my perspective, [judgement on the trend]. [What people should do / what the trend suggests], and [closing remark linking back to the figures].",
+  "sample": "The chart compares the weekly study hours of students at one university in 2019 and 2024. In 2019, printed textbooks took up 8.5 hours a week; by 2024 the figure had fallen to 5.0. Over the same period, time on video lectures rose from 3.0 to 6.5 hours, and time on AI-assisted tools recorded the sharpest growth, jumping from a mere 0.5 to 5.5 hours. Peer study groups edged up from 2.0 to 3.0 hours.\nSeveral factors may account for these shifts. To begin with, portable devices make it easy to pause, replay or speed up a lecture anywhere. In addition, AI tools answer questions within seconds, which appeals to learners who once waited days for a tutor's reply. A third contributor is that group work now starts online, so meetings are shorter but better prepared.\nFrom my perspective, this reallocation is not a decline in seriousness but a change of method. Students still need long texts to build patience, and teachers should show them how to check a machine's answer before trusting it.",
+  "tips": [
+   "首段可以报全四项，但必须有主次：以 8.5→5.0（纸质教材）与 0.5→5.5（AI 工具）作对照主线，另外两项一句带过，避免变成流水账。",
+   "年份对比题必须落地两个数字，并用一次幅度表达（jumping from a mere 0.5 to 5.5、the sharpest growth），这是图表描述的核心加分动作。",
+   "第二段每个原因后接一句“因此……”，把原因写成因果链（设备便携→可暂停回放），而不是只丢名词。",
+   "结尾别用 In a word, it is important to... 这类空话；给出可执行的判断（still need long texts to build patience / teach students to check machine answers）。"
+  ]
+ },
+ {
+  "id": "en-w2",
+  "kind": "大作文",
+  "topic": "图表作文",
+  "prompt": "Part B 图表作文（折线图）。某市公共图书馆年度到馆人次（单位：百万人次）如下：\n2019: 1.18 | 2020: 0.62 | 2021: 0.78 | 2022: 0.95 | 2023: 1.06 | 2024: 1.24\n\nDirections: Write an essay of 160–180 words based on the line graph. In your essay, you should\n1) describe the trend shown in the graph,\n2) explain the possible causes of the trend, and\n3) state your own view on it.\nWrite your essay neatly on the ANSWER SHEET. (20 points)",
+  "skeleton": "Paragraph 1 (describe)\nThe line graph traces [what is measured] in [place] from [year A] to [year B]. The figure began at [X] in [year A], dropped to [Y] in [year peak/trough], and then [recovered / continued to rise], reaching [Z] in [year B] — [comparison with the starting point].\nParagraph 2 (explain)\nTwo forces seem to explain this [shape] curve. The [fall / rise] in [year] was largely caused by [external cause]. The [recovery / growth] afterwards, however, suggests that [internal change], as [evidence 1] and [evidence 2] show. [A sentence on what people now go there for].\nParagraph 3 (view)\nIn my view, [attitude towards the trend]. [Reason for the attitude]. [A forward-looking suggestion], for [closing point].",
+  "sample": "The line graph traces annual visits to a city's public libraries between 2019 and 2024. The figure began at 1.18 million visits, plunged to 0.62 million in 2020, and then recovered steadily, passing the pre-2020 level to reach 1.24 million in 2024.\nTwo forces seem to explain this V-shaped curve. The fall was clearly caused by temporary closures and by the habit of reading on phones that many residents formed while staying at home. The recovery afterwards, however, suggests that these libraries have changed rather than merely reopened: they now lend e-books online, set aside quiet corners for people working remotely, and hold evening talks that turn a borrowing desk into a meeting place. Readers come for the atmosphere as much as for the books.\nIn my view, the figures are encouraging. A library that survives the digital age is one that offers what a screen cannot: silence, company and a reason to leave the house. Cities should therefore treat such places as basic facilities rather than as luxuries.",
+  "tips": [
+   "折线图的得分点是“形状”：先报起点、拐点（2020 年 0.62）、终点，再用 plunge / recover / V-shaped curve 这类词把曲线讲成一条故事线。",
+   "注意“回升并超过原点”这个细节（1.24 > 1.18），写出 passing the pre-2020 level 比只写 increased 更有信息量。",
+   "原因段把“外部冲击”与“自身转型”分开写：闭馆解释下跌，服务改造解释回升，逻辑层次立刻清晰。",
+   "结尾评价要给出立场并落到做法（treat such places as basic facilities），不要停在 It is beneficial 这种无信息句。"
+  ]
+ },
+ {
+  "id": "en-w3",
+  "kind": "大作文",
+  "topic": "图表作文（现象类）",
+  "prompt": "Part B 图表作文（饼图）。某招聘平台调查了应届毕业生选择第一份工作时最看重的因素，结果如下：\n发展空间 42% | 薪酬水平 30% | 工作地点 16% | 单位性质 12%\n\nDirections: Write an essay of 160–180 words based on the pie chart. In your essay, you should\n1) interpret the chart,\n2) account for the phenomenon it reveals, and\n3) give your comments.\nWrite your essay neatly on the ANSWER SHEET. (20 points)",
+  "skeleton": "Paragraph 1 (interpret)\nThe pie chart presents what [group] value most when [situation]. [Item 1] takes the largest share, at [X]%, followed by [item 2] at [Y]%. [Item 3] accounts for [Z]%, while [item 4] makes up the remaining [W]%.\nParagraph 2 (account for)\nThis distribution reflects [one-sentence interpretation of the phenomenon]. Having seen [background detail], many of them prefer [preference], even if [concession]. [Cause behind the second largest slice]. As for the smaller shares, [brief explanation].\nParagraph 3 (comment)\nIn my opinion, [judgement]. [What the choice should really depend on], for [closing warning or advice].",
+  "sample": "The pie chart presents what fresh graduates value most when choosing their first job. Career prospects take the largest share, at 42%, followed by salary at 30%. Location accounts for 16%, while the nature of the employer makes up the remaining 12%.\nThis distribution reflects a generation that reads a first job as a starting point rather than a destination. Having watched friends switch careers within two years, many graduates prefer a post that teaches them transferable skills, even when the starting pay is modest. Rising rents in large cities explain the weight given to salary, and most of the 16% who put location first are those who wish to stay near their families. The small share for employer type suggests that labels such as state-owned or private matter less than they did a decade ago.\nIn my opinion, the emphasis on growth is sensible, but prospects should be judged by what a job actually trains rather than by what a recruiter promises. A clear plan is worth more than a fashionable choice.",
+  "tips": [
+   "饼图可以四块全报，但要按份额从大到小排序，并用 take the largest share / account for / make up 轮换动词，避免同一个动词重复四次。",
+   "题目要求是“解释现象”，所以第一段描述完必须有一句定性判断（a first job as a starting point rather than a destination），否则第二段会突然转入议论。",
+   "第二段按“最大块—次大块—小块”的顺序配原因，逻辑与图一致；用 even when 让步、用 labels matter less than they did 做时间对比，句式才有层次。",
+   "结论避免绝对化（不要写 everyone should...），把观点落到判断标准上：what a job actually trains 比 recruiter promises 更可靠。"
+  ]
+ },
+ {
+  "id": "en-w4",
+  "kind": "小作文",
+  "topic": "书信作文（建议信）",
+  "prompt": "Part A 建议信。你是某校历史系二年级学生，校服务中心的自习室预约系统上线一学期，存在“按整点放号、座位空置无人管”的问题。请写信给服务中心负责人，说明问题并提出改进建议。\n\nDirections: Write a letter of about 100–120 words to the head of the Campus Service Center. In your letter, you should\n1) state the purpose of writing,\n2) point out the problems with the current booking system, and\n3) make two or three practical suggestions.\nDo not use your real name; sign as Chen Yifan. (10 points)",
+  "skeleton": "Dear [Sir or Madam],\nI am [identity], and I am writing to [purpose — suggest improvements to ...].\n[One sentence of acknowledgement]. However, [problem 1], so [consequence]. What is more, [problem 2], and [consequence].\nI would therefore suggest [suggestion 1]. It would also help if [suggestion 2]. [Optional: a short expected benefit].\nThank you for [considering ...]. I look forward to [expected result].\nYours sincerely,\n[Name]",
+  "sample": "Dear Sir or Madam,\nI am a second-year history student, and I am writing to suggest some changes to the study-room booking system.\nThe system has saved us from wandering from floor to floor. However, rooms are released only on the hour, so a student who needs forty minutes often books two hours and leaves the rest empty. What is more, nobody checks whether a reserved seat is used, and many desks stay vacant while others are turned away.\nI would therefore suggest thirty-minute slots, with seats released again if users do not arrive within ten minutes. It would also help if the screen at each entrance showed live availability.\nThank you for considering these proposals.\nYours sincerely,\nChen Yifan",
+  "tips": [
+   "第一句必须自报身份 + 说明目的（I am a second-year history student, and I am writing to suggest...），阅卷老师找的就是这一句。",
+   "建议信的分水岭在“具体”：三十分钟一段放号、十分钟内确认、屏幕显示实时余位，比 improve the service 有效得多，每条建议都要能落地。",
+   "语气用 I would therefore suggest / It would also help if，不要用 You must / You should，投诉味太重会压分。",
+   "称呼、正文、结束语、签名四部分齐全；签名用题目给的 Chen Yifan，不要写真实姓名，也不要漏 Yours sincerely。"
+  ]
+ },
+ {
+  "id": "en-w5",
+  "kind": "小作文",
+  "topic": "通知",
+  "prompt": "Part A 通知。校读书会将于 5 月 12–16 日在东教学楼大厅举办“图书循环周”，现招募 30 名志愿者。请以读书会名义写一则通知，说明活动安排、志愿者职责与报名方式。\n\nDirections: Write a notice of about 100–120 words for the Campus Reading Club. Your notice should include\n1) the time, place and purpose of the event,\n2) the duties and requirements of volunteers, and\n3) how and when to sign up.\nDo not use real names of people or institutions. (10 points)",
+  "skeleton": "NOTICE\n[Event name] will be held from [date] to [date] in [place]. [One sentence on purpose: it gives ... a chance to ...].\nWe are now recruiting [number] volunteers. They will [duty 1], [duty 2] and [duty 3]. Applicants should [requirement 1] and [requirement 2].\nThose who are interested may [sign-up method] before [deadline]. [Training / further information].\n[Issuing body]\n[Date]",
+  "sample": "NOTICE\nThe Campus Reading Club will hold its annual Book Recycling Week from 12 to 16 May in the hall of the East Teaching Building. It lets students pass on books they no longer need and take home others at no cost.\nWe are now recruiting thirty volunteers. They will sort donated books by subject, staff the exchange desk from 12:00 to 14:00, and carry boxes to the storage room. Applicants should be free for at least two afternoons and able to keep an inventory sheet.\nThose interested may sign up at the club office (Room 204) or message the club before 30 April. A training session will be given on 8 May.\nThe Campus Reading Club\n20 April",
+  "tips": [
+   "通知标题 NOTICE 单独一行大写，正文分三段（活动信息—招募要求—报名方式），结尾落款机构 + 日期，格式分先拿到。",
+   "通知不用“我”，用被动或第三人称（Volunteers will... / Applicants should...），出现 I 就显得不专业。",
+   "活动信息三要素一次写全：时间、地点、目的；目的句一句话交代（It lets students ... at no cost），不展开抒情。",
+   "招募类通知必须写清人数（thirty volunteers）与硬性要求（free for at least two afternoons），并给出可操作的报名渠道和截止日期，100–120 词内不写活动意义长篇。"
+  ]
+ },
+ {
+  "id": "en-w6",
+  "kind": "小作文",
+  "topic": "书信作文（道歉信）",
+  "prompt": "Part A 道歉信。你原定上周五作为志愿向导，带交换生参观校园，但临时因家人住院返乡未能到场，也未及时告知项目负责人。请写信给项目协调人说明情况、致歉并提出补救办法。\n\nDirections: Write a letter of about 100–120 words to Ms. Lin, the program coordinator. In your letter, you should\n1) apologize for your absence,\n2) explain what happened, and\n3) propose a way to make up for it.\nDo not use your real name; sign as Wang Ke. (10 points)",
+  "skeleton": "Dear [Ms. / Mr. Surname],\nI am writing to apologize for [what you did or failed to do].\n[Brief factual explanation, one or two sentences, without excuses]. I should have [what you ought to have done], but [reason]. Please accept my apology for [the trouble caused].\nTo make up for it, I would be glad to [remedy 1], or to [remedy 2]. I am also happy to [further offer].\nThank you for your understanding.\nYours sincerely,\n[Name]",
+  "sample": "Dear Ms. Lin,\nI am writing to apologize for missing last Friday's campus tour for visiting exchange students.\nI had confirmed my place a week earlier, but on Thursday evening my father was taken to hospital and I left home early the next morning. I should have called your office at once; instead I packed in a hurry, left my charger behind and only saw your messages on Saturday. Please accept my apology for any confusion caused.\nTo make up for it, I would gladly guide a second tour this Friday, or write a short guide to each stop for the students on campus. I can also brief my replacement.\nThank you for your understanding.\nYours sincerely,\nWang Ke",
+  "tips": [
+   "三段顺序固定：致歉—解释—补救。先道歉再讲原因，顺序颠倒会显得在找借口。",
+   "解释只给事实与一个自查句（I should have called your office at once），控制在一两句内；长篇诉苦会挤掉更值分的补救方案。",
+   "补救要给“可执行的替代”，最好两个选项（再带一次 / 写一份导览稿），体现责任感而不是重复 sorry。",
+   "道歉信只道歉一到两次，其余篇幅用于解决问题；结尾 Thank you for your understanding 收束，落款 Yours sincerely + Wang Ke。"
+  ]
+ }
+]
